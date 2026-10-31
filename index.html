@@ -1,0 +1,903 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Daniel Fu</title>
+<meta name="description" content="Daniel Fu: research, robotics and art. Applying to study data science.">
+<meta name="theme-color" content="#f3eee4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0a1a33" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="Daniel Fu">
+<meta property="og:description" content="Research, robotics and art. I look at what's left over.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a1a33'/%3E%3Crect x='17' y='6' width='11' height='20' fill='%23f2c230'/%3E%3Ctext x='3' y='23' font-family='Arial,sans-serif' font-weight='900' font-size='17' fill='%23f3eee4'%3Ed%3C/text%3E%3Ctext x='18' y='23' font-family='Arial,sans-serif' font-weight='900' font-size='17' fill='%230a1a33'%3Ef%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Martian+Mono:wdth,wght@75..112.5,300..700&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap">
+<style>
+/* layout: a numbered drawing set. each section is a sheet on graph paper with a sheet number and title block;
+   a sticky counter tracks the sheet; research is a register with key-figure plates; art is a contact sheet of slide mounts */
+:root{
+  --paper:#f3eee4;          /* drafting paper (aaryapatel.site ground) */
+  --panel:#ebe4d5;          /* mounts, demo panels */
+  --ink:#0a1a33;            /* navy ink (hjyi2027 ground) */
+  --ink-2:#4b5770;          /* secondary ink, navy-biased grey */
+  --rule:rgba(10,26,51,.16);
+  --grid:rgba(10,26,51,.045);
+  --hi:#f2c230;             /* caution-tape yellow, used as fill only */
+  --on-hi:#0a1a33;
+  --f-disp:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --f-body:"Newsreader",Georgia,"Times New Roman",serif;
+  --f-mono:"Martian Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --s-1:.75rem; --s0:1rem; --s1:1.125rem; --s2:1.375rem; --s3:1.75rem; --s4:2.5rem;
+  --max:1120px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0a1a33; --panel:#112644; --ink:#f3eee4; --ink-2:#a9b3c5;
+    --rule:rgba(243,238,228,.18); --grid:rgba(243,238,228,.04); --hi:#f2c230; --on-hi:#0a1a33;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0a1a33; --panel:#112644; --ink:#f3eee4; --ink-2:#a9b3c5;
+  --rule:rgba(243,238,228,.18); --grid:rgba(243,238,228,.04); --hi:#f2c230; --on-hi:#0a1a33;
+  color-scheme:dark;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:72px;-webkit-text-size-adjust:100%}
+img{max-width:100%}
+body{margin:0;
+  background-color:var(--paper);color:var(--ink);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:24px 24px;
+  font-family:var(--f-body);font-size:var(--s1);line-height:1.55;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--paper)}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+
+a{color:inherit;text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 5px var(--hi)}
+.mono{font-family:var(--f-mono);font-size:var(--s-1);letter-spacing:.02em;font-stretch:87.5%}
+.wrap{max-width:var(--max);margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.skip{position:absolute;left:-999px;top:8px;background:var(--hi);color:var(--on-hi);padding:8px 12px;z-index:80;font-family:var(--f-mono);font-size:var(--s-1)}
+.skip:focus{left:max(16px,env(safe-area-inset-left,0px))}
+h1,h2,h3{text-wrap:balance}
+p{text-wrap:pretty}
+
+/* header */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--paper);border-bottom:1px solid var(--rule)}
+.bar-in{display:flex;align-items:center;gap:20px;min-height:56px}
+.mark{font-family:var(--f-disp);font-stretch:125%;font-weight:850;font-size:1.25rem;text-decoration:none;letter-spacing:-.02em;line-height:1}
+.mark span{background:var(--hi);color:var(--on-hi);padding:0 .14em}
+.nav{display:flex;gap:4px 18px;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0}
+.nav::-webkit-scrollbar{display:none}
+.nav a{font-family:var(--f-mono);font-size:var(--s-1);font-stretch:87.5%;text-decoration:none;padding:6px 0;white-space:nowrap;color:var(--ink-2)}
+.nav a:hover,.nav a[aria-current="true"]{color:var(--ink);text-decoration:underline;text-underline-offset:6px}
+.counter{font-family:var(--f-mono);font-size:var(--s-1);font-stretch:87.5%;color:var(--ink-2);white-space:nowrap;font-variant-numeric:tabular-nums}
+.counter b{color:var(--ink);font-weight:600}
+.motion{font:inherit;font-family:var(--f-mono);font-size:var(--s-1);font-stretch:87.5%;background:none;border:1px solid var(--rule);color:var(--ink-2);padding:5px 9px;cursor:pointer;white-space:nowrap}
+.motion:hover{color:var(--ink);border-color:var(--ink)}
+@media (max-width:860px){.counter{display:none}}
+@media (max-width:520px){.motion{display:none}}
+
+/* sheets */
+.sheet{padding-block:clamp(56px,9vw,104px);border-bottom:1px solid var(--rule);position:relative}
+.sheet-head{display:grid;grid-template-columns:auto 1fr auto;align-items:end;gap:6px 18px;border-top:2px solid var(--ink);padding-top:14px;margin-bottom:clamp(28px,5vw,48px)}
+.sheet-no{font-family:var(--f-mono);font-size:var(--s-1);font-stretch:87.5%;font-variant-numeric:tabular-nums;align-self:start;padding-top:.5em}
+.sheet-head h2{font-family:var(--f-disp);font-stretch:118%;font-weight:800;font-size:clamp(2rem,5.4vw,3.6rem);line-height:.95;letter-spacing:-.025em;margin:0}
+.sheet-meta{font-family:var(--f-mono);font-size:var(--s-1);font-stretch:87.5%;color:var(--ink-2);text-align:right;max-width:30ch}
+@media (max-width:640px){.sheet-head{grid-template-columns:auto 1fr}.sheet-meta{grid-column:1/-1;text-align:left;max-width:none}}
+.lead{font-size:var(--s2);line-height:1.45;max-width:36ch;margin:0}
+.prose{max-width:64ch}
+.prose p{margin:0 0 1em}
+
+/* hero */
+.hero{padding-top:clamp(36px,7vw,80px);padding-bottom:0}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:28px 48px;align-items:end}
+.eyebrow{color:var(--ink-2);margin:0 0 18px}
+.name{font-family:var(--f-disp);font-stretch:125%;font-weight:850;font-size:clamp(3.4rem,13.5vw,10.5rem);line-height:.82;letter-spacing:-.045em;margin:0}
+.tagline{font-family:var(--f-disp);font-stretch:100%;font-weight:500;font-size:clamp(1.4rem,3.4vw,2.3rem);letter-spacing:-.01em;margin:18px 0 0;line-height:1.1}
+.tagline mark{background:var(--hi);color:var(--on-hi);padding:0 .12em}
+.hero .lede{font-size:var(--s2);line-height:1.45;max-width:46ch;margin:22px 0 0}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.btn{font-family:var(--f-mono);font-size:var(--s-1);font-stretch:87.5%;text-decoration:none;border:1.5px solid var(--ink);padding:10px 14px;display:inline-flex;gap:8px;align-items:center;background:var(--ink);color:var(--paper)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn:hover{background:var(--hi);color:var(--on-hi);border-color:var(--ink)}
+.titleblock{border-collapse:collapse;font-family:var(--f-mono);font-size:.6875rem;font-stretch:87.5%;min-width:0;align-self:end;background:var(--paper)}
+.titleblock td{border:1px solid var(--ink);padding:5px 9px;vertical-align:top}
+.titleblock td span{display:block;color:var(--ink-2);font-size:.625rem;text-transform:uppercase;letter-spacing:.08em}
+@media (max-width:760px){.hero-grid{grid-template-columns:minmax(0,1fr)}.titleblock{justify-self:start}}
+
+.band{margin-top:clamp(36px,6vw,64px);border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);overflow:hidden;white-space:nowrap;background:var(--paper)}
+.band-track{display:inline-flex;gap:0;padding:12px 0;font-family:var(--f-mono);font-size:.8125rem;font-stretch:87.5%;font-variant-numeric:tabular-nums}
+.band-track span{padding:0 10px;color:var(--ink-2)}
+.band-track span.nz{color:var(--on-hi);background:var(--hi);font-weight:600}
+.band-cap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:8px;padding-bottom:10px;color:var(--ink-2)}
+.ticker{overflow:hidden;white-space:nowrap;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--panel)}
+.ticker-track{display:inline-flex;font-family:var(--f-mono);font-size:var(--s-1);font-stretch:87.5%;padding:12px 0;font-variant-numeric:tabular-nums}
+.ticker-track span{padding:0 22px;border-right:1px solid var(--rule)}
+.ticker-track b{font-weight:600}
+[data-motion="on"] .band-track{animation:slide 70s linear infinite}
+[data-motion="on"] .ticker-track{animation:slide 55s linear infinite}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:40px 64px}
+.about .prose p:first-child{font-size:var(--s2);line-height:1.45}
+.index{border:1px solid var(--ink);align-self:start}
+.index h3{font-family:var(--f-mono);font-size:var(--s-1);font-stretch:87.5%;font-weight:500;margin:0;padding:10px 14px;border-bottom:1px solid var(--ink);text-transform:uppercase;letter-spacing:.08em}
+.index ol{list-style:none;margin:0;padding:0}
+.index li a{display:grid;grid-template-columns:3ch 1fr auto;gap:12px;padding:9px 14px;border-bottom:1px solid var(--rule);text-decoration:none;font-family:var(--f-mono);font-size:var(--s-1);font-stretch:87.5%}
+.index li:last-child a{border-bottom:0}
+.index li a:hover{background:var(--hi);color:var(--on-hi)}
+.index li a em{font-style:normal;color:var(--ink-2)}
+.index li a:hover em{color:var(--on-hi)}
+@media (max-width:820px){.about{grid-template-columns:minmax(0,1fr)}}
+
+/* research */
+.legend{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin:-10px 0 36px;color:var(--ink-2)}
+.legend span{display:inline-flex;gap:8px;align-items:center}
+.group-h{font-family:var(--f-mono);font-size:var(--s-1);font-stretch:87.5%;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-2);margin:44px 0 0;padding-bottom:10px;border-bottom:1px solid var(--ink)}
+.group-h:first-of-type{margin-top:0}
+.paper{display:grid;grid-template-columns:150px minmax(0,1fr) 230px;gap:16px 32px;padding:28px 0;border-bottom:1px solid var(--rule)}
+.p-meta{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.p-no{font-family:var(--f-mono);font-size:var(--s-1);font-stretch:87.5%;font-variant-numeric:tabular-nums}
+.venue{color:var(--ink-2);line-height:1.6}
+.status{font-style:normal;font-family:var(--f-mono);font-size:.6875rem;font-stretch:87.5%;text-transform:uppercase;letter-spacing:.08em;padding:3px 8px;border:1.5px solid var(--ink);line-height:1.4;white-space:nowrap}
+.s-acc{background:var(--hi);color:var(--on-hi)}
+.s-rev{background:transparent}
+.s-sub{border-style:dashed}
+.p-body{min-width:0}
+.p-body h3{font-family:var(--f-disp);font-stretch:106%;font-weight:650;font-size:clamp(1.15rem,2vw,1.4rem);line-height:1.18;letter-spacing:-.01em;margin:0 0 8px}
+.authors{color:var(--ink-2);font-size:var(--s0);margin:0 0 12px}
+.authors b{color:var(--ink);font-weight:600}
+.p-body p{margin:0 0 10px;max-width:64ch}
+.mypart{border-left:3px solid var(--hi);padding-left:12px}
+.lab{display:inline-block;text-transform:uppercase;letter-spacing:.08em;font-size:.6875rem;margin-right:8px;color:var(--ink)}
+.p-links{display:flex;flex-wrap:wrap;gap:6px 16px;font-family:var(--f-mono);font-size:var(--s-1);font-stretch:87.5%}
+.plate{margin:0;border:1px solid var(--ink);background:var(--paper);padding:16px 16px 12px;align-self:start;display:flex;flex-direction:column;gap:12px;min-width:0;position:relative}
+.plate::before,.plate::after{content:"";position:absolute;width:9px;height:9px;border-color:var(--ink);border-style:solid}
+.plate::before{top:-5px;left:-5px;border-width:0 1px 1px 0}
+.plate::after{bottom:-5px;right:-5px;border-width:1px 0 0 1px}
+.plate-n{font-family:var(--f-disp);font-stretch:112%;font-weight:750;font-size:clamp(1.5rem,2.6vw,2rem);line-height:1.05;letter-spacing:-.02em;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.plate-n.eq{font-family:var(--f-body);font-style:italic;font-weight:500;font-stretch:100%;letter-spacing:0}
+.plate figcaption{color:var(--ink-2);border-top:1px solid var(--rule);padding-top:8px}
+@media (max-width:900px){.paper{grid-template-columns:minmax(0,1fr)}.p-meta{flex-direction:row;flex-wrap:wrap;align-items:center}.plate{max-width:340px}}
+.service{margin-top:28px;color:var(--ink-2);font-size:var(--s0)}
+
+/* play */
+.demos{display:grid;gap:28px}
+.demo{border:1px solid var(--ink);background:var(--panel)}
+.demo-h{display:flex;justify-content:space-between;gap:10px 24px;flex-wrap:wrap;align-items:baseline;padding:14px 18px;border-bottom:1px solid var(--ink)}
+.demo-h h3{font-family:var(--f-disp);font-stretch:112%;font-weight:750;font-size:var(--s3);letter-spacing:-.015em;line-height:1.05;margin:0}
+.demo-h .mono{color:var(--ink-2)}
+.demo-b{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:0}
+.demo-fig{padding:14px 12px 8px;border-right:1px solid var(--rule);min-width:0}
+.demo-fig svg{width:100%;height:auto;display:block}
+.demo-side{padding:18px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.demo-side p{margin:0;font-size:var(--s0)}
+.ctl{display:grid;gap:6px}
+.ctl label{font-family:var(--f-mono);font-size:var(--s-1);font-stretch:87.5%;display:flex;justify-content:space-between;gap:8px}
+.ctl output{font-variant-numeric:tabular-nums;font-weight:600}
+input[type=range]{width:100%;accent-color:var(--ink);margin:0}
+.readouts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--rule)}
+.readouts div{padding:12px 16px;border-right:1px solid var(--rule);min-width:0}
+.readouts div:last-child{border-right:0}
+.readouts span{display:block;font-family:var(--f-mono);font-size:.6875rem;font-stretch:87.5%;color:var(--ink-2);text-transform:uppercase;letter-spacing:.06em}
+.readouts b{display:block;font-family:var(--f-disp);font-stretch:110%;font-weight:700;font-size:var(--s3);font-variant-numeric:tabular-nums;line-height:1.2}
+.tbtn{font-family:var(--f-mono);font-size:var(--s-1);font-stretch:87.5%;border:1.5px solid var(--ink);background:var(--paper);color:var(--ink);padding:8px 12px;cursor:pointer;justify-self:start}
+.tbtn:hover{background:var(--hi);color:var(--on-hi)}
+.note{font-family:var(--f-mono);font-size:.6875rem;font-stretch:87.5%;color:var(--ink-2);padding:10px 18px;border-top:1px solid var(--rule);line-height:1.6}
+.cov{display:grid;gap:10px}
+.cov-row{display:grid;gap:4px}
+.cov-row .mono{display:flex;justify-content:space-between;gap:8px}
+.cov-bar{position:relative;height:14px;border:1px solid var(--ink);background:var(--paper)}
+.cov-bar i{position:absolute;inset:0 auto 0 0;background:var(--ink);transition:width .25s}
+.cov-bar.boot i{background:var(--hi);border-right:1px solid var(--ink)}
+.cov-bar::after{content:"";position:absolute;top:-4px;bottom:-4px;left:95%;border-left:2px dashed var(--ink)}
+svg .ax{stroke:var(--ink);stroke-width:1;fill:none}
+svg .gridl{stroke:var(--rule);stroke-width:1}
+svg text{fill:var(--ink-2);font-family:var(--f-mono);font-size:10px}
+svg .band-s{fill:var(--hi)}
+svg .kept{fill:var(--ink)}
+svg .drop{fill:var(--paper);stroke:var(--ink-2);stroke-width:1}
+svg .mu{stroke:var(--ink);stroke-width:2}
+svg .bar,svg .hist{fill:var(--ink-2)}
+svg .clip{fill:var(--hi);opacity:.45}
+svg .cut{stroke:var(--ink);stroke-width:1.5;stroke-dasharray:4 3}
+svg .lbl{fill:var(--ink)}
+@media (max-width:820px){.demo-b{grid-template-columns:minmax(0,1fr)}.demo-fig{border-right:0;border-bottom:1px solid var(--rule)}}
+@media (max-width:480px){.readouts{grid-template-columns:minmax(0,1fr)}.readouts div{border-right:0;border-bottom:1px solid var(--rule)}}
+
+/* built + beyond */
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.card{border:1px solid var(--ink);background:var(--paper);display:flex;flex-direction:column}
+.card-h{padding:14px 16px;border-bottom:1px solid var(--ink);display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap}
+.card-h h3{font-family:var(--f-disp);font-stretch:110%;font-weight:750;font-size:var(--s2);margin:0;line-height:1.1;letter-spacing:-.01em}
+.card-h .mono{color:var(--ink-2)}
+.spec{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr)}
+.spec dt{font-family:var(--f-mono);font-size:.6875rem;font-stretch:87.5%;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-2);padding:12px 12px 12px 16px;border-bottom:1px solid var(--rule)}
+.spec dd{margin:0;padding:10px 16px 10px 0;border-bottom:1px solid var(--rule);font-size:var(--s0)}
+.spec dt:nth-last-of-type(1),.spec dd:last-child{border-bottom:0}
+@media (max-width:760px){.cards{grid-template-columns:minmax(0,1fr)}}
+.beyond{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid var(--ink)}
+.beyond > div{padding:20px 22px 22px 0;border-bottom:1px solid var(--rule);min-width:0}
+.beyond > div:nth-child(3n+2),.beyond > div:nth-child(3n+3){padding-left:22px;border-left:1px solid var(--rule)}
+.beyond h3{font-family:var(--f-mono);font-size:var(--s-1);font-stretch:87.5%;font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin:0 0 8px}
+.beyond p{margin:0;font-size:var(--s0)}
+.beyond .big{font-family:var(--f-disp);font-stretch:115%;font-weight:800;font-size:var(--s4);line-height:1;display:block;margin-bottom:8px;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+@media (max-width:860px){.beyond{grid-template-columns:repeat(2,minmax(0,1fr))}.beyond > div{padding:18px 16px 18px 0!important;border-left:0!important}.beyond > div:nth-child(2n){padding-left:16px!important;border-left:1px solid var(--rule)!important}}
+@media (max-width:520px){.beyond{grid-template-columns:minmax(0,1fr)}.beyond > div:nth-child(2n){padding-left:0!important;border-left:0!important}}
+
+/* art */
+.art-intro{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:24px 56px;margin-bottom:28px}
+.art-intro p{margin:0 0 .8em}
+.ap{display:flex;gap:10px;flex-wrap:wrap;align-self:start}
+.ap div{border:1px solid var(--ink);padding:12px 16px;min-width:0}
+.ap b{display:block;font-family:var(--f-disp);font-stretch:118%;font-weight:850;font-size:2.6rem;line-height:1}
+.ap span{font-family:var(--f-mono);font-size:.6875rem;font-stretch:87.5%;color:var(--ink-2)}
+@media (max-width:820px){.art-intro{grid-template-columns:minmax(0,1fr)}}
+.seg{display:inline-flex;border:1.5px solid var(--ink);margin:0 0 28px}
+.seg button{font-family:var(--f-mono);font-size:var(--s-1);font-stretch:87.5%;border:0;background:transparent;color:var(--ink);padding:9px 14px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.inv{margin-bottom:44px}
+.inv-h{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 18px;border-top:1px solid var(--ink);padding-top:12px;margin-bottom:18px}
+.inv-h .mono{color:var(--ink-2);padding-top:.35em}
+.inv-h h3{font-family:var(--f-disp);font-stretch:112%;font-weight:750;font-size:var(--s3);margin:0;line-height:1.05;letter-spacing:-.015em}
+.inv-h p{grid-column:2;margin:6px 0 0;max-width:66ch;font-size:var(--s0)}
+.inv-h q{font-style:italic}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+@media (max-width:980px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:640px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}
+.piece{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:8px;min-width:0}
+.mount{aspect-ratio:1/1;max-width:100%;background:var(--panel);border:1px solid var(--rule);position:relative;overflow:hidden}
+.mount img{position:absolute;inset:10px;width:calc(100% - 20px);height:calc(100% - 20px);object-fit:contain;display:block}
+.piece:hover .mount,.piece:focus-visible .mount{border-color:var(--ink);background:var(--hi)}
+.piece:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.cap{display:flex;justify-content:space-between;gap:8px;font-family:var(--f-mono);font-size:var(--s-1);font-stretch:87.5%}
+.cap em{font-style:normal;color:var(--ink-2);white-space:nowrap}
+.art-note{color:var(--ink-2);font-size:var(--s0);max-width:70ch}
+
+.lb{position:fixed;inset:0;z-index:90;background:var(--paper);display:grid;grid-template-rows:auto minmax(0,1fr) auto;padding:env(safe-area-inset-top,0px) max(12px,env(safe-area-inset-right,0px)) env(safe-area-inset-bottom,0px) max(12px,env(safe-area-inset-left,0px))}
+.lb-top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--ink)}
+.lb-top h3{font-family:var(--f-disp);font-stretch:112%;font-weight:750;font-size:var(--s2);margin:0}
+.lb-stage{min-height:0;position:relative}
+.lb-stage img{position:absolute;top:12px;bottom:12px;left:56px;right:56px;width:calc(100% - 112px);height:calc(100% - 24px);object-fit:contain;display:block}
+@media (max-width:640px){
+  .lb-stage img{left:0;right:0;width:100%;bottom:64px;height:calc(100% - 76px)}
+}
+.lb-bot{display:grid;gap:10px;padding:10px 0 14px;border-top:1px solid var(--rule)}
+.lb-cap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:var(--s0)}
+.lb-cap .mono{color:var(--ink-2)}
+.lb-thumbs{display:flex;gap:8px;overflow-x:auto}
+.lb-thumbs button{all:unset;cursor:pointer;width:64px;height:64px;flex:none;background:var(--panel);display:grid;place-items:center;border:1px solid var(--rule)}
+.lb-thumbs button[aria-current="true"]{border:2px solid var(--ink);background:var(--hi)}
+.lb-thumbs img{max-width:56px;max-height:56px;object-fit:contain}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);font-family:var(--f-mono);font-size:var(--s1);border:1.5px solid var(--ink);background:var(--paper);color:var(--ink);width:44px;height:44px;cursor:pointer}
+.lb-nav:hover{background:var(--hi);color:var(--on-hi)}
+.lb-prev{left:0}.lb-next{right:0}
+@media (max-width:640px){.lb-nav{top:auto;bottom:10px;transform:none}}
+
+/* record + contact */
+.rec{width:100%;border-collapse:collapse;font-size:var(--s0)}
+.rec-wrap{overflow-x:auto}
+.rec th{font-family:var(--f-mono);font-size:.6875rem;font-stretch:87.5%;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-2);text-align:left;font-weight:500;padding:0 12px 10px 0;border-bottom:1px solid var(--ink)}
+.rec td{padding:14px 12px 14px 0;border-bottom:1px solid var(--rule);vertical-align:top}
+.rec td:first-child{font-family:var(--f-mono);font-size:var(--s-1);font-stretch:87.5%;width:3ch;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.rec td b{font-family:var(--f-disp);font-stretch:106%;font-weight:650}
+.rec td:last-child{font-family:var(--f-mono);font-size:var(--s-1);font-stretch:87.5%;white-space:nowrap;text-align:right;padding-right:0}
+.contact{display:grid;gap:18px}
+.email{font-family:var(--f-disp);font-stretch:118%;font-weight:800;font-size:clamp(1.5rem,5.6vw,3.8rem);letter-spacing:-.03em;line-height:1;overflow-wrap:anywhere;user-select:all}
+.contact-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.copied{font-family:var(--f-mono);font-size:var(--s-1);color:var(--ink-2)}
+footer{padding-block:28px 40px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--ink-2)}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#about">skip to content</a>
+
+<header class="bar">
+  <div class="wrap bar-in">
+    <a class="mark" href="#top" aria-label="Daniel Fu, back to top">d<span>f</span></a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#about">about</a>
+      <a href="#research">research</a>
+      <a href="#play">play</a>
+      <a href="#built">built</a>
+      <a href="#art">art</a>
+      <a href="#beyond">beyond</a>
+      <a href="#record">record</a>
+      <a href="#contact">contact</a>
+    </nav>
+    <span class="counter" aria-live="off">sheet <b id="sheetNo">00</b> / 08 · <span id="sheetName">index</span></span>
+    <button class="motion" id="motionBtn" type="button" aria-pressed="true">motion: on</button>
+  </div>
+</header>
+
+<main>
+<!-- 00 -->
+<section class="sheet hero" id="top" data-sheet="00" data-name="index">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow mono">markham, ontario · unionville high school, specialized visual arts program · class of 2027</p>
+      <h1 class="name">daniel fu</h1>
+      <p class="tagline">i look at <mark>what's left over.</mark></p>
+      <p class="lede">I plan to study data science. My work runs from S&amp;P&nbsp;500 options to knee MRIs to a sculpture of a hand, and most of it is one habit applied to different data. Before I believe a result, mine or anyone else's, I look at what it left over.</p>
+      <div class="cta">
+        <a class="btn" href="#research">research ↓</a>
+        <a class="btn ghost" href="#art">art portfolio ↓</a>
+        <a class="btn ghost" href="#play">try a demo ↓</a>
+      </div>
+    </div>
+    <table class="titleblock" aria-label="Title block">
+      <tr><td colspan="2"><span>project</span>daniel fu · selected work</td></tr>
+      <tr><td><span>drawn by</span>d. fu</td><td><span>checked by</span>—</td></tr>
+      <tr><td><span>scale</span>1 : 1</td><td><span>sheets</span>00–08</td></tr>
+      <tr><td colspan="2"><span>revision</span>31 oct 2026</td></tr>
+    </table>
+  </div>
+  <div class="band" aria-hidden="true"><div class="band-track" id="bandTrack"></div></div>
+  <div class="wrap band-cap mono"><span>fig. 0 · a column that should have been zero</span><span>illustrative values</span></div>
+  <div class="ticker" aria-label="Highlights">
+    <div class="ticker-track" id="tickerTrack">
+      <span><b>7</b> papers &amp; posters</span>
+      <span><b>1,243,969</b> option observations audited</span>
+      <span><b>176</b> countries, food-supply study</span>
+      <span>auc <b>0.75 → 0.84</b>, mayo poster</span>
+      <span><b>top 8%</b> of 6,000+ kaggle teams</span>
+      <span><b>3,500+</b> elementary students taught robotics</span>
+      <span>ap drawing <b>5</b> · ap 3d <b>4</b></span>
+      <span><b>10th</b> ranked heavyweight in ontario</span>
+    </div>
+  </div>
+</section>
+
+<!-- 01 -->
+<section class="sheet" id="about" data-sheet="01" data-name="about">
+  <div class="wrap">
+    <div class="sheet-head"><span class="sheet-no">01</span><h2>about</h2><span class="sheet-meta">applying to study data science</span></div>
+    <div class="about">
+      <div class="prose">
+        <p>On paper my activities look scattered. Most of them turned out to be one job on different data: finding what a model missed.</p>
+        <p>In finance it was the profit or loss left after a hedge that, on paper, cancels the risk. In medicine it is the patient a blood test misses. In statistics it is the outliers someone trimmed and then forgot they had trimmed. In robotics the numbers talk back fastest, and a robot that drifts left tells you exactly what your code assumed.</p>
+        <p>The habit started at a drawing table. When you draw from memory, you draw your idea of an eye. My drawings only got better when I sat in front of a real person and drew the shadow under the lower lid, the one my idea of an eye had no room for.</p>
+        <p>Outside research I coach robotics, teach skiing at Blue Mountain, box heavyweight, and read two or three books a week, mostly Baldwin, Camus and Woolf.</p>
+      </div>
+      <nav class="index" aria-label="Sheet index">
+        <h3>sheet index</h3>
+        <ol>
+          <li><a href="#research"><span>02</span>research<em>7 entries</em></a></li>
+          <li><a href="#play"><span>03</span>play<em>2 demos</em></a></li>
+          <li><a href="#built"><span>04</span>built<em>4 projects</em></a></li>
+          <li><a href="#art"><span>05</span>art<em>14 pieces</em></a></li>
+          <li><a href="#beyond"><span>06</span>beyond<em>teaching, sport</em></a></li>
+          <li><a href="#record"><span>07</span>record<em>honors</em></a></li>
+          <li><a href="#contact"><span>08</span>contact<em>email</em></a></li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section class="sheet" id="research" data-sheet="02" data-name="research">
+  <div class="wrap">
+    <div class="sheet-head"><span class="sheet-no">02</span><h2>research</h2><span class="sheet-meta">7 papers &amp; posters · status as of 31 oct 2026</span></div>
+    <p class="lead" style="margin-bottom:28px">None of these is a journal publication yet, so each entry says exactly where it stands.</p>
+    <div class="legend mono">
+      <span><i class="status s-acc">accepted</i> accepted or presented</span>
+      <span><i class="status s-rev">under review</i> preprint or in review</span>
+      <span><i class="status s-sub">submitted</i> submitted, no decision</span>
+    </div>
+
+    <h3 class="group-h">accepted &amp; presented</h3>
+
+    <article class="paper" id="r1">
+      <div class="p-meta"><span class="p-no">R1</span><span class="status s-acc">accepted</span><span class="venue mono">11th Derivative Markets Conference, Auckland · 2026</span></div>
+      <div class="p-body">
+        <h3>What Survives a Delta Hedge? Curvature, Jump Exposure, and the Maturity Clock in SPX Options</h3>
+        <p class="authors">Craig Vishwesh, Tanya Otsetarova (Citadel Securities), <b>Daniel Fu</b> · third author</p>
+        <p>Large hedging errors near expiry turn out to be mainly a curvature effect, not jumps. We separate the discrete-hedging floor from whatever jumps add on top of it, using intraday data on S&amp;P&nbsp;500 options that expire the same day. The answer was a null. Instead of digging until something showed up, we wrote down what our test could not detect. The paper also earned an interview offer from MarketWatch.</p>
+        <p class="mypart"><span class="lab mono">my part</span>I checked the dataset against its own documentation and two claims failed: the file was less than half its described size, and one daily record belonged to the next day's contract. I helped test the result against 340 simulated markets with no jumps in them, and built the figures and replication code.</p>
+        <div class="p-links"><a href="#demo-hedge">try a toy version on sheet 03 ↓</a></div>
+      </div>
+      <figure class="plate"><span class="plate-n">1,243,969</span><figcaption class="mono">intraday observations of same-day SPX options, 1,379 trading dates</figcaption></figure>
+    </article>
+
+    <article class="paper" id="r2">
+      <div class="p-meta"><span class="p-no">R2</span><span class="status s-acc">accepted · oral</span><span class="venue mono">ASPEN 2027 Nutrition Science &amp; Practice Conference</span></div>
+      <div class="p-body">
+        <h3>Nutrient-Specific Inequality in Global Food Availability: Energy, Protein, and Fat Across 176 Countries, 2020–2023</h3>
+        <p class="authors"><b>Daniel Fu</b> · co-second author, research team with economists</p>
+        <p>Measures how unequally energy, protein and fat are supplied across 176 countries. ASPEN selected it for an oral presentation and an International Abstract of Distinction. The abstract will appear in the <i>Journal of Parenteral and Enteral Nutrition</i> (JPEN).</p>
+      </div>
+      <figure class="plate"><span class="plate-n">176</span><figcaption class="mono">countries, 2020–2023 · energy, protein, fat</figcaption></figure>
+    </article>
+
+    <article class="paper" id="r3">
+      <div class="p-meta"><span class="p-no">R3</span><span class="status s-acc">presented</span><span class="venue mono">Mayo Clinic 18th Annual Stroke &amp; Cerebrovascular Disease Review · oct 2026</span></div>
+      <div class="p-body">
+        <h3>Beyond Lesion Burden: Circulating PINK1/Parkin Distinguishes Vascular Parkinsonism and Predicts Incident Parkinsonism in Cerebral Small-Vessel Disease</h3>
+        <p class="authors"><b>Daniel Fu</b> · third author and poster presenter, with researchers from Johnson &amp; Johnson</p>
+        <p>Can two blood proteins, PINK1 and Parkin, pick out vascular parkinsonism among patients with the same amount of small-vessel damage? Adding both markers raised diagnostic accuracy. In medicine, the leftover is a patient the test misses.</p>
+      </div>
+      <figure class="plate"><span class="plate-n">0.75 → 0.84</span><figcaption class="mono">diagnostic AUC after adding both markers</figcaption></figure>
+    </article>
+
+    <h3 class="group-h">preprint</h3>
+
+    <article class="paper" id="r4">
+      <div class="p-meta"><span class="p-no">R4</span><span class="status s-rev">preprint</span><span class="venue mono">Zenodo · 2026</span></div>
+      <div class="p-body">
+        <h3>Improved Lower Bounds for Sárközy's Theorem in Function Fields from Independent Sets in Products of Generalized Paley Graphs</h3>
+        <p class="authors"><b>Daniel Fu</b> (first author), Ryan David (Monroe Township High School)</p>
+        <p>Two independent exhaustive computer searches gave an exact value that improves Naslund's bound in the cube case over F<sub>13</sub>.</p>
+        <div class="p-links"><a href="https://doi.org/10.5281/zenodo.23827027" target="_blank" rel="noopener">doi:10.5281/zenodo.23827027 ↗</a></div>
+      </div>
+      <figure class="plate"><span class="plate-n">5/6 → 0.8645</span><figcaption class="mono">cube-case exponent over F₁₃, from Naslund's bound</figcaption></figure>
+    </article>
+
+    <h3 class="group-h">under review &amp; submitted</h3>
+
+    <article class="paper" id="r5">
+      <div class="p-meta"><span class="p-no">R5</span><span class="status s-rev">under review</span><span class="venue mono">ACM Symposium on Applied Computing (SAC 2027)</span></div>
+      <div class="p-body">
+        <h3>Theorems as Test Oracles: Metamorphic Testing of Conformal Prediction Software</h3>
+        <p>Conformal prediction comes with coverage guarantees on paper. Do the software libraries that implement it actually deliver them?</p>
+        <p class="mypart"><span class="lab mono">my part</span>I turned the coverage theorems into automated metamorphic tests and ran them against the libraries.</p>
+      </div>
+      <figure class="plate"><span class="plate-n eq">P(Y ∈ Ĉ(X)) ≥ 1 − α</span><figcaption class="mono">the guarantee under test</figcaption></figure>
+    </article>
+
+    <article class="paper" id="r6">
+      <div class="p-meta"><span class="p-no">R6</span><span class="status s-sub">submitted</span><span class="venue mono">MDPI · 2026</span></div>
+      <div class="p-body">
+        <h3>Valid Inference After Data-Dependent Winsorization</h3>
+        <p class="authors"><b>Daniel Fu</b> · co-author, with eight collaborators from Monroe Township High School, New Jersey</p>
+        <p>Researchers often clip outliers at cutoffs estimated from their own sample, then report standard errors as if those cutoffs had been fixed in advance. We derive a correction and a re-winsorization bootstrap that accounts for the estimated cutoffs.</p>
+        <div class="p-links"><a href="#demo-winsor">try a toy version on sheet 03 ↓</a></div>
+      </div>
+      <figure class="plate"><span class="plate-n eq">clip(x, q̂<sub>γ</sub>, q̂<sub>1−γ</sub>)</span><figcaption class="mono">the cutoffs are estimates too</figcaption></figure>
+    </article>
+
+    <article class="paper" id="r7">
+      <div class="p-meta"><span class="p-no">R7</span><span class="status s-sub">submitted</span><span class="venue mono">NeurIPS 2026 MATH-AI Workshop</span></div>
+      <div class="p-body">
+        <h3>Verification Budget: A Hidden Axis in the Evaluation of LLM Theorem Provers</h3>
+        <p>Checking a Lean&nbsp;4 proof is itself a resource-bounded computation, so a prover's score depends on a harness setting as well as on the model. Re-verifying the same 260 DeepSeek-Prover-V2 attempts on 65 miniF2F theorems across a range of budgets moved the pass rate fourfold. We recommend reporting the verification budget alongside k.</p>
+      </div>
+      <figure class="plate"><span class="plate-n">5.8% → 23.9%</span><figcaption class="mono">pass rate, same proofs, budget 2,000 → 200,000 heartbeats</figcaption></figure>
+    </article>
+
+    <p class="service"><span class="lab mono">service</span>Reciprocal reviewer, NeurIPS 2026 MATH-AI Workshop (OpenReview).</p>
+  </div>
+</section>
+
+<!-- 03 -->
+<section class="sheet" id="play" data-sheet="03" data-name="play">
+  <div class="wrap">
+    <div class="sheet-head"><span class="sheet-no">03</span><h2>play</h2><span class="sheet-meta">two papers you can turn the knobs on · simulated data</span></div>
+    <div class="demos">
+
+      <div class="demo" id="demo-hedge">
+        <div class="demo-h"><h3>hedge more often, see what's left</h3><span class="mono">from R1 · what survives a delta hedge</span></div>
+        <div class="demo-b">
+          <div class="demo-fig"><svg id="hedgeSvg" viewBox="0 0 640 214" role="img" aria-label="Histogram of the profit or loss left at the close after delta-hedging a same-day option, across 400 simulated days. A yellow band marks plus or minus one discrete-hedging floor around zero."></svg></div>
+          <div class="demo-side">
+            <p>Sell an at-the-money S&amp;P option at the open that expires at the close, and delta-hedge it through the day. On paper the hedge cancels the risk, so what's left at the close should be zero. It never is. Hedging at set times leaves a floor, and jumps add more on top.</p>
+            <div class="ctl"><label for="hedgeN">rebalance <output id="hedgeNOut">every 30 min</output></label><input type="range" id="hedgeN" min="0" max="7" step="1" value="4"></div>
+            <div class="ctl"><label for="jumps">jumps per day <output id="jumpsOut">0</output></label><input type="range" id="jumps" min="0" max="3" step="0.5" value="0"></div>
+            <button class="tbtn" id="hedgeRedraw" type="button">simulate 400 new days</button>
+          </div>
+        </div>
+        <div class="readouts">
+          <div><span>spread of what's left</span><b id="hSd">–</b></div>
+          <div><span>discrete-hedging floor</span><b id="hFloor">–</b></div>
+          <div><span>spread ÷ floor</span><b id="hRatio">–</b></div>
+        </div>
+        <p class="note">Random numbers, not the paper's data: a short at-the-money call on a $100 index with 20% volatility, worth about $0.50 at the open, hedged at evenly spaced times. The floor is √(π/4)·σ·vega/√N, the standard approximation for the error from hedging N times instead of continuously. Without jumps the spread tracks the floor however often you hedge; with jumps, part of it never hedges away. The paper asks which of the two explains the large errors in 1,243,969 real same-day SPX observations, and finds it is mostly the floor.</p>
+      </div>
+
+      <div class="demo" id="demo-winsor">
+        <div class="demo-h"><h3>clip the tails, count the misses</h3><span class="mono">from R6 · data-dependent winsorization</span></div>
+        <div class="demo-b">
+          <div class="demo-fig"><svg id="winSvg" viewBox="0 0 640 214" role="img" aria-label="Histogram of 200 heavy-tailed draws with both tails clipped at cutoffs estimated from the sample."></svg></div>
+          <div class="demo-side">
+            <p>200 draws from a heavy-tailed distribution, clipped at cutoffs taken from the sample itself. The naive standard error treats those cutoffs as fixed. The re-winsorization bootstrap re-estimates them in every resample.</p>
+            <div class="ctl"><label for="gamma">clip each tail at <output id="gammaOut">10%</output></label><input type="range" id="gamma" min="1" max="20" step="1" value="10"></div>
+            <button class="tbtn" id="winRedraw" type="button">draw a new sample</button>
+            <div class="cov" aria-live="polite">
+              <div class="cov-row"><span class="mono"><span>naive 95% intervals that cover the truth</span><b id="covN">–</b></span><div class="cov-bar"><i id="covNBar" style="width:0%"></i></div></div>
+              <div class="cov-row"><span class="mono"><span>re-winsorization bootstrap</span><b id="covB">–</b></span><div class="cov-bar boot"><i id="covBBar" style="width:0%"></i></div></div>
+              <span class="mono" id="covStatus" style="color:var(--ink-2)">dashed line marks 95%</span>
+            </div>
+          </div>
+        </div>
+        <div class="readouts">
+          <div><span>winsorized mean</span><b id="wMean">–</b></div>
+          <div><span>SE, cutoffs treated as fixed</span><b id="wNaive">–</b></div>
+          <div><span>SE, re-winsorization bootstrap</span><b id="wBoot">–</b></div>
+        </div>
+        <p class="note">Toy version: a winsorized mean of draws from a t-distribution with 3 degrees of freedom, whose true winsorized mean is 0. Coverage is checked over 200 simulated samples with 100 bootstrap resamples each. The paper handles the harder regression case.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 04 -->
+<section class="sheet" id="built" data-sheet="04" data-name="built">
+  <div class="wrap">
+    <div class="sheet-head"><span class="sheet-no">04</span><h2>built</h2><span class="sheet-meta">competitions, robots, a car</span></div>
+    <div class="cards">
+      <article class="card">
+        <div class="card-h"><h3>Kaggle RSNA Knee Abnormality Detection</h3><span class="mono">bronze medal</span></div>
+        <dl class="spec">
+          <dt>role</dt><dd>Deep learning engineer on a team</dd>
+          <dt>built</dt><dd>2.5D and 3D knee MRI models, automated training scripts, and the cross-validation that tested them. The part of a project I trust most is the one whose only job is to catch you fooling yourself.</dd>
+          <dt>result</dt><dd>464th of 6,000+ teams (top 8%), 12,000+ competitors</dd>
+        </dl>
+      </article>
+      <article class="card">
+        <div class="card-h"><h3>Scoop AI</h3><span class="mono">1st place</span></div>
+        <dl class="spec">
+          <dt>role</dt><dd>Lead developer</dd>
+          <dt>built</dt><dd>A food-trend forecasting model. Pulled 2M+ videos from public datasets and matched taste profiles to target markets.</dd>
+          <dt>result</dt><dd>First of 20+ teams at the TMLS Hackathon, sponsored by FGF Brands</dd>
+        </dl>
+      </article>
+      <article class="card">
+        <div class="card-h"><h3>VEX V5 Team 839Z</h3><span class="mono">caution tape robotics</span></div>
+        <dl class="spec">
+          <dt>role</dt><dd>Lead designer &amp; builder, programming co-captain</dd>
+          <dt>built</dt><dd>Competition robots for the 2024–25 High Stakes and 2025–26 Push Back seasons</dd>
+          <dt>result</dt><dd>2026 Ontario Provincial Excellence Award · RiverBots III Signature Event champion · 3× tournament champion · 2× VEX Worlds qualifier, 6–4 at the 2025 World Championship · 2× Create Award</dd>
+        </dl>
+      </article>
+      <article class="card">
+        <div class="card-h"><h3>Waterloo EV Team 839</h3><span class="mono">co-founder</span></div>
+        <dl class="spec">
+          <dt>role</dt><dd>Co-founder, head of build &amp; design</dd>
+          <dt>built</dt><dd>Ran edge-AI tests to find the best thermal pattern for each race track</dd>
+          <dt>result</dt><dd>Swept the rookie awards; 3rd place in our heat</dd>
+        </dl>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 05 -->
+<section class="sheet" id="art" data-sheet="05" data-name="art">
+  <div class="wrap">
+    <div class="sheet-head"><span class="sheet-no">05</span><h2>art</h2><span class="sheet-meta">two AP investigations · 2025–26 · working titles</span></div>
+    <div class="art-intro">
+      <div>
+        <p>I am in Unionville High School's Specialized Visual Arts Program. Both of my AP portfolios grew out of robotics: one asks what automation does to the people who depend on it, and the other tries to draw the engineering design process itself.</p>
+        <p>I also designed sets and ran audio and video for the school's stage production of <i>Alchemy</i>.</p>
+      </div>
+      <div class="ap">
+        <div><b>5</b><span>ap drawing</span></div>
+        <div><b>4</b><span>ap 3d art &amp; design</span></div>
+      </div>
+    </div>
+
+    <div class="seg" role="group" aria-label="Show finished work or process boards">
+      <button type="button" id="showFinal" aria-pressed="true">finished work</button>
+      <button type="button" id="showProc" aria-pressed="false">process boards</button>
+    </div>
+
+    <div class="inv">
+      <div class="inv-h"><span class="mono">A</span><h3>human and machine</h3><p><span class="lab mono">3d art &amp; design</span>How has working with robotics changed the way I see humans and machines? These pieces turn organic human forms into mechanical systems, using circles, fractures and tension to show how <q>our dependence on automation blurs the line between what are considered human characteristics and machine characteristics.</q></p></div>
+      <div class="grid" id="grid3d"></div>
+    </div>
+
+    <div class="inv">
+      <div class="inv-h"><span class="mono">B</span><h3>the engineering design process</h3><p><span class="lab mono">drawing</span>Observation, communication, iteration and manufacturing carry an idea from a simple concept to a refined system. These drawings set industrial forms against organic ones, and treat failure, testing and revision as part of the picture.</p></div>
+      <div class="grid" id="gridDraw"></div>
+    </div>
+    <p class="art-note">Tap any piece to see every view and its process board. Process boards show the reference, composition, study and revision stages behind each piece.</p>
+  </div>
+</section>
+
+<!-- 06 -->
+<section class="sheet" id="beyond" data-sheet="06" data-name="beyond">
+  <div class="wrap">
+    <div class="sheet-head"><span class="sheet-no">06</span><h2>beyond</h2><span class="sheet-meta">teaching, work, sport, reading</span></div>
+    <div class="beyond">
+      <div><span class="big">3,500+</span><h3>robotics outreach</h3><p>Founder and lead instructor. Started robotics clubs at 5 elementary schools and founded and coached 10 high school VRC teams (6 local, 4 international) to state or provincial level. Raised $5,000 for SickKids. I let a student finish explaining their code before I touch it.</p></div>
+      <div><span class="big">CTRC</span><h3>robotics coach</h3><p>Paid instructor at Caution Tape Robotics. I teach CAD, mechanical design, and C++ and Python autonomous programming, and coach student teams.</p></div>
+      <div><span class="big">Level 2</span><h3>ski instructor</h3><p>Certified alpine ski instructor with SnowLand Outdoor Club at Blue Mountain. Technique, progression and safety.</p></div>
+      <div><span class="big">10th</span><h3>boxing</h3><p>Amateur heavyweight, ranked tenth in Ontario. The one place nobody lets me finish a thought.</p></div>
+      <div><span class="big">2–3</span><h3>books a week</h3><p>Mostly Baldwin, Camus and Woolf, picked because they argue with me. I keep a literary blog for friends.</p></div>
+      <div><span class="big">2012</span><h3>volkswagen jetta</h3><p>I do my own maintenance and installed its cold air intake myself. The one system where the feedback is immediate and nobody is reviewing it.</p></div>
+      <div><span class="big">3</span><h3>languages</h3><p>English, Mandarin Chinese and French.</p></div>
+      <div><span class="big">OCI</span><h3>certifications</h3><p>Oracle Cloud Infrastructure AI Foundations Associate (2026). BetterMind Labs AI/ML Certification Program, AI and Robotics track.</p></div>
+      <div><span class="big">2026</span><h3>also competed</h3><p>US Medicine and Disease Olympiad and the RevenueCat Shipaton hackathon.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 -->
+<section class="sheet" id="record" data-sheet="07" data-name="record">
+  <div class="wrap">
+    <div class="sheet-head"><span class="sheet-no">07</span><h2>record</h2><span class="sheet-meta">selected honors</span></div>
+    <div class="rec-wrap">
+      <table class="rec">
+        <thead><tr><th>#</th><th>honor</th><th style="text-align:right">level</th></tr></thead>
+        <tbody>
+          <tr><td>01</td><td><b>Accepted paper</b>, 11th Derivative Markets Conference, third author with a Citadel Securities quant</td><td>international</td></tr>
+          <tr><td>02</td><td><b>International Abstract of Distinction</b> and oral presentation, ASPEN 2027 Nutrition Science &amp; Practice Conference</td><td>international</td></tr>
+          <tr><td>03</td><td><b>Bronze medal</b>, Kaggle RSNA Knee Abnormality Detection, 464th of 6,000+ teams</td><td>international</td></tr>
+          <tr><td>04</td><td><b>Poster</b>, Mayo Clinic 18th Annual Stroke &amp; Cerebrovascular Disease Review</td><td>international</td></tr>
+          <tr><td>05</td><td><b>Excellence Award</b>, Ontario Provincial VEX V5 Championship 2026; 3× tournament champion, Team 839Z</td><td>provincial</td></tr>
+          <tr><td>06</td><td><b>1st place</b>, TMLS Hackathon (sponsored by FGF Brands), for Scoop AI</td><td>regional</td></tr>
+          <tr><td>07</td><td><b>Rookie awards sweep</b>, Waterloo EV Team 839</td><td>regional</td></tr>
+          <tr><td>08</td><td><b>AP Drawing 5</b> · <b>AP 3D Art and Design 4</b></td><td>exam</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 08 -->
+<section class="sheet" id="contact" data-sheet="08" data-name="contact">
+  <div class="wrap">
+    <div class="sheet-head"><span class="sheet-no">08</span><h2>contact</h2><span class="sheet-meta">markham, ontario</span></div>
+    <div class="contact">
+      <span class="email" id="email">niuren2@outlook.com</span>
+      <div class="contact-row">
+        <button class="tbtn" id="copyEmail" type="button">copy email</button>
+        <a class="btn ghost" href="mailto:niuren2@outlook.com">open in mail ↗</a>
+        <span class="copied" id="copied" aria-live="polite"></span>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap mono"><span>© 2026 daniel fu</span><span>sheets 00–08 · revised 31 oct 2026</span></div></footer>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-labelledby="lbTitle">
+  <div class="lb-top"><h3 id="lbTitle">piece</h3><button class="tbtn" id="lbClose" type="button">close ✕</button></div>
+  <div class="lb-stage"><img id="lbImg" alt=""><button class="lb-nav lb-prev" id="lbPrev" type="button" aria-label="Previous image">←</button><button class="lb-nav lb-next" id="lbNext" type="button" aria-label="Next image">→</button></div>
+  <div class="lb-bot"><div class="lb-cap"><span id="lbCap"></span><span class="mono" id="lbCount"></span></div><div class="lb-thumbs" id="lbThumbs"></div></div>
+</div>
+
+<script>
+(function(){
+"use strict";
+/* ---------- motion ---------- */
+var root=document.documentElement, mbtn=document.getElementById('motionBtn');
+var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var pref=null; try{pref=localStorage.getItem('df-motion')}catch(e){}
+function setMotion(on){root.setAttribute('data-motion',on?'on':'off');mbtn.textContent='motion: '+(on?'on':'off');mbtn.setAttribute('aria-pressed',on?'true':'false')}
+setMotion(pref?pref==='on':!reduce);
+mbtn.addEventListener('click',function(){var on=root.getAttribute('data-motion')!=='on';setMotion(on);try{localStorage.setItem('df-motion',on?'on':'off')}catch(e){}});
+
+/* ---------- rng ---------- */
+function rng(seed){var s=seed>>>0;return function(){s=(s+0x6D2B79F5)>>>0;var t=s;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return((t^t>>>14)>>>0)/4294967296}}
+function gauss(R){var u=0;while(!u)u=R();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*R())}
+var MINUS='−';
+function fmt(v,d){var s=Math.abs(v).toFixed(d);return (v<0&&+s!==0?MINUS:'')+s}
+
+/* ---------- residual band + ticker ---------- */
+(function(){
+  var R=rng(20261031),cells=[];
+  for(var i=0;i<90;i++){
+    var nz=R()<0.13, v=nz?(R()<.5?-1:1)*(0.001+R()*0.038):0;
+    cells.push('<span'+(nz?' class="nz"':'')+'>'+(v===0?'0.000':fmt(v,3))+'</span>');
+  }
+  var html=cells.join('');document.getElementById('bandTrack').innerHTML=html+html;
+  var t=document.getElementById('tickerTrack');t.innerHTML=t.innerHTML+t.innerHTML;
+})();
+
+/* ---------- sheet counter ---------- */
+(function(){
+  var no=document.getElementById('sheetNo'),nm=document.getElementById('sheetName');
+  var links=[].slice.call(document.querySelectorAll('.nav a'));
+  var secs=[].slice.call(document.querySelectorAll('[data-sheet]'));
+  if(!('IntersectionObserver' in window))return;
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){
+      var s=e.target;no.textContent=s.getAttribute('data-sheet');nm.textContent=s.getAttribute('data-name');
+      links.forEach(function(a){a.setAttribute('aria-current',a.getAttribute('href')==='#'+s.id?'true':'false')});
+    }});
+  },{rootMargin:'-45% 0px -50% 0px'});
+  secs.forEach(function(s){io.observe(s)});
+})();
+
+/* ---------- normal helpers ---------- */
+function invNorm(p){var a=[-39.69683028665376,220.9460984245205,-275.9285104469687,138.3577518672690,-30.66479806614716,2.506628277459239],b=[-54.47609879822406,161.5858368580409,-155.6989798598866,66.80131188771972,-13.28068155288572],c=[-0.007784894002430293,-0.3223964580411365,-2.400758277161838,-2.549732539343734,4.374664141464968,2.938163982698783],d=[0.007784695709041462,0.3224671290700398,2.445134137142996,3.754408661907416],pl=0.02425,q,r;
+  if(p<pl){q=Math.sqrt(-2*Math.log(p));return(((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1)}
+  if(p<=1-pl){q=p-.5;r=q*q;return(((((a[0]*r+a[1])*r+a[2])*r+a[3])*r+a[4])*r+a[5])*q/(((((b[0]*r+b[1])*r+b[2])*r+b[3])*r+b[4])*r+1)}
+  q=Math.sqrt(-2*Math.log(1-p));return-(((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1)}
+function phi(z){return Math.exp(-z*z/2)/Math.sqrt(2*Math.PI)}
+var NS='http://www.w3.org/2000/svg';
+function el(tag,attrs,txt){var e=document.createElementNS(NS,tag);for(var k in attrs)e.setAttribute(k,attrs[k]);if(txt!=null)e.textContent=txt;return e}
+
+/* ---------- demo 1: discrete delta hedge ---------- */
+(function(){
+  var svg=document.getElementById('hedgeSvg'),nI=document.getElementById('hedgeN'),jI=document.getElementById('jumps'),seed=5,raf=0;
+  var NS_=[1,2,3,6,13,26,39,78],LBL=['once, at the open','every 3¼ hours','every 2 h 10 min','every 65 min','every 30 min','every 15 min','every 10 min','every 5 min'];
+  var S0=100,K=100,SIG=.2,T=1/252,M=390,DT=T/M,P=400,JSD=.006;
+  var X0=16,X1=624,LO=-1.2,HI=0.6,YB=168,YT=22;
+  function ncdf(z){var t=1/(1+0.2316419*Math.abs(z)),p=phi(z)*t*(0.319381530+t*(-0.356563782+t*(1.781477937+t*(-1.821255978+t*1.330274429))));return z>0?1-p:p}
+  function delta(S,tau){var s=SIG*Math.sqrt(tau);return ncdf((Math.log(S/K)+.5*s*s)/s)}
+  var s0=SIG*Math.sqrt(T),C0=S0*ncdf(.5*s0)-K*ncdf(-.5*s0),VEGA=S0*phi(.5*s0)*Math.sqrt(T);
+  function x(v){return X0+(Math.max(LO,Math.min(HI,v))-LO)/(HI-LO)*(X1-X0)}
+  function money(v){return (v<0?MINUS:'')+'$'+Math.abs(v).toFixed(1)}
+  function draw(){
+    raf=0;
+    var N=NS_[+nI.value],every=M/N,lam=+jI.value,pj=lam/M,R=rng(seed),pnl=new Float64Array(P);
+    var drift=-.5*SIG*SIG*DT,vol=SIG*Math.sqrt(DT);
+    document.getElementById('hedgeNOut').textContent=LBL[+nI.value];
+    document.getElementById('jumpsOut').textContent=String(lam);
+    for(var p=0;p<P;p++){
+      var S=S0,d=delta(S0,T),cash=C0-d*S0;
+      for(var k=1;k<=M;k++){
+        var lr=drift+vol*gauss(R);
+        if(pj>0&&R()<pj)lr+=JSD*gauss(R);
+        S*=Math.exp(lr);
+        if(k<M&&k%every===0){var nd=delta(S,T-k*DT);cash-=(nd-d)*S;d=nd}
+      }
+      pnl[p]=cash+d*S-Math.max(S-K,0);
+    }
+    var m=0;for(p=0;p<P;p++)m+=pnl[p];m/=P;var v=0;for(p=0;p<P;p++)v+=(pnl[p]-m)*(pnl[p]-m);
+    var sd=Math.sqrt(v/(P-1)),floor=Math.sqrt(Math.PI/4)*SIG*VEGA/Math.sqrt(N);
+    document.getElementById('hSd').textContent='$'+sd.toFixed(3);
+    document.getElementById('hFloor').textContent='$'+floor.toFixed(3);
+    document.getElementById('hRatio').textContent=(sd/floor).toFixed(2)+'×';
+    while(svg.firstChild)svg.removeChild(svg.firstChild);
+    var bins=45,w=(HI-LO)/bins,cnt=new Array(bins).fill(0),outL=0,outR=0;
+    for(p=0;p<P;p++){var q=pnl[p];if(q<LO){outL++;continue}if(q>=HI){outR++;continue}cnt[Math.min(bins-1,Math.floor((q-LO)/w))]++}
+    var mx=Math.max.apply(null,cnt),bw=(X1-X0)/bins;
+    svg.appendChild(el('rect',{x:x(-floor),y:YT-6,width:Math.max(1,x(floor)-x(-floor)),height:YB-YT+6,class:'clip'}));
+    cnt.forEach(function(c,i){if(!c)return;var h=(YB-YT-14)*c/mx;svg.appendChild(el('rect',{x:(X0+i*bw+1).toFixed(1),y:(YB-h).toFixed(1),width:(bw-2).toFixed(1),height:h.toFixed(1),class:'hist'}))});
+    svg.appendChild(el('line',{x1:x(0),x2:x(0),y1:YT-8,y2:YB,class:'cut'}));
+    svg.appendChild(el('text',{x:x(0)+4,y:YT+2,class:'lbl'},'0 = perfect hedge'));
+    svg.appendChild(el('text',{x:x(-floor)-4,y:YT+2,'text-anchor':'end',class:'lbl'},'floor ±$'+floor.toFixed(2)));
+    svg.appendChild(el('line',{x1:X0,x2:X1,y1:YB,y2:YB,class:'ax'}));
+    for(var t=0;t<=6;t++){var tv=LO+t*0.3;svg.appendChild(el('line',{x1:x(tv),x2:x(tv),y1:YB,y2:YB+4,class:'ax'}));svg.appendChild(el('text',{x:x(tv),y:YB+16,'text-anchor':'middle'},money(Math.round(tv*10)/10)))}
+    svg.appendChild(el('text',{x:(X0+X1)/2,y:YB+32,'text-anchor':'middle'},'left over at the close, per option'));
+    if(outL)svg.appendChild(el('text',{x:X0,y:YB+32},'← '+outL+' below '+MINUS+'$1.2'));
+    if(outR)svg.appendChild(el('text',{x:X1,y:YB+32,'text-anchor':'end'},outR+' above $0.6 →'));
+  }
+  function later(){if(!raf)raf=requestAnimationFrame(draw)}
+  nI.addEventListener('input',later);jI.addEventListener('input',later);
+  document.getElementById('hedgeRedraw').addEventListener('click',function(){seed=(seed*48271+5)%2147483647;draw()});
+  draw();
+})();
+
+/* ---------- demo 2: winsorization ---------- */
+(function(){
+  var svg=document.getElementById('winSvg'),gI=document.getElementById('gamma'),seed=11,token=0;
+  var X0=16,X1=624,LO=-6,HI=6,YB=168,YT=22,n=200;
+  function x(v){return X0+(Math.max(LO,Math.min(HI,v))-LO)/(HI-LO)*(X1-X0)}
+  function t3(R){var z=gauss(R),c=0;for(var i=0;i<3;i++){var g=gauss(R);c+=g*g}return z/Math.sqrt(c/3)}
+  function quant(s,p){var h=(s.length-1)*p,l=Math.floor(h),u=Math.min(l+1,s.length-1);return s[l]+(s[u]-s[l])*(h-l)}
+  function asc(a,b){return a-b}
+  function wmean(arr,lo,hi){var s=0;for(var i=0;i<arr.length;i++){var v=arr[i];s+=v<lo?lo:(v>hi?hi:v)}return s/arr.length}
+  function analyze(xs,g,B,R){
+    var s=xs.slice().sort(asc),lo=quant(s,g),hi=quant(s,1-g),m=wmean(xs,lo,hi),ss=0;
+    for(var i=0;i<n;i++){var w=xs[i]<lo?lo:(xs[i]>hi?hi:xs[i]);ss+=(w-m)*(w-m)}
+    var naive=Math.sqrt(ss/(n-1))/Math.sqrt(n),bs=new Float64Array(B),r=new Float64Array(n);
+    for(var b=0;b<B;b++){for(var j=0;j<n;j++)r[j]=xs[(R()*n)|0];var rs=Array.prototype.slice.call(r).sort(asc);bs[b]=wmean(r,quant(rs,g),quant(rs,1-g))}
+    var bm=0;for(b=0;b<B;b++)bm+=bs[b];bm/=B;var bv=0;for(b=0;b<B;b++)bv+=(bs[b]-bm)*(bs[b]-bm);
+    return{m:m,lo:lo,hi:hi,naive:naive,boot:Math.sqrt(bv/(B-1))};
+  }
+  function drawSample(){
+    var g=+gI.value/100,R=rng(seed),xs=[];for(var i=0;i<n;i++)xs.push(t3(R));
+    var a=analyze(xs,g,400,R);
+    document.getElementById('gammaOut').textContent=gI.value+'%';
+    document.getElementById('wMean').textContent=fmt(a.m,3);
+    document.getElementById('wNaive').textContent=a.naive.toFixed(3);
+    document.getElementById('wBoot').textContent=a.boot.toFixed(3);
+    while(svg.firstChild)svg.removeChild(svg.firstChild);
+    var bins=48,w=(HI-LO)/bins,cnt=new Array(bins).fill(0),outL=0,outR=0;
+    xs.forEach(function(v){if(v<LO){outL++;return}if(v>=HI){outR++;return}cnt[Math.floor((v-LO)/w)]++});
+    var mx=Math.max.apply(null,cnt),bw=(X1-X0)/bins;
+    svg.appendChild(el('rect',{x:X0,y:YT-6,width:x(a.lo)-X0,height:YB-YT+6,class:'clip'}));
+    svg.appendChild(el('rect',{x:x(a.hi),y:YT-6,width:X1-x(a.hi),height:YB-YT+6,class:'clip'}));
+    cnt.forEach(function(c,i){if(!c)return;var h=(YB-YT-14)*c/mx;svg.appendChild(el('rect',{x:(X0+i*bw+1).toFixed(1),y:(YB-h).toFixed(1),width:(bw-2).toFixed(1),height:h.toFixed(1),class:'bar'}))});
+    [a.lo,a.hi].forEach(function(c,i){svg.appendChild(el('line',{x1:x(c),x2:x(c),y1:YT-8,y2:YB,class:'cut'}));svg.appendChild(el('text',{x:x(c)+(i?4:-4),y:YT+2,'text-anchor':i?'start':'end',class:'lbl'},'q̂ '+(i?(100-+gI.value):gI.value)+'% = '+fmt(c,2)))});
+    svg.appendChild(el('line',{x1:X0,x2:X1,y1:YB,y2:YB,class:'ax'}));
+    for(var t=LO;t<=HI;t+=2){svg.appendChild(el('line',{x1:x(t),x2:x(t),y1:YB,y2:YB+4,class:'ax'}));svg.appendChild(el('text',{x:x(t),y:YB+16,'text-anchor':'middle'},t<0?MINUS+Math.abs(t):String(t)))}
+    if(outL)svg.appendChild(el('text',{x:X0,y:YB+30},'← '+outL+' beyond '+MINUS+'6'));
+    if(outR)svg.appendChild(el('text',{x:X1,y:YB+30,'text-anchor':'end'},outR+' beyond 6 →'));
+  }
+  function coverage(){
+    var my=++token,g=+gI.value/100,R=rng(seed*31+7),T=200,B=100,done=0,cn=0,cb=0;
+    var st=document.getElementById('covStatus');
+    function chunk(){
+      if(my!==token)return;
+      for(var k=0;k<10&&done<T;k++,done++){
+        var xs=[];for(var i=0;i<n;i++)xs.push(t3(R));
+        var a=analyze(xs,g,B,R);if(Math.abs(a.m)<1.96*a.naive)cn++;if(Math.abs(a.m)<1.96*a.boot)cb++;
+      }
+      var pn=100*cn/done,pb=100*cb/done;
+      document.getElementById('covN').textContent=Math.round(pn)+'%';document.getElementById('covB').textContent=Math.round(pb)+'%';
+      document.getElementById('covNBar').style.width=pn+'%';document.getElementById('covBBar').style.width=pb+'%';
+      st.textContent=done<T?'checking '+done+' / '+T+' samples…':'200 samples · dashed line marks 95%';
+      if(done<T)setTimeout(chunk,0);
+    }
+    chunk();
+  }
+  var deb;gI.addEventListener('input',function(){document.getElementById('gammaOut').textContent=gI.value+'%';clearTimeout(deb);deb=setTimeout(function(){drawSample();coverage()},120)});
+  document.getElementById('winRedraw').addEventListener('click',function(){seed=(seed*48271+3)%2147483647;drawSample()});
+  drawSample();coverage();
+})();
+
+/* ---------- art ---------- */
+var ART={
+  three:[
+    {id:'hand',t:'hand',final:['hand-1','hand-2'],proc:['hand-p'],cap:['A plaster hand held in a bench vise, gripped by steel bands.','Second view: the hand reaching up through the bands.']},
+    {id:'box',t:'box',final:['box-1','box-2','box-3'],proc:['box-p'],cap:['Painted heads set into a black box, tied together by coiled tubes.','Second view.','Third view.']},
+    {id:'spine',t:'spine',final:['spine-1'],proc:['spine-p'],cap:['Red cord strung through a metal frame around a spring.']},
+    {id:'wheel',t:'wheel',final:['wheel-1'],proc:['wheel-p'],cap:['A wire figure inside a toothed steel ring.']},
+    {id:'tree',t:'tree',final:[],proc:['tree-p']},
+    {id:'foot',t:'foot',final:[],proc:['foot-p']},
+    {id:'eye3d',t:'eye',final:[],proc:['eye3d-p']}
+  ],
+  draw:[
+    {id:'claw',t:'robot hands',final:['claw-f','claw-1','claw-2','claw-3'],proc:['claw-p'],cap:['Robotic hands closing on eggs.','Sketchbook page: joints, arms and wire, with eggs as the soft counterpart.','Egg studies.','Pencil thumbnails of the claw.']},
+    {id:'cnc',t:'cnc',final:['cnc-1','cnc-s'],proc:['cnc-p'],cap:['Organs on translucent layers over a CNC machine drawn on cardboard.','Sketchbook studies of the CNC bed.']},
+    {id:'objects',t:'lego blocks',final:['objects-1','objects-2'],proc:['objects-p'],cap:['Marker studies: blocks, a bulb, a cup, an ear.','Sketchbook page.']},
+    {id:'bulb',t:'eye light bulb',final:['bulb-1'],proc:['bulb-p'],cap:['Eyes, wires and a light bulb.']},
+    {id:'binoc',t:'binocular eye',final:['binoc-1'],proc:['binoc-p'],cap:['Studies of lenses and binoculars.']},
+    {id:'brain',t:'circuit brain',final:['brain-1'],proc:['brain-p'],cap:['A brain of tangled wires and a glowing display over a circuit board.']},
+    {id:'bird',t:'bird',final:[],proc:['bird-p']}
+  ]
+};
+var mode='final';
+function coverOf(p){return mode==='final'&&p.final.length?p.final[0]:p.proc[0]}
+function tagOf(p){if(!p.final.length)return 'process only';return p.final.length+(p.final.length>1?' views':' view')+' + process'}
+function renderGrid(listId,list,kind){
+  var g=document.getElementById(listId);g.innerHTML='';
+  list.forEach(function(p){
+    var b=document.createElement('button');b.className='piece';b.type='button';
+    b.setAttribute('aria-label','Open '+p.t+', '+kind);
+    var c=coverOf(p);
+    b.innerHTML='<span class="mount"><img decoding="async" src="img/'+c+'-t.jpg" alt="'+p.t+', '+(c.slice(-2)==='-p'?'process board':'finished work')+'"></span><span class="cap"><span>'+p.t+'</span><em>'+tagOf(p)+'</em></span>';
+    b.addEventListener('click',function(){openLb(p,kind,b)});
+    g.appendChild(b);
+  });
+}
+function renderAll(){renderGrid('grid3d',ART.three,'3D art and design');renderGrid('gridDraw',ART.draw,'drawing')}
+var bF=document.getElementById('showFinal'),bP=document.getElementById('showProc');
+function setMode(m){mode=m;bF.setAttribute('aria-pressed',m==='final');bP.setAttribute('aria-pressed',m==='proc');renderAll()}
+bF.addEventListener('click',function(){setMode('final')});bP.addEventListener('click',function(){setMode('proc')});
+renderAll();
+
+/* lightbox */
+var lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg'),lbT=document.getElementById('lbTitle'),lbCap=document.getElementById('lbCap'),lbCount=document.getElementById('lbCount'),lbThumbs=document.getElementById('lbThumbs');
+var cur=null,idx=0,ret=null;
+function items(p){var a=[];p.final.forEach(function(s,i){a.push({s:s,c:(p.cap&&p.cap[i])||'Finished work.'})});p.proc.forEach(function(s){a.push({s:s,c:'Process board: reference, composition, study, revision.'})});return a}
+function show(i){var it=items(cur);idx=(i+it.length)%it.length;var x=it[idx];lbImg.src='img/'+x.s+'.jpg';lbImg.alt=cur.t+': '+x.c;lbCap.textContent=x.c;lbCount.textContent=(idx+1)+' / '+it.length;
+  [].forEach.call(lbThumbs.children,function(b,j){b.setAttribute('aria-current',j===idx?'true':'false')});
+  var one=it.length<2;document.getElementById('lbPrev').hidden=one;document.getElementById('lbNext').hidden=one}
+function openLb(p,kind,from){cur=p;ret=from;lbT.textContent=p.t+' · '+kind;lbThumbs.innerHTML='';
+  items(p).forEach(function(x,j){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Image '+(j+1));b.innerHTML='<img src="img/'+x.s+'-t.jpg" alt="">';b.addEventListener('click',function(){show(j)});lbThumbs.appendChild(b)});
+  var start=mode==='proc'?p.final.length:0;lb.hidden=false;document.body.style.overflow='hidden';show(start);document.getElementById('lbClose').focus()}
+function closeLb(){lb.hidden=true;document.body.style.overflow='';if(ret)ret.focus()}
+document.getElementById('lbClose').addEventListener('click',closeLb);
+document.getElementById('lbPrev').addEventListener('click',function(){show(idx-1)});
+document.getElementById('lbNext').addEventListener('click',function(){show(idx+1)});
+document.addEventListener('keydown',function(e){if(lb.hidden)return;if(e.key==='Escape')closeLb();else if(e.key==='ArrowLeft')show(idx-1);else if(e.key==='ArrowRight')show(idx+1)});
+
+/* copy email */
+document.getElementById('copyEmail').addEventListener('click',function(){
+  var t=document.getElementById('email').textContent,o=document.getElementById('copied');
+  function sel(){var r=document.createRange();r.selectNodeContents(document.getElementById('email'));var s=window.getSelection();s.removeAllRanges();s.addRange(r);o.textContent='selected, press ⌘C or Ctrl+C'}
+  try{navigator.clipboard.writeText(t).then(function(){o.textContent='copied'},sel)}catch(e){sel()}
+});
+})();
+</script>
+</body>
+</html>
