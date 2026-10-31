@@ -234,6 +234,51 @@ svg .lbl{fill:var(--ink)}
 @media (max-width:860px){.beyond{grid-template-columns:repeat(2,minmax(0,1fr))}.beyond > div{padding:18px 16px 18px 0!important;border-left:0!important}.beyond > div:nth-child(2n){padding-left:16px!important;border-left:1px solid var(--rule)!important}}
 @media (max-width:520px){.beyond{grid-template-columns:minmax(0,1fr)}.beyond > div:nth-child(2n){padding-left:0!important;border-left:0!important}}
 
+/* robotics & ev */
+.mosaic{display:grid;grid-template-columns:2.35fr repeat(4,minmax(0,1fr));gap:12px}
+.shot{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;gap:8px;min-width:0}
+.shot .ph{height:clamp(220px,30vw,340px);border:1px solid var(--ink);overflow:hidden;background:var(--panel)}
+.shot img{width:100%;height:100%;object-fit:cover;display:block}
+[data-motion="on"] .shot img{transition:transform .35s}
+[data-motion="on"] .shot:hover img{transform:scale(1.04)}
+.shot:focus-visible .ph{outline:2px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 5px var(--hi)}
+.shot .cap2{font-family:var(--f-mono);font-size:.6875rem;font-stretch:87.5%;color:var(--ink-2);line-height:1.5}
+@media (max-width:900px){.mosaic{grid-template-columns:repeat(4,minmax(0,1fr))}.shot:first-child{grid-column:1/-1}.shot .ph{height:auto;aspect-ratio:9/16}.shot:first-child .ph{aspect-ratio:4/3}}
+@media (max-width:560px){.mosaic{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}
+.outreach{margin-top:28px;border:1px solid var(--ink);display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);background:var(--paper)}
+.out-h{padding:18px 20px;border-right:1px solid var(--ink)}
+.out-h h3{font-family:var(--f-disp);font-stretch:110%;font-weight:750;font-size:var(--s2);margin:0 0 10px;letter-spacing:-.01em;line-height:1.1}
+.out-h p{margin:0;font-size:var(--s0)}
+.out-n{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.out-n div{padding:16px 18px;border-bottom:1px solid var(--rule);min-width:0}
+.out-n div:nth-child(odd){border-right:1px solid var(--rule)}
+.out-n div:nth-last-child(-n+2){border-bottom:0}
+.out-n b{display:inline-block;font-family:var(--f-disp);font-stretch:112%;font-weight:800;font-size:clamp(1.5rem,3.6vw,2.4rem);line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.out-n div:first-child b{background:var(--hi);color:var(--on-hi);padding:0 .1em}
+.out-n span{font-family:var(--f-mono);font-size:.6875rem;font-stretch:87.5%;color:var(--ink-2);display:block;margin-top:6px;line-height:1.5}
+@media (max-width:820px){.outreach{grid-template-columns:minmax(0,1fr)}.out-h{border-right:0;border-bottom:1px solid var(--ink)}}
+
+/* reading */
+.books{border-top:1px solid var(--ink)}
+.book{display:grid;grid-template-columns:180px minmax(0,1fr);gap:10px 32px;padding:24px 0;border-bottom:1px solid var(--rule)}
+.b-meta{display:flex;flex-direction:column;gap:6px;color:var(--ink-2);align-items:flex-start}
+.b-no{color:var(--ink);font-variant-numeric:tabular-nums}
+.b-tag{border:1px solid var(--ink);padding:2px 6px;font-size:.625rem;text-transform:uppercase;letter-spacing:.08em;color:var(--ink);line-height:1.4}
+.book h3{font-family:var(--f-disp);font-stretch:106%;font-weight:650;font-size:clamp(1.15rem,2vw,1.4rem);margin:0 0 8px;line-height:1.2;letter-spacing:-.01em}
+.book h3 i{font-style:normal}
+.book p{margin:0;max-width:68ch}
+@media (max-width:760px){.book{grid-template-columns:minmax(0,1fr)}.b-meta{flex-direction:row;flex-wrap:wrap;align-items:center;gap:6px 12px}}
+
+/* beyond features */
+.feature2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-bottom:28px}
+.feat{border:1px solid var(--ink);padding:18px 20px;background:var(--paper);scroll-margin-top:84px;min-width:0}
+.feat h3{font-family:var(--f-mono);font-size:var(--s-1);font-stretch:87.5%;font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin:0 0 14px}
+.feat-n{display:flex;gap:10px 28px;flex-wrap:wrap;margin-bottom:14px}
+.feat-n b{display:block;font-family:var(--f-disp);font-stretch:118%;font-weight:850;font-size:clamp(2.2rem,5vw,3.4rem);line-height:.95;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.feat-n span{font-family:var(--f-mono);font-size:.6875rem;font-stretch:87.5%;color:var(--ink-2)}
+.feat p{margin:0;font-size:var(--s0)}
+@media (max-width:760px){.feature2{grid-template-columns:minmax(0,1fr)}}
+
 /* art */
 .art-intro{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:24px 56px;margin-bottom:28px}
 .art-intro p{margin:0 0 .8em}
@@ -311,12 +356,14 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
       <a href="#research">research</a>
       <a href="#play">play</a>
       <a href="#built">built</a>
+      <a href="#robotics">robotics</a>
       <a href="#art">art</a>
+      <a href="#reading">reading</a>
       <a href="#beyond">beyond</a>
       <a href="#record">record</a>
       <a href="#contact">contact</a>
     </nav>
-    <span class="counter" aria-live="off">sheet <b id="sheetNo">00</b> / 08 · <span id="sheetName">index</span></span>
+    <span class="counter" aria-live="off">sheet <b id="sheetNo">00</b> / 10 · <span id="sheetName">index</span></span>
     <button class="motion" id="motionBtn" type="button" aria-pressed="true">motion: on</button>
   </div>
 </header>
@@ -339,7 +386,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
     <table class="titleblock" aria-label="Title block">
       <tr><td colspan="2"><span>project</span>daniel fu · selected work</td></tr>
       <tr><td><span>drawn by</span>d. fu</td><td><span>checked by</span>—</td></tr>
-      <tr><td><span>scale</span>1 : 1</td><td><span>sheets</span>00–08</td></tr>
+      <tr><td><span>scale</span>1 : 1</td><td><span>sheets</span>00–10</td></tr>
       <tr><td colspan="2"><span>revision</span>31 oct 2026</td></tr>
     </table>
   </div>
@@ -353,6 +400,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
       <span>auc <b>0.75 → 0.84</b>, mayo poster</span>
       <span><b>top 8%</b> of 6,000+ kaggle teams</span>
       <span><b>3,500+</b> elementary students taught robotics</span>
+      <span><b>$5,000</b> raised for SickKids</span>
       <span>ap drawing <b>5</b> · ap 3d <b>4</b></span>
       <span><b>10th</b> ranked heavyweight in ontario</span>
     </div>
@@ -368,18 +416,20 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
         <p>On paper my activities look scattered. Most of them turned out to be one job on different data: finding what a model missed.</p>
         <p>In finance it was the profit or loss left after a hedge that, on paper, cancels the risk. In medicine it is the patient a blood test misses. In statistics it is the outliers someone trimmed and then forgot they had trimmed. In robotics the numbers talk back fastest, and a robot that drifts left tells you exactly what your code assumed.</p>
         <p>The habit started at a drawing table. When you draw from memory, you draw your idea of an eye. My drawings only got better when I sat in front of a real person and drew the shadow under the lower lid, the one my idea of an eye had no room for.</p>
-        <p>Outside research I coach robotics, teach skiing at Blue Mountain, box heavyweight, and read two or three books a week, mostly Baldwin, Camus and Woolf.</p>
+        <p>Outside research I coach robotics, teach skiing at Blue Mountain, box heavyweight, lift, and read two or three books a week, mostly Baldwin, Camus and Woolf.</p>
       </div>
       <nav class="index" aria-label="Sheet index">
         <h3>sheet index</h3>
         <ol>
           <li><a href="#research"><span>02</span>research<em>7 entries</em></a></li>
           <li><a href="#play"><span>03</span>play<em>2 demos</em></a></li>
-          <li><a href="#built"><span>04</span>built<em>4 projects</em></a></li>
-          <li><a href="#art"><span>05</span>art<em>14 pieces</em></a></li>
-          <li><a href="#beyond"><span>06</span>beyond<em>teaching, sport</em></a></li>
-          <li><a href="#record"><span>07</span>record<em>honors</em></a></li>
-          <li><a href="#contact"><span>08</span>contact<em>email</em></a></li>
+          <li><a href="#built"><span>04</span>built<em>2 competitions</em></a></li>
+          <li><a href="#robotics"><span>05</span>robotics &amp; ev<em>photos, outreach</em></a></li>
+          <li><a href="#art"><span>06</span>art<em>14 pieces</em></a></li>
+          <li><a href="#reading"><span>07</span>reading<em>8 books</em></a></li>
+          <li><a href="#beyond"><span>08</span>beyond<em>stage, gym, ring</em></a></li>
+          <li><a href="#record"><span>09</span>record<em>honors</em></a></li>
+          <li><a href="#contact"><span>10</span>contact<em>email</em></a></li>
         </ol>
       </nav>
     </div>
@@ -438,10 +488,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
       <div class="p-body">
         <h3>Improved Lower Bounds for Sárközy's Theorem in Function Fields from Independent Sets in Products of Generalized Paley Graphs</h3>
         <p class="authors"><b>Daniel Fu</b> (first author), Ryan David (Monroe Township High School)</p>
-        <p>Two independent exhaustive computer searches gave an exact value that improves Naslund's bound in the cube case over F<sub>13</sub>.</p>
-        <div class="p-links"><a href="https://doi.org/10.5281/zenodo.23827027" target="_blank" rel="noopener">doi:10.5281/zenodo.23827027 ↗</a></div>
+        <p>Sárközy's theorem says that any large enough set of whole numbers contains two that differ by a perfect square, cube or higher power. The open question is how large a set can be while avoiding that. We work in the polynomial version of the problem over a finite field, where Naslund built large avoiding sets out of independent sets in Paley graphs. How big his sets get depends on one number, the independence number r<sub>k,2</sub>(F<sub>q</sub>) of a product graph, which had only been worked out in a few special cases.</p>
+        <p>We computed it exactly for cubes over F<sub>13</sub>: it is 21. That gives cube-difference-free sets of size about 13<sup>0.8645n</sup>, the largest exponent this method has produced for cubes, up from Naslund's 5/6 at q&nbsp;=&nbsp;13 and 0.8639 at q&nbsp;=&nbsp;7. We also prove an infinite family where the answer can be worked out by hand, and give verified sets that raise the exponent for fourth powers over F<sub>17</sub> (0.875 → 0.9138) and seventh powers over F<sub>29</sub> (0.9286 → 0.9618).</p>
+        <p class="mypart"><span class="lab mono">how we know</span>Two independent exhaustive computations agree: a branch-and-bound search (1.9 million nodes, about two seconds) and a SAT-solver proof that no 22-element set exists. Before trusting either, we had the code recompute five values already in the literature. Every certificate is checked by a standalone script included in the paper, and a Lovász theta bound shows where the method itself runs out: 0.8805 for q&nbsp;=&nbsp;13.</p>
+        <div class="p-links"><a href="https://zenodo.org/records/23827027" target="_blank" rel="noopener">read the preprint on Zenodo ↗</a><a href="https://doi.org/10.5281/zenodo.23827027" target="_blank" rel="noopener">doi:10.5281/zenodo.23827027 ↗</a></div>
       </div>
-      <figure class="plate"><span class="plate-n">5/6 → 0.8645</span><figcaption class="mono">cube-case exponent over F₁₃, from Naslund's bound</figcaption></figure>
+      <figure class="plate"><span class="plate-n">r = 21</span><figcaption class="mono">exact value for cubes over F₁₃, which lifts the exponent from 5/6 to 0.8645</figcaption></figure>
     </article>
 
     <h3 class="group-h">under review &amp; submitted</h3>
@@ -535,7 +587,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
 <!-- 04 -->
 <section class="sheet" id="built" data-sheet="04" data-name="built">
   <div class="wrap">
-    <div class="sheet-head"><span class="sheet-no">04</span><h2>built</h2><span class="sheet-meta">competitions, robots, a car</span></div>
+    <div class="sheet-head"><span class="sheet-no">04</span><h2>built</h2><span class="sheet-meta">machine learning competitions</span></div>
     <div class="cards">
       <article class="card">
         <div class="card-h"><h3>Kaggle RSNA Knee Abnormality Detection</h3><span class="mono">bronze medal</span></div>
@@ -553,6 +605,27 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
           <dt>result</dt><dd>First of 20+ teams at the TMLS Hackathon, sponsored by FGF Brands</dd>
         </dl>
       </article>
+    </div>
+  </div>
+</section>
+
+<!-- 05 -->
+<section class="sheet" id="robotics" data-sheet="05" data-name="robotics">
+  <div class="wrap">
+    <div class="sheet-head"><span class="sheet-no">05</span><h2>robotics &amp; ev</h2><span class="sheet-meta">vex 839z · waterloo ev 839 · outreach · coaching</span></div>
+    <p class="lead" style="margin-bottom:28px">Robotics is where the numbers talk back fastest. A robot that drifts left tells you exactly what your code assumed.</p>
+
+    <div class="mosaic" id="evGrid" aria-label="Photos from the 2026 Waterloo EV Challenge and the shop"></div>
+
+    <div class="cards" style="margin-top:28px">
+      <article class="card">
+        <div class="card-h"><h3>Waterloo EV Team 839</h3><span class="mono">co-founder</span></div>
+        <dl class="spec">
+          <dt>role</dt><dd>Co-founder, head of build &amp; design</dd>
+          <dt>built</dt><dd>Car 839, an aluminum-frame electric car for the 2026 Waterloo EV Challenge. I ran edge-AI tests to find the best thermal pattern for each race track.</dd>
+          <dt>result</dt><dd>Swept the rookie awards, including the Interstate Batteries Rookie Team Award · Toyota Fabrication and Manufacturing Award · 3rd place in our heat</dd>
+        </dl>
+      </article>
       <article class="card">
         <div class="card-h"><h3>VEX V5 Team 839Z</h3><span class="mono">caution tape robotics</span></div>
         <dl class="spec">
@@ -561,26 +634,32 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
           <dt>result</dt><dd>2026 Ontario Provincial Excellence Award · RiverBots III Signature Event champion · 3× tournament champion · 2× VEX Worlds qualifier, 6–4 at the 2025 World Championship · 2× Create Award</dd>
         </dl>
       </article>
-      <article class="card">
-        <div class="card-h"><h3>Waterloo EV Team 839</h3><span class="mono">co-founder</span></div>
-        <dl class="spec">
-          <dt>role</dt><dd>Co-founder, head of build &amp; design</dd>
-          <dt>built</dt><dd>Ran edge-AI tests to find the best thermal pattern for each race track</dd>
-          <dt>result</dt><dd>Swept the rookie awards; 3rd place in our heat</dd>
-        </dl>
-      </article>
     </div>
+
+    <div class="outreach">
+      <div class="out-h">
+        <h3>teaching robotics to elementary students</h3>
+        <p>I founded an outreach program with Caution Tape Robotics and donated my own robotics hardware to start clubs at five elementary schools. Since then I have taught more than 3,500 elementary students to code, program robots, design in CAD, build, and work through problems when the robot doesn't do what they expected. I let a student finish explaining their code before I touch it. We also raised $5,000 for SickKids.</p>
+      </div>
+      <div class="out-n">
+        <div><b>3,500+</b><span>elementary students taught</span></div>
+        <div><b>$5,000</b><span>raised for SickKids</span></div>
+        <div><b>5</b><span>elementary school clubs started</span></div>
+        <div><b>10</b><span>high school teams founded &amp; coached, 6 local and 4 international</span></div>
+      </div>
+    </div>
+    <p class="service"><span class="lab mono">coaching</span>Paid robotics instructor and coach at Caution Tape Robotics: CAD, mechanical design, and C++ and Python autonomous programming.</p>
   </div>
 </section>
 
-<!-- 05 -->
-<section class="sheet" id="art" data-sheet="05" data-name="art">
+<!-- 06 -->
+<section class="sheet" id="art" data-sheet="06" data-name="art">
   <div class="wrap">
-    <div class="sheet-head"><span class="sheet-no">05</span><h2>art</h2><span class="sheet-meta">two AP investigations · 2025–26 · working titles</span></div>
+    <div class="sheet-head"><span class="sheet-no">06</span><h2>art</h2><span class="sheet-meta">two AP investigations · 2025–26 · working titles</span></div>
     <div class="art-intro">
       <div>
-        <p>I am in Unionville High School's Specialized Visual Arts Program. Both of my AP portfolios grew out of robotics: one asks what automation does to the people who depend on it, and the other tries to draw the engineering design process itself.</p>
-        <p>I also designed sets and ran audio and video for the school's stage production of <i>Alchemy</i>.</p>
+        <p>I am in Unionville High School's Specialized Visual Arts Program (28 students admitted from more than 250 applicants). Both of my AP portfolios grew out of robotics: one asks what automation does to the people who depend on it, and the other tries to draw the engineering design process itself.</p>
+        <p>I also lead the technical side of <i>Alchemy</i>, the school's annual show: <a href="#alchemy">more on sheet 08 ↓</a></p>
       </div>
       <div class="ap">
         <div><b>5</b><span>ap drawing</span></div>
@@ -606,17 +685,78 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
   </div>
 </section>
 
-<!-- 06 -->
-<section class="sheet" id="beyond" data-sheet="06" data-name="beyond">
+<!-- 07 -->
+<section class="sheet" id="reading" data-sheet="07" data-name="reading">
   <div class="wrap">
-    <div class="sheet-head"><span class="sheet-no">06</span><h2>beyond</h2><span class="sheet-meta">teaching, work, sport, reading</span></div>
+    <div class="sheet-head"><span class="sheet-no">07</span><h2>reading</h2><span class="sheet-meta">two or three books a week · short notes on eight</span></div>
+    <p class="lead" style="margin-bottom:12px">I pick books that will argue with me. If one hasn't disturbed me by page fifty, I read it twice.</p>
+    <p class="service" style="margin:0 0 32px">I also keep a literary blog for friends. The first five below come up in my personal statement.</p>
+
+    <div class="books">
+      <article class="book">
+        <div class="b-meta mono"><span class="b-no">B1</span><span>Virginia Woolf · 1925</span><span class="b-tag">personal statement</span></div>
+        <div class="b-body"><h3><i>Mrs. Dalloway</i></h3>
+        <p>Clarissa Dalloway and Septimus Warren Smith never meet. Woolf ties them together anyway: by the clocks striking over London, by the same June day, and finally by the news of Septimus's death reaching Clarissa's party as small talk. His doctors see a case to be managed and miss the person entirely. What stays with me is the method. Woolf moves between minds without warning, so you feel how much of each person never reaches anyone else, even someone on the same bench.</p></div>
+      </article>
+      <article class="book">
+        <div class="b-meta mono"><span class="b-no">B2</span><span>Albert Camus · 1942</span><span class="b-tag">personal statement</span></div>
+        <div class="b-body"><h3><i>The Stranger</i></h3>
+        <p>Meursault is tried for a killing, but the trial keeps circling back to his mother's funeral, where he didn't cry. The prosecutor builds a monster out of the wrong evidence, and the jury accepts it because the story fits. Meanwhile the man Meursault killed is never even given a name. I read it now as a book about what a verdict leaves out: what the court can't see in Meursault, and what Camus never shows us about his victim.</p></div>
+      </article>
+      <article class="book">
+        <div class="b-meta mono"><span class="b-no">B3</span><span>Albert Camus · 1947</span><span class="b-tag">personal statement</span></div>
+        <div class="b-body"><h3><i>The Plague</i></h3>
+        <p>Oran shuts its gates and the epidemic turns into a running count of the dead. Dr. Rieux, who turns out to be the narrator, refuses to call his work heroism; it is just his job, done again the next day. My favourite character is Grand, the clerk who spends the whole outbreak rewriting the first sentence of his novel. The book holds both: the numbers that tell you how bad things are, and the single people the numbers can't describe.</p></div>
+      </article>
+      <article class="book">
+        <div class="b-meta mono"><span class="b-no">B4</span><span>James Baldwin · 1956</span><span class="b-tag">personal statement</span></div>
+        <div class="b-body"><h3><i>Giovanni's Room</i></h3>
+        <p>David tells the whole story in one night, alone in a rented house in the south of France, knowing what is about to happen to Giovanni in Paris. He is unreliable in the most painful way: careful, articulate, and still editing. He keeps describing Giovanni's cramped room as the problem. Baldwin makes clear the problem is David, who would rather lose everyone than be fully known. It is the book that showed me the cost of keeping my own head closed.</p></div>
+      </article>
+      <article class="book">
+        <div class="b-meta mono"><span class="b-no">B5</span><span>James Baldwin · 1963</span><span class="b-tag">personal statement</span></div>
+        <div class="b-body"><h3><i>The Fire Next Time</i></h3>
+        <p>Two letters. The short one is to Baldwin's nephew on the hundredth anniversary of Emancipation; the long one moves through his years as a teenage preacher and a dinner with Elijah Muhammad. Baldwin argues that America's story about itself depends on what it leaves out, and that the people telling it are trapped by it too. He ends on love, but not a soft kind: love as the decision to see someone completely. I expected anger and got a demand, which is harder to argue with.</p></div>
+      </article>
+      <article class="book">
+        <div class="b-meta mono"><span class="b-no">B6</span><span>Robert Greene · 1998</span></div>
+        <div class="b-body"><h3><i>The 48 Laws of Power</i></h3>
+        <p>Each law comes with a story of someone who broke it and paid, and someone who kept it and won. Read as data, that is a selection problem: the courtiers who followed every law and failed anyway never make it into the book. Greene half admits this in the reversal at the end of each chapter. I don't read it as a manual. I read it as a field guide to how people try to move me, which makes it easier to notice when they do.</p></div>
+      </article>
+      <article class="book">
+        <div class="b-meta mono"><span class="b-no">B7</span><span>Samantha Shannon · 2013</span></div>
+        <div class="b-body"><h3><i>The Bone Season</i></h3>
+        <p>In Scion London in 2059, clairvoyance is a crime, and Paige Mahoney is a dreamwalker working for a gang leader who has ranked every kind of clairvoyant into seven orders. Then she is taken to Sheol I, a hidden penal colony in Oxford, and sorted again, this time by the colour of her tunic. The chart of the seven orders looks neutral. Shannon shows that whoever writes the categories decides who is worth more, which is worth remembering before you label a dataset.</p></div>
+      </article>
+      <article class="book">
+        <div class="b-meta mono"><span class="b-no">B8</span><span>Samantha Shannon · 2019–2026</span></div>
+        <div class="b-body"><h3><i>The Priory of the Orange Tree</i>, <i>A Day of Fallen Night</i>, <i>Among the Burning Flowers</i></h3>
+        <p>The Queendom of Inys believes its royal line keeps a monster chained beneath the sea, so the whole country depends on its queen having an heir. The East worships dragons; the West fears them. <i>Priory</i> spends 800 pages testing the founding story everyone repeats, and the two prequels go back to the moments that story was written: <i>A Day of Fallen Night</i> to the last time the world nearly ended, <i>Among the Burning Flowers</i> to Yscalin as the dragons wake. Three books, one question: what did the official version leave out?</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 08 -->
+<section class="sheet" id="beyond" data-sheet="08" data-name="beyond">
+  <div class="wrap">
+    <div class="sheet-head"><span class="sheet-no">08</span><h2>beyond</h2><span class="sheet-meta">stage, gym, ring, slopes, scores</span></div>
+    <div class="feature2">
+      <div class="feat" id="alchemy">
+        <h3>alchemy · technical theatre lead</h3>
+        <div class="feat-n"><div><b>10</b><span>sold-out performances</span></div><div><b>550</b><span>seats a night</span></div></div>
+        <p><i>Alchemy</i> is my school's annual show. I designed the sets and ran the audio and video, which meant building the stage the performers work on and then making sure every cue landed, ten nights in a row. It is the same job as a robot at a competition: the audience only notices the system when it fails.</p>
+      </div>
+      <div class="feat">
+        <h3>the gym</h3>
+        <div class="feat-n"><div><b>295</b><span>lb bench</span></div><div><b>390</b><span>lb squat</span></div><div><b>405</b><span>lb deadlift</span></div></div>
+        <p>A 1,090 lb total. Lifting is the most honest log I keep: the bar weighs what it says it weighs, and no amount of explaining moves it.</p>
+      </div>
+    </div>
     <div class="beyond">
-      <div><span class="big">3,500+</span><h3>robotics outreach</h3><p>Founder and lead instructor. Started robotics clubs at 5 elementary schools and founded and coached 10 high school VRC teams (6 local, 4 international) to state or provincial level. Raised $5,000 for SickKids. I let a student finish explaining their code before I touch it.</p></div>
-      <div><span class="big">CTRC</span><h3>robotics coach</h3><p>Paid instructor at Caution Tape Robotics. I teach CAD, mechanical design, and C++ and Python autonomous programming, and coach student teams.</p></div>
-      <div><span class="big">Level 2</span><h3>ski instructor</h3><p>Certified alpine ski instructor with SnowLand Outdoor Club at Blue Mountain. Technique, progression and safety.</p></div>
       <div><span class="big">10th</span><h3>boxing</h3><p>Amateur heavyweight, ranked tenth in Ontario. The one place nobody lets me finish a thought.</p></div>
-      <div><span class="big">2–3</span><h3>books a week</h3><p>Mostly Baldwin, Camus and Woolf, picked because they argue with me. I keep a literary blog for friends.</p></div>
-      <div><span class="big">2012</span><h3>volkswagen jetta</h3><p>I do my own maintenance and installed its cold air intake myself. The one system where the feedback is immediate and nobody is reviewing it.</p></div>
+      <div><span class="big">5 · 4</span><h3>ap scores</h3><p>AP Drawing 5 and AP 3D Art and Design 4, from the two portfolios on sheet 06.</p></div>
+      <div><span class="big">Level 2</span><h3>ski instructor</h3><p>Certified alpine ski instructor with SnowLand Outdoor Club at Blue Mountain. Technique, progression and safety.</p></div>
       <div><span class="big">3</span><h3>languages</h3><p>English, Mandarin Chinese and French.</p></div>
       <div><span class="big">OCI</span><h3>certifications</h3><p>Oracle Cloud Infrastructure AI Foundations Associate (2026). BetterMind Labs AI/ML Certification Program, AI and Robotics track.</p></div>
       <div><span class="big">2026</span><h3>also competed</h3><p>US Medicine and Disease Olympiad and the RevenueCat Shipaton hackathon.</p></div>
@@ -624,10 +764,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
   </div>
 </section>
 
-<!-- 07 -->
-<section class="sheet" id="record" data-sheet="07" data-name="record">
+<!-- 09 -->
+<section class="sheet" id="record" data-sheet="09" data-name="record">
   <div class="wrap">
-    <div class="sheet-head"><span class="sheet-no">07</span><h2>record</h2><span class="sheet-meta">selected honors</span></div>
+    <div class="sheet-head"><span class="sheet-no">09</span><h2>record</h2><span class="sheet-meta">selected honors</span></div>
     <div class="rec-wrap">
       <table class="rec">
         <thead><tr><th>#</th><th>honor</th><th style="text-align:right">level</th></tr></thead>
@@ -638,18 +778,17 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
           <tr><td>04</td><td><b>Poster</b>, Mayo Clinic 18th Annual Stroke &amp; Cerebrovascular Disease Review</td><td>international</td></tr>
           <tr><td>05</td><td><b>Excellence Award</b>, Ontario Provincial VEX V5 Championship 2026; 3× tournament champion, Team 839Z</td><td>provincial</td></tr>
           <tr><td>06</td><td><b>1st place</b>, TMLS Hackathon (sponsored by FGF Brands), for Scoop AI</td><td>regional</td></tr>
-          <tr><td>07</td><td><b>Rookie awards sweep</b>, Waterloo EV Team 839</td><td>regional</td></tr>
-          <tr><td>08</td><td><b>AP Drawing 5</b> · <b>AP 3D Art and Design 4</b></td><td>exam</td></tr>
+          <tr><td>07</td><td><b>Rookie Team Award</b> and <b>Toyota Fabrication and Manufacturing Award</b>, 2026 Waterloo EV Challenge, Team 839</td><td>regional</td></tr>
         </tbody>
       </table>
     </div>
   </div>
 </section>
 
-<!-- 08 -->
-<section class="sheet" id="contact" data-sheet="08" data-name="contact">
+<!-- 10 -->
+<section class="sheet" id="contact" data-sheet="10" data-name="contact">
   <div class="wrap">
-    <div class="sheet-head"><span class="sheet-no">08</span><h2>contact</h2><span class="sheet-meta">markham, ontario</span></div>
+    <div class="sheet-head"><span class="sheet-no">10</span><h2>contact</h2><span class="sheet-meta">markham, ontario</span></div>
     <div class="contact">
       <span class="email" id="email">niuren2@outlook.com</span>
       <div class="contact-row">
@@ -662,7 +801,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
 </section>
 </main>
 
-<footer><div class="wrap mono"><span>© 2026 daniel fu</span><span>sheets 00–08 · revised 31 oct 2026</span></div></footer>
+<footer><div class="wrap mono"><span>© 2026 daniel fu</span><span>sheets 00–10 · revised 31 oct 2026</span></div></footer>
 
 <div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-labelledby="lbTitle">
   <div class="lb-top"><h3 id="lbTitle">piece</h3><button class="tbtn" id="lbClose" type="button">close ✕</button></div>
@@ -882,14 +1021,28 @@ function items(p){var a=[];p.final.forEach(function(s,i){a.push({s:s,c:(p.cap&&p
 function show(i){var it=items(cur);idx=(i+it.length)%it.length;var x=it[idx];lbImg.src='img/'+x.s+'.jpg';lbImg.alt=cur.t+': '+x.c;lbCap.textContent=x.c;lbCount.textContent=(idx+1)+' / '+it.length;
   [].forEach.call(lbThumbs.children,function(b,j){b.setAttribute('aria-current',j===idx?'true':'false')});
   var one=it.length<2;document.getElementById('lbPrev').hidden=one;document.getElementById('lbNext').hidden=one}
-function openLb(p,kind,from){cur=p;ret=from;lbT.textContent=p.t+' · '+kind;lbThumbs.innerHTML='';
+function openLb(p,kind,from,at){cur=p;ret=from;lbT.textContent=p.t+' · '+kind;lbThumbs.innerHTML='';
   items(p).forEach(function(x,j){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Image '+(j+1));b.innerHTML='<img src="img/'+x.s+'-t.jpg" alt="">';b.addEventListener('click',function(){show(j)});lbThumbs.appendChild(b)});
-  var start=mode==='proc'?p.final.length:0;lb.hidden=false;document.body.style.overflow='hidden';show(start);document.getElementById('lbClose').focus()}
+  var start=at!=null?at:(mode==='proc'&&p.proc.length?p.final.length:0);lb.hidden=false;document.body.style.overflow='hidden';show(start);document.getElementById('lbClose').focus()}
 function closeLb(){lb.hidden=true;document.body.style.overflow='';if(ret)ret.focus()}
 document.getElementById('lbClose').addEventListener('click',closeLb);
 document.getElementById('lbPrev').addEventListener('click',function(){show(idx-1)});
 document.getElementById('lbNext').addEventListener('click',function(){show(idx+1)});
 document.addEventListener('keydown',function(e){if(lb.hidden)return;if(e.key==='Escape')closeLb();else if(e.key==='ArrowLeft')show(idx-1);else if(e.key==='ArrowRight')show(idx+1)});
+
+/* robotics & ev photos */
+var EV={id:'ev',t:'robotics & ev',final:['ev-1','ev-2','ev-3','ev-4','ev-5'],proc:[],
+  cap:['Team 839 at the 2026 Waterloo EV Challenge, with the Rookie Team Award, the Toyota Fabrication and Manufacturing Award and our Heat Race #2 placard.','Carrying the awards back across the lot.','Pit work on car 839 under the tent, in the rain.','Working on the rear wheel and chain between heats.','Cutting parts on the CNC router in the shop.'],
+  short:['team 839 · 2026 waterloo ev challenge','the awards','the pit, in the rain','between heats','the cnc router'],
+  alt:['Team 839 posing with car 839 and award banners in front of an Interstate Batteries truck','A team member holding the award plaques beside car 839','Team members working on car 839 under a blue tent in the rain','A team member leaning into car 839 to work on the rear wheel','A team member cutting parts on a CNC router in a workshop']};
+(function(){
+  var g=document.getElementById('evGrid');
+  EV.final.forEach(function(s,i){
+    var b=document.createElement('button');b.className='shot';b.type='button';b.setAttribute('aria-label','Open photo: '+EV.short[i]);
+    b.innerHTML='<span class="ph"><img decoding="async" src="img/'+s+'-t.jpg" alt="'+EV.alt[i]+'"></span><span class="cap2">'+EV.short[i]+'</span>';
+    b.addEventListener('click',function(){openLb(EV,'photos',b,i)});g.appendChild(b);
+  });
+})();
 
 /* copy email */
 document.getElementById('copyEmail').addEventListener('click',function(){
