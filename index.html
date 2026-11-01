@@ -274,7 +274,29 @@ svg .lbl{fill:var(--ink)}
 .strip img{height:100%;width:auto;display:block}
 .strip button:hover{box-shadow:0 0 0 3px var(--hi)}
 .strip button:focus-visible{outline:2px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 5px var(--hi)}
-.clips{display:grid;grid-template-columns:repeat(3,minmax(0,210px));gap:12px}
+.hs-awards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--ink);background:var(--paper)}
+.hs-awards div{padding:16px 18px;border-right:1px solid var(--rule);display:flex;flex-direction:column;gap:4px;min-width:0}
+.hs-awards div:last-child{border-right:0}
+.hs-awards .mono{color:var(--ink-2)}
+.hs-awards b{font-family:var(--f-disp);font-stretch:112%;font-weight:800;font-size:clamp(1.25rem,2.4vw,1.7rem);line-height:1.05;letter-spacing:-.015em}
+.hs-awards div:nth-child(2) b{background:var(--hi);color:var(--on-hi);align-self:flex-start;padding:0 .12em}
+.hs-awards span:last-child{font-size:var(--s0);color:var(--ink-2)}
+@media (max-width:760px){.hs-awards{grid-template-columns:minmax(0,1fr)}.hs-awards div{border-right:0;border-bottom:1px solid var(--rule)}.hs-awards div:last-child{border-bottom:0}}
+.hs-src{color:var(--ink-2);margin:10px 0 0;line-height:1.7}
+.iters{list-style:none;margin:36px 0 0;padding:0;border-top:2px solid var(--ink)}
+.iter{display:grid;grid-template-columns:170px minmax(0,1fr);gap:12px 28px;padding:26px 0 30px;border-bottom:1px solid var(--rule);scroll-margin-top:84px}
+.it-meta{display:flex;flex-direction:column;gap:4px;color:var(--ink-2);min-width:0}
+.it-meta b{font-family:var(--f-disp);font-stretch:118%;font-weight:850;font-size:2.6rem;line-height:1;color:var(--ink);letter-spacing:-.03em}
+.it-meta .st-name{color:var(--ink);text-transform:uppercase;letter-spacing:.08em}
+.it-body{min-width:0}
+.it-body > p{margin:0 0 16px;max-width:66ch}
+.strip-h{font-size:.6875rem;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-2);margin:14px 0 8px}
+.reel{display:flex;gap:12px;overflow-x:auto;padding-bottom:10px;margin-bottom:6px;scroll-snap-type:x proximity;scrollbar-width:thin}
+.reel .clip{margin:0;flex:none;display:flex;flex-direction:column;gap:6px;scroll-snap-align:start}
+.reel video{height:260px;width:auto;max-width:none;border:1px solid var(--ink);background:#000;display:block;cursor:pointer;object-fit:cover}
+.reel figcaption{font-family:var(--f-mono);font-size:.6875rem;font-stretch:87.5%;color:var(--ink-2);width:0;min-width:100%;line-height:1.5}
+.cards.one{grid-template-columns:minmax(0,1fr)}
+@media (max-width:760px){.iter{grid-template-columns:minmax(0,1fr)}.it-meta{flex-direction:row;align-items:baseline;flex-wrap:wrap;gap:4px 12px}.reel video{height:200px}}
 .clip{margin:0;display:flex;flex-direction:column;gap:6px;min-width:0}
 .clip video{width:100%;aspect-ratio:480/852;object-fit:cover;border:1px solid var(--ink);background:#000;display:block;cursor:pointer}
 .clip figcaption{font-family:var(--f-mono);font-size:.6875rem;font-stretch:87.5%;color:var(--ink-2)}
@@ -378,7 +400,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
       <a href="#research">research</a>
       <a href="#play">play</a>
       <a href="#built">built</a>
-      <a href="#robotics">robotics</a>
+      <a href="#highstakes">high stakes</a>
       <a href="#art">art</a>
       <a href="#reading">reading</a>
       <a href="#beyond">beyond</a>
@@ -446,10 +468,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
           <li><a href="#research"><span>02</span>research<em>7 entries</em></a></li>
           <li><a href="#play"><span>03</span>play<em>2 demos</em></a></li>
           <li><a href="#built"><span>04</span>built<em>2 competitions</em></a></li>
-          <li><a href="#robotics"><span>05</span>robotics &amp; ev<em>build log, outreach</em></a></li>
+          <li><a href="#highstakes"><span>05</span>high stakes<em>3 robots, 1 season</em></a></li>
           <li><a href="#art"><span>06</span>art<em>14 pieces</em></a></li>
           <li><a href="#reading"><span>07</span>reading<em>8 books</em></a></li>
-          <li><a href="#beyond"><span>08</span>beyond<em>stage, gym, ring</em></a></li>
+          <li><a href="#beyond"><span>08</span>beyond<em>teaching, ev, stage</em></a></li>
           <li><a href="#record"><span>09</span>record<em>honors</em></a></li>
           <li><a href="#contact"><span>10</span>contact<em>email</em></a></li>
         </ol>
@@ -632,77 +654,46 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
 </section>
 
 <!-- 05 -->
-<section class="sheet" id="robotics" data-sheet="05" data-name="robotics">
+<section class="sheet" id="highstakes" data-sheet="05" data-name="high stakes">
   <div class="wrap">
-    <div class="sheet-head"><span class="sheet-no">05</span><h2>robotics &amp; ev</h2><span class="sheet-meta">vex 839z · waterloo ev 839 · outreach · coaching</span></div>
-    <p class="lead" style="margin-bottom:28px">Robotics is where the numbers talk back fastest. A robot that drifts left tells you exactly what your code assumed.</p>
+    <div class="sheet-head"><span class="sheet-no">05</span><h2>high stakes</h2><span class="sheet-meta">vex v5 team 839z · 2024–25 season · three robots</span></div>
+    <p class="lead" style="margin-bottom:28px">One season, three robots. I was lead designer and builder and programming co-captain on VEX team 839Z, and each robot was rebuilt around what the last one couldn't do.</p>
 
-    <div class="mosaic" id="evGrid" aria-label="Photos from the 2026 Waterloo EV Challenge and the shop"></div>
-
-    <div class="cards" style="margin-top:28px">
-      <article class="card">
-        <div class="card-h"><h3>Waterloo EV Team 839</h3><span class="mono">co-founder</span></div>
-        <dl class="spec">
-          <dt>role</dt><dd>Co-founder, head of build &amp; design</dd>
-          <dt>built</dt><dd>Car 839, an aluminum-frame electric car for the 2026 Waterloo EV Challenge. I ran edge-AI tests to find the best thermal pattern for each race track.</dd>
-          <dt>result</dt><dd>Swept the rookie awards, including the Interstate Batteries Rookie Team Award · Toyota Fabrication and Manufacturing Award · 3rd place in our heat</dd>
-        </dl>
-      </article>
-      <article class="card">
-        <div class="card-h"><h3>VEX V5 Team 839Z</h3><span class="mono">caution tape robotics</span></div>
-        <dl class="spec">
-          <dt>role</dt><dd>Lead designer &amp; builder, programming co-captain</dd>
-          <dt>built</dt><dd>Competition robots for the 2024–25 High Stakes and 2025–26 Push Back seasons</dd>
-          <dt>result</dt><dd>2026 Ontario Provincial Excellence Award · RiverBots III Signature Event champion · 3× tournament champion · 2× VEX Worlds qualifier, 6–4 at the 2025 World Championship · 2× Create Award</dd>
-        </dl>
-      </article>
+    <div class="hs-awards">
+      <div><span class="mono">sep 2024</span><b>Create Award</b><span>Highlander Summit Signature Event · Newark, New Jersey</span></div>
+      <div><span class="mono">dec 2024</span><b>Tournament Champions</b><span>RiverBots III Signature Event · Monroe, Michigan</span></div>
+      <div><span class="mono">2025</span><b>World Championship</b><span>competed in the Innovate Division (83 teams)</span></div>
     </div>
+    <p class="hs-src mono">checked against <a href="https://news.vex.com/2025/01/23/2024-2025-signature-events-results/" target="_blank" rel="noopener">VEX's official Signature Event results ↗</a> and <a href="https://recf.org/documents/2025/04/innovate-division-list-vex-v5-robotics-competition-high-school-vex-robotics-world-championship.pdf/" target="_blank" rel="noopener">RECF's 2025 Worlds team list ↗</a> · <a href="https://www.youtube.com/watch?v=iP52IHAuQhA" target="_blank" rel="noopener">RiverBots winners interview ↗</a></p>
 
-    <div class="log" id="buildlog">
-      <div class="log-h"><h3>build log: a high stakes robot, start to finish</h3><span class="mono">may–june 2024 · tap any photo to enlarge</span></div>
-      <ol class="stages">
-        <li class="stage">
-          <div class="st-meta mono"><b>01</b><span class="st-name">design</span><span>in cad</span></div>
-          <div class="st-body"><p>Every mechanism started in CAD: a gear assembly first, then the drivetrain beside a mobile goal, then the whole robot carrying rings.</p><div class="strip" data-set="cad"></div></div>
-        </li>
-        <li class="stage">
-          <div class="st-meta mono"><b>02</b><span class="st-name">drivetrain</span><span>25 may 2024</span></div>
-          <div class="st-body"><p>Rails, gears and omni wheels, from parts on the bench to a base driving on the field. All of these were taken on the same afternoon.</p><div class="strip" data-set="dt"></div></div>
-        </li>
-        <li class="stage">
-          <div class="st-meta mono"><b>03</b><span class="st-name">electronics &amp; air</span><span>in the shop</span></div>
-          <div class="st-body"><p>The V5 brain, an air tank and pneumatic cylinders, mounted and wired onto the base.</p><div class="strip" data-set="sys"></div></div>
-        </li>
-        <li class="stage">
-          <div class="st-meta mono"><b>04</b><span class="st-name">intake &amp; lift</span><span>in the shop</span></div>
-          <div class="st-body"><p>Stacked roller intakes, a polycarbonate ramp and a lift tower, tested on the bench and then on the field.</p><div class="strip" data-set="up"></div></div>
-        </li>
-        <li class="stage">
-          <div class="st-meta mono"><b>05</b><span class="st-name">on the field</span><span>31 may 2024</span></div>
-          <div class="st-body"><p>Driving tests on a full High Stakes field. Tap a clip to pause or play it.</p>
-            <div class="clips">
-              <figure class="clip"><video muted loop playsinline preload="none" poster="rb-clip-1-poster.jpg" aria-label="Video: the robot driving up to a mobile goal"><source src="rb-clip-1.mp4" type="video/mp4"></video><figcaption>driving onto a mobile goal</figcaption></figure>
-              <figure class="clip"><video muted loop playsinline preload="none" poster="rb-clip-2-poster.jpg" aria-label="Video: the robot lining up its arm at the ladder"><source src="rb-clip-2.mp4" type="video/mp4"></video><figcaption>lining up at the ladder</figcaption></figure>
-              <figure class="clip"><video muted loop playsinline preload="none" poster="rb-clip-3-poster.jpg" aria-label="Video: driving practice on the field"><source src="rb-clip-3.mp4" type="video/mp4"></video><figcaption>driving practice</figcaption></figure>
-            </div>
-          </div>
-        </li>
-      </ol>
-    </div>
-
-    <div class="outreach">
-      <div class="out-h">
-        <h3>teaching robotics to elementary students</h3>
-        <p>I founded an outreach program with Caution Tape Robotics and donated my own robotics hardware to start clubs at five elementary schools. Since then I have taught more than 3,500 elementary students to code, program robots, design in CAD, build, and work through problems when the robot doesn't do what they expected. I let a student finish explaining their code before I touch it. We also raised $5,000 for SickKids.</p>
-      </div>
-      <div class="out-n">
-        <div><b>3,500+</b><span>elementary students taught</span></div>
-        <div><b>$5,000</b><span>raised for SickKids</span></div>
-        <div><b>5</b><span>elementary school clubs started</span></div>
-        <div><b>10</b><span>high school teams founded &amp; coached, 6 local and 4 international</span></div>
-      </div>
-    </div>
-    <p class="service"><span class="lab mono">coaching</span>Paid robotics instructor and coach at Caution Tape Robotics: CAD, mechanical design, and C++ and Python autonomous programming.</p>
+    <ol class="iters">
+      <li class="iter" id="hs-1">
+        <div class="it-meta mono"><b>01</b><span class="st-name">the first robot</span><span>may – nov 2024</span></div>
+        <div class="it-body">
+          <p>Built from the drivetrain up over the summer: a six-motor drive on omni wheels, a chain conveyor that lifts rings off the floor, pneumatics, and an arm for the wall stakes. This is the robot that won the Create Award at the Highlander Summit in September 2024; the event's stickers are still on its side panel.</p>
+          <div class="reel" data-clips="hs1"></div>
+          <h4 class="strip-h mono">the robot</h4><div class="strip" data-set="hs1"></div>
+          <h4 class="strip-h mono">first build, may 2024</h4><div class="strip" data-set="hs1b"></div>
+        </div>
+      </li>
+      <li class="iter" id="hs-2">
+        <div class="it-meta mono"><b>02</b><span class="st-name">the gold rebuild</span><span>dec 2024 – mar 2025</span></div>
+        <div class="it-body">
+          <p>Rebuilt on a gold-and-black frame around a full-width roller intake that feeds a chain conveyor, with a taller arm that lifts rings onto the wall stakes. We ran it through the winter and into March 2025.</p>
+          <div class="reel" data-clips="hs2"></div>
+          <div class="strip" data-set="hs2"></div>
+        </div>
+      </li>
+      <li class="iter" id="hs-3">
+        <div class="it-meta mono"><b>03</b><span class="st-name">designed for worlds</span><span>apr – may 2025</span></div>
+        <div class="it-body">
+          <p>Planned in CAD before anything was cut: an X-frame lift, a ring arm, and custom plates nested onto a single 24 × 12 inch sheet for cutting, 58 parts at 76.66% material use. We took it to the 2025 VEX Robotics World Championship, where 839Z competed in the Innovate Division.</p>
+          <div class="reel" data-clips="hs3"></div>
+          <div class="strip" data-set="hs3"></div>
+        </div>
+      </li>
+    </ol>
+    <p class="hs-src mono">clips are muted and play when they scroll into view · tap a clip to pause it · tap any photo to enlarge</p>
   </div>
 </section>
 
@@ -794,7 +785,39 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
 <!-- 08 -->
 <section class="sheet" id="beyond" data-sheet="08" data-name="beyond">
   <div class="wrap">
-    <div class="sheet-head"><span class="sheet-no">08</span><h2>beyond</h2><span class="sheet-meta">stage, gym, ring, slopes, scores</span></div>
+    <div class="sheet-head"><span class="sheet-no">08</span><h2>beyond</h2><span class="sheet-meta">teaching, ev, stage, gym, ring, scores</span></div>
+    <h3 class="group-h">teaching</h3>
+    <div class="outreach" style="margin-top:16px">
+      <div class="out-h">
+        <h3>teaching robotics to elementary students</h3>
+        <p>I founded an outreach program with Caution Tape Robotics and donated my own robotics hardware to start clubs at five elementary schools. Since then I have taught more than 3,500 elementary students to code, program robots, design in CAD, build, and work through problems when the robot doesn't do what they expected. I let a student finish explaining their code before I touch it. We also raised $5,000 for SickKids.</p>
+      </div>
+      <div class="out-n">
+        <div><b>3,500+</b><span>elementary students taught</span></div>
+        <div><b>$5,000</b><span>raised for SickKids</span></div>
+        <div><b>5</b><span>elementary school clubs started</span></div>
+        <div><b>10</b><span>high school teams founded &amp; coached, 6 local and 4 international</span></div>
+      </div>
+    </div>
+    <p class="service"><span class="lab mono">coaching</span>Paid robotics instructor and coach at Caution Tape Robotics: CAD, mechanical design, and C++ and Python autonomous programming.</p>
+
+    <h3 class="group-h" style="margin-top:44px">waterloo ev challenge · team 839</h3>
+    <div style="margin-top:16px"></div>
+    <div class="mosaic" id="evGrid" aria-label="Photos from the 2026 Waterloo EV Challenge and the shop"></div>
+
+    <div class="cards one" style="margin-top:20px">
+      <article class="card">
+        <div class="card-h"><h3>Waterloo EV Team 839</h3><span class="mono">co-founder</span></div>
+        <dl class="spec">
+          <dt>role</dt><dd>Co-founder, head of build &amp; design</dd>
+          <dt>built</dt><dd>Car 839, an aluminum-frame electric car for the 2026 Waterloo EV Challenge. I ran edge-AI tests to find the best thermal pattern for each race track.</dd>
+          <dt>result</dt><dd>Swept the rookie awards, including the Interstate Batteries Rookie Team Award · Toyota Fabrication and Manufacturing Award · 3rd place in our heat</dd>
+        </dl>
+      </article>
+    </div>
+
+
+    <h3 class="group-h" style="margin:44px 0 16px">stage, gym, ring</h3>
     <div class="feature2">
       <div class="feat" id="alchemy">
         <h3>alchemy · technical theatre lead</h3>
@@ -830,9 +853,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
           <tr><td>02</td><td><b>International Abstract of Distinction</b> and oral presentation, ASPEN 2027 Nutrition Science &amp; Practice Conference</td><td>international</td></tr>
           <tr><td>03</td><td><b>Bronze medal</b>, Kaggle RSNA Knee Abnormality Detection, 464th of 6,000+ teams</td><td>international</td></tr>
           <tr><td>04</td><td><b>Poster</b>, Mayo Clinic 18th Annual Stroke &amp; Cerebrovascular Disease Review</td><td>international</td></tr>
-          <tr><td>05</td><td><b>Excellence Award</b>, Ontario Provincial VEX V5 Championship 2026; 3× tournament champion, Team 839Z</td><td>provincial</td></tr>
-          <tr><td>06</td><td><b>1st place</b>, TMLS Hackathon (sponsored by FGF Brands), for Scoop AI</td><td>regional</td></tr>
-          <tr><td>07</td><td><b>Rookie Team Award</b> and <b>Toyota Fabrication and Manufacturing Award</b>, 2026 Waterloo EV Challenge, Team 839</td><td>regional</td></tr>
+          <tr><td>05</td><td><b>Tournament Champions</b>, RiverBots III Signature Event (High Stakes, Dec 2024), VEX Team 839Z</td><td>international</td></tr>
+          <tr><td>06</td><td><b>Create Award</b>, Highlander Summit Signature Event (High Stakes, Sept 2024), VEX Team 839Z</td><td>international</td></tr>
+          <tr><td>07</td><td><b>Competed</b>, 2025 VEX Robotics World Championship, Innovate Division, VEX Team 839Z</td><td>international</td></tr>
+          <tr><td>08</td><td><b>Excellence Award</b>, Ontario HS Provincial Championship (Push Back, Feb 2026), VEX Team 839Z</td><td>provincial</td></tr>
+          <tr><td>09</td><td><b>1st place</b>, TMLS Hackathon (sponsored by FGF Brands), for Scoop AI</td><td>regional</td></tr>
+          <tr><td>10</td><td><b>Rookie Team Award</b> and <b>Toyota Fabrication and Manufacturing Award</b>, 2026 Waterloo EV Challenge, Team 839</td><td>regional</td></tr>
         </tbody>
       </table>
     </div>
@@ -1100,18 +1126,33 @@ var EV={id:'ev',t:'robotics & ev',final:['ev-1','ev-2','ev-3','ev-4','ev-5'],pro
 
 /* build log */
 var DIM={'rb-cad-1':[760,450],'rb-cad-2':[760,570],'rb-cad-3':[760,450],'rb-dt-1':[570,760],'rb-dt-2':[570,760],'rb-dt-3':[570,760],'rb-dt-4':[570,760],'rb-dt-5':[760,570],'rb-dt-6':[760,570],'rb-sys-1':[760,702],'rb-sys-2':[428,760],'rb-sys-3':[570,760],'rb-up-1':[570,760],'rb-up-2':[570,760],'rb-up-3':[570,760],'rb-up-4':[760,507],'rb-up-5':[760,507],'rb-up-6':[760,507],'rb-up-7':[760,507]};
+var D2={'hs1-p-bench':[570,760],'hs1-p-dt1':[760,570],'hs1-p-dt2':[760,570],'hs1-p-field':[570,760],'hs1-p-floor':[760,570],'hs1-p-hotel':[570,760],'hs1-p-lift':[570,760],'hs1-p-top':[760,570],'hs1-p-under':[570,760],'hs2-p-arm':[570,760],'hs2-p-base':[760,570],'hs2-p-frame':[570,760],'hs2-p-front':[570,760],'hs2-p-hero':[570,760],'hs2-p-hotel':[570,760],'hs2-p-rollers':[760,570],'hs2-p-top':[570,760],'hs3-cad-1':[760,608],'hs3-cad-2':[760,608],'hs3-cad-3':[760,450],'hs3-cad-4':[760,450],'hs3-cad-5':[760,450],'hs3-cad-6':[760,450],'hs3-cad-wall':[657,760],'hs3-nest':[760,473]};
+for(var k in D2)DIM[k]=D2[k];
 var LOG={
-  cad:{t:'design',final:['rb-cad-1','rb-cad-2','rb-cad-3'],proc:[],cap:['The full robot in CAD, carrying rings next to a mobile goal.','The drivetrain modelled beside a mobile goal.','A gear assembly, rendered before it was built.']},
-  dt:{t:'drivetrain · 25 may 2024',final:['rb-dt-1','rb-dt-2','rb-dt-3','rb-dt-4','rb-dt-5','rb-dt-6'],proc:[],cap:['One side rail with its three drive gears.','Both sides laid out, gears in place.','The two halves joined by a crossbar.','Omni wheel and gear behind the curved front plate.','First time on the field, next to a mobile goal.','The finished base from the front.']},
-  sys:{t:'electronics & air',final:['rb-sys-1','rb-sys-2','rb-sys-3'],proc:[],cap:['The V5 brain mounted on the base, with the pneumatic cylinders behind it.','Air tank and pneumatic lines going in.','Drive gears and an omni wheel, close up.']},
-  up:{t:'intake & lift',final:['rb-up-1','rb-up-2','rb-up-3','rb-up-4','rb-up-5','rb-up-6','rb-up-7'],proc:[],cap:['The roller intake from the front, with the CAD model open on the laptop behind it.','The lift: polycarbonate panels and gold standoffs.','Side view of the lift tower.','Front view on the High Stakes field.','Low angle on the bench, rollers stacked up the front.','A stuffed dinosaur riding along inside the intake.','Side view on the field, next to a ring and a wall stake.']}
+  hs1:{t:'iteration 1 · the first robot',final:['hs1-p-hotel','hs1-p-field','hs1-p-top','hs1-p-bench','hs1-p-floor','hs1-p-lift','hs1-p-under','hs1-p-dt2','hs1-p-dt1'],proc:[],cap:['At the hotel during an event, with the 839Z plate and the Highlander Summit stickers on the side panel.','Arm and intake from behind, at the field wall.','From above on the field, next to the controller.','On the bench in the shop, arm folded down.','Drivetrain and conveyor, with the arm towers going up.','An early chain lift, tested on the field.','Underneath: six drive motors and the gear train.','The drivetrain with its first crossbars.','The bare drivetrain on the High Stakes field.']},
+  hs1b:{t:'iteration 1 · first build, may 2024',final:['rb-cad-1','rb-cad-2','rb-cad-3','rb-dt-1','rb-dt-2','rb-dt-3','rb-dt-4','rb-dt-5','rb-dt-6','rb-sys-1','rb-sys-2','rb-sys-3','rb-up-1','rb-up-2','rb-up-3','rb-up-4','rb-up-5','rb-up-6','rb-up-7'],proc:[],cap:['The full robot in CAD, carrying rings next to a mobile goal.','The drivetrain modelled beside a mobile goal.','A gear assembly, rendered before it was built.','One side rail with its three drive gears.','Both sides laid out, gears in place.','The two halves joined by a crossbar.','Omni wheel and gear behind the curved front plate.','First time on the field, next to a mobile goal.','The finished base from the front.','The V5 brain mounted on the base, with the pneumatic cylinders behind it.','Air tank and pneumatic lines going in.','Drive gears and an omni wheel, close up.','The roller intake from the front, with the CAD model open on the laptop behind it.','The lift: polycarbonate panels and gold standoffs.','Side view of the lift tower.','Front view on the High Stakes field.','Low angle on the bench, rollers stacked up the front.','A stuffed dinosaur riding along inside the intake.','Side view on the field, next to a ring and a wall stake.']},
+  hs2:{t:'iteration 2 · the gold rebuild',final:['hs2-p-hero','hs2-p-arm','hs2-p-hotel','hs2-p-front','hs2-p-top','hs2-p-rollers','hs2-p-frame','hs2-p-base'],proc:[],cap:['The gold rebuild with a ring in the intake.','Arm raised with a ring, beside a stacked mobile goal.','The 839Z plate, air tank and roller intake.','Front view: air tank, chain conveyor and rollers.','From above on the bench: the rollers feeding the chain conveyor.','The full-width roller intake, low on the field.','The frame going up on the drivetrain.','The bare gold-and-black base.']},
+  hs3:{t:'iteration 3 · designed for worlds',final:['hs3-cad-1','hs3-cad-2','hs3-cad-wall','hs3-cad-3','hs3-cad-4','hs3-cad-5','hs3-cad-6','hs3-nest'],proc:[],cap:['The Worlds robot in CAD.','Another angle on the CAD model.','Lifting a ring onto the wall stake, in CAD.','The X-frame lift and intake.','Lift and arm from the other side.','Side view of the X-frame.','Picking up a ring, in CAD.','The custom plates: 58 parts nested on one 24 × 12 in sheet, 76.66% efficiency.']}
 };
+var CLIPS={
+  hs1:[['hs1-v-goal','driving to a mobile goal and scoring · nov 2024'],['hs1-v-wallstake','scoring on the wall stake · nov 2024'],['hs1-v-stack','stacking a mobile goal · nov 2024'],['hs1-v-arm','arm at the stake · nov 2024'],['hs1-v-rings','loading rings onto a stake'],['hs1-v-run','a run on the full field'],['hs1-v-intake','first intake test · jul 2024']],
+  hs2:[['hs2-v-event','at a competition · mar 2025'],['hs2-v-match','on the field at an event · mar 2025'],['hs2-v-stack','stacking red rings · dec 2024'],['hs2-v-wallstake','scoring on the wall stake · jan 2025'],['hs2-v-drive','drive test · dec 2024']],
+  hs3:[['hs3-v-stack','stacking rings · may 2025'],['hs3-v-rings','intake run · apr 2025'],['hs3-v-top','from above · may 2025'],['hs3-v-goal','filling a mobile goal'],['hs3-v-home','practice on the home field'],['hs3-v-replay','reviewing a match recording']]
+};
+var VD={'hs1-v-intake':[360,640],'hs1-v-stack':[360,640],'hs2-v-drive':[360,640],'hs2-v-event':[360,640],'hs2-v-stack':[360,640],'hs3-v-goal':[360,640],'hs3-v-top':[360,640]};
+[].forEach.call(document.querySelectorAll('.reel'),function(r){
+  CLIPS[r.getAttribute('data-clips')].forEach(function(c){
+    var d=VD[c[0]]||[640,360],f=document.createElement('figure');f.className='clip';
+    f.innerHTML='<video muted loop playsinline preload="none" poster="'+c[0]+'-poster.jpg" width="'+d[0]+'" height="'+d[1]+'" style="aspect-ratio:'+d[0]+'/'+d[1]+'" aria-label="Video: '+c[1]+'"><source src="'+c[0]+'.mp4" type="video/mp4"></video><figcaption>'+c[1]+'</figcaption>';
+    r.appendChild(f);
+  });
+});
 [].forEach.call(document.querySelectorAll('.strip'),function(s){
   var set=LOG[s.getAttribute('data-set')];
   set.final.forEach(function(id,i){
     var d=DIM[id],b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Open photo: '+set.cap[i]);
-    b.innerHTML='<img decoding="async" src="'+id+'-t.jpg" width="'+d[0]+'" height="'+d[1]+'" alt="'+set.cap[i].replace(/"/g,'&quot;')+'">';
-    b.addEventListener('click',function(){openLb(set,'build log',b,i)});s.appendChild(b);
+    b.innerHTML='<img decoding="async" loading="lazy" src="'+id+'-t.jpg" width="'+d[0]+'" height="'+d[1]+'" alt="'+set.cap[i].replace(/"/g,'&quot;')+'">';
+    b.addEventListener('click',function(){openLb(set,'high stakes',b,i)});s.appendChild(b);
   });
 });
 (function(){
