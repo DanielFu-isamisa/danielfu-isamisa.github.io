@@ -296,6 +296,7 @@ svg .lbl{fill:var(--ink)}
 .reel video{height:260px;width:auto;max-width:none;border:1px solid var(--ink);background:#000;display:block;cursor:pointer;object-fit:cover}
 .reel figcaption{font-family:var(--f-mono);font-size:.6875rem;font-stretch:87.5%;color:var(--ink-2);width:0;min-width:100%;line-height:1.5}
 .cards.one{grid-template-columns:minmax(0,1fr)}
+.card.wide{grid-column:1/-1}
 @media (max-width:760px){.iter{grid-template-columns:minmax(0,1fr)}.it-meta{flex-direction:row;align-items:baseline;flex-wrap:wrap;gap:4px 12px}.reel video{height:200px}}
 .clip{margin:0;display:flex;flex-direction:column;gap:6px;min-width:0}
 .clip video{width:100%;aspect-ratio:480/852;object-fit:cover;border:1px solid var(--ink);background:#000;display:block;cursor:pointer}
@@ -467,7 +468,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
         <ol>
           <li><a href="#research"><span>02</span>research<em>7 entries</em></a></li>
           <li><a href="#play"><span>03</span>play<em>2 demos</em></a></li>
-          <li><a href="#built"><span>04</span>built<em>2 competitions</em></a></li>
+          <li><a href="#built"><span>04</span>built<em>pillo, kaggle, scoop ai</em></a></li>
           <li><a href="#highstakes"><span>05</span>high stakes<em>3 robots, 1 season</em></a></li>
           <li><a href="#art"><span>06</span>art<em>14 pieces</em></a></li>
           <li><a href="#reading"><span>07</span>reading<em>8 books</em></a></li>
@@ -631,8 +632,16 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
 <!-- 04 -->
 <section class="sheet" id="built" data-sheet="04" data-name="built">
   <div class="wrap">
-    <div class="sheet-head"><span class="sheet-no">04</span><h2>built</h2><span class="sheet-meta">machine learning competitions</span></div>
+    <div class="sheet-head"><span class="sheet-no">04</span><h2>built</h2><span class="sheet-meta">a health app and two ml competitions</span></div>
     <div class="cards">
+      <article class="card wide">
+        <div class="card-h"><h3>Pillo</h3><span class="mono">developer · dec 2024 – present</span></div>
+        <dl class="spec">
+          <dt>role</dt><dd>Developer on the Pillo team</dd>
+          <dt>product</dt><dd>A medication reminder app for people with chronic conditions and the families who help them: an alarm that keeps ringing until a dose is logged, refill reminders, and trackers for blood pressure, blood sugar, weight and water. Available on Android through Google Play.</dd>
+          <dt>link</dt><dd><a href="https://usepillo.com/about#our-team" target="_blank" rel="noopener">usepillo.com/about ↗</a></dd>
+        </dl>
+      </article>
       <article class="card">
         <div class="card-h"><h3>Kaggle RSNA Knee Abnormality Detection</h3><span class="mono">bronze medal</span></div>
         <dl class="spec">
