@@ -159,7 +159,14 @@ p{text-wrap:pretty}
 .p-body p{margin:0 0 10px;max-width:64ch}
 .mypart{border-left:3px solid var(--hi);padding-left:12px}
 .lab{display:inline-block;text-transform:uppercase;letter-spacing:.08em;font-size:.6875rem;margin-right:8px;color:var(--ink)}
-.p-links{display:flex;flex-wrap:wrap;gap:6px 16px;font-family:var(--f-mono);font-size:var(--s-1);font-stretch:87.5%}
+.p-links{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;font-family:var(--f-mono);font-size:var(--s-1);font-stretch:87.5%}
+.p-links a.pdf{text-decoration:none;background:var(--ink);color:var(--paper);border:1.5px solid var(--ink);padding:7px 11px}
+.p-links a.pdf:hover{background:var(--hi);color:var(--on-hi)}
+.plate a.doc{display:block;text-decoration:none;color:var(--ink-2)}
+.plate a.doc img{width:100%;height:auto;display:block;border:1px solid var(--rule);background:#fff}
+.plate a.doc span{display:block;margin-top:6px;font-size:.6875rem}
+.plate a.doc:hover img,.plate a.doc:focus-visible img{outline:3px solid var(--hi)}
+@media (max-width:900px){.plate a.doc img{max-width:220px}}
 .plate{margin:0;border:1px solid var(--ink);background:var(--paper);padding:16px 16px 12px;align-self:start;display:flex;flex-direction:column;gap:12px;min-width:0;position:relative}
 .plate::before,.plate::after{content:"";position:absolute;width:9px;height:9px;border-color:var(--ink);border-style:solid}
 .plate::before{top:-5px;left:-5px;border-width:0 1px 1px 0}
@@ -505,9 +512,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
         <p class="authors">Craig Vishwesh, Tanya Otsetarova (Citadel Securities), <b>Daniel Fu</b> · third author</p>
         <p>Large hedging errors near expiry turn out to be mainly a curvature effect, not jumps. We separate the discrete-hedging floor from whatever jumps add on top of it, using intraday data on S&amp;P&nbsp;500 options that expire the same day. The answer was a null. Instead of digging until something showed up, we wrote down what our test could not detect. The paper also earned an interview offer from MarketWatch.</p>
         <p class="mypart"><span class="lab mono">my part</span>I checked the dataset against its own documentation and two claims failed: the file was less than half its described size, and one daily record belonged to the next day's contract. I helped test the result against 340 simulated markets with no jumps in them, and built the figures and replication code.</p>
-        <div class="p-links"><a href="paper-dmc-what-survives-a-delta-hedge.pdf" target="_blank" rel="noopener">read the paper (pdf) ↗</a><a href="#demo-hedge">try a toy version on sheet 03 ↓</a></div>
+        <div class="p-links"><a class="pdf" href="paper-dmc-what-survives-a-delta-hedge.pdf" target="_blank" rel="noopener">read the paper · pdf ↗</a><a href="#demo-hedge">try a toy version on sheet 03 ↓</a></div>
       </div>
-      <figure class="plate"><span class="plate-n">1,243,969</span><figcaption class="mono">intraday observations of same-day SPX options, 1,379 trading dates</figcaption></figure>
+      <figure class="plate"><a class="doc" href="paper-dmc-what-survives-a-delta-hedge.pdf" target="_blank" rel="noopener" aria-label="Open the full paper as a PDF"><img src="paper-dmc-t.jpg" width="620" height="802" alt="First page of the paper: What Survives a Delta Hedge?"><span class="mono">read the paper · pdf</span></a><span class="plate-n">1,243,969</span><figcaption class="mono">intraday observations of same-day SPX options, 1,379 trading dates</figcaption></figure>
     </article>
 
     <article class="paper" id="r2">
@@ -526,7 +533,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
         <h3>Beyond Lesion Burden: Circulating PINK1/Parkin Distinguishes Vascular Parkinsonism and Predicts Incident Parkinsonism in Cerebral Small-Vessel Disease</h3>
         <p class="authors">Craig V. Vishwesh, Anbu Benzigar, Charlotte DeLong, <b>Daniel Fu</b>, Yinuo Zhang, Kyle Prekeris, Ryan Huang · fourth author and poster presenter · Benzigar, DeLong and Prekeris are from Johnson &amp; Johnson</p>
         <p>Why do some patients with the same amount of small-vessel damage in the brain develop vascular parkinsonism while others don't? We compared blood levels of two mitophagy proteins, PINK1 and Parkin, across 118 patients with vascular parkinsonism, 118 controls matched on lesion burden, and 92 with Parkinson's disease. Adding both markers to clinical and imaging data raised diagnostic AUC from 0.75 to 0.84, and in a separate cohort of 452 patients followed for 30 months, baseline PINK1 predicted who went on to develop parkinsonism (hazard ratio 1.74 per standard deviation). In medicine, the leftover is a patient the test misses.</p>
-        <div class="p-links"><a href="poster-mayo-pink1-parkin.pdf" target="_blank" rel="noopener">view the poster (pdf) ↗</a></div>
+        <div class="p-links"><a class="pdf" href="poster-mayo-pink1-parkin.pdf" target="_blank" rel="noopener">view the poster · pdf ↗</a></div>
       </div>
       <figure class="plate poster"><a href="poster-mayo-pink1-parkin.pdf" target="_blank" rel="noopener" aria-label="Open the full poster as a PDF"><img src="poster-mayo-t.jpg" width="760" height="443" alt="The poster: Beyond Lesion Burden, circulating PINK1 and Parkin in vascular parkinsonism"></a><figcaption class="mono">the poster · auc 0.75 → 0.84 · tap to open</figcaption></figure>
     </article>
@@ -541,9 +548,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
         <p>Sárközy's theorem says that any large enough set of whole numbers contains two that differ by a perfect square, cube or higher power. The open question is how large a set can be while avoiding that. We work in the polynomial version of the problem over a finite field, where Naslund built large avoiding sets out of independent sets in Paley graphs. How big his sets get depends on one number, the independence number r<sub>k,2</sub>(F<sub>q</sub>) of a product graph, which had only been worked out in a few special cases.</p>
         <p>We computed it exactly for cubes over F<sub>13</sub>: it is 21. That gives cube-difference-free sets of size about 13<sup>0.8645n</sup>, the largest exponent this method has produced for cubes, up from Naslund's 5/6 at q&nbsp;=&nbsp;13 and 0.8639 at q&nbsp;=&nbsp;7. We also prove an infinite family where the answer can be worked out by hand, and give verified sets that raise the exponent for fourth powers over F<sub>17</sub> (0.875 → 0.9138) and seventh powers over F<sub>29</sub> (0.9286 → 0.9618).</p>
         <p class="mypart"><span class="lab mono">how we know</span>Two independent exhaustive computations agree: a branch-and-bound search (1.9 million nodes, about two seconds) and a SAT-solver proof that no 22-element set exists. Before trusting either, we had the code recompute five values already in the literature. Every certificate is checked by a standalone script included in the paper, and a Lovász theta bound shows where the method itself runs out: 0.8805 for q&nbsp;=&nbsp;13.</p>
-        <div class="p-links"><a href="preprint-sarkozy-function-fields.pdf" target="_blank" rel="noopener">read the paper (pdf) ↗</a><a href="https://zenodo.org/records/23827027" target="_blank" rel="noopener">read the preprint on Zenodo ↗</a><a href="https://doi.org/10.5281/zenodo.23827027" target="_blank" rel="noopener">doi:10.5281/zenodo.23827027 ↗</a></div>
+        <div class="p-links"><a class="pdf" href="preprint-sarkozy-function-fields.pdf" target="_blank" rel="noopener">read the preprint · pdf ↗</a><a href="https://zenodo.org/records/23827027" target="_blank" rel="noopener">read the preprint on Zenodo ↗</a><a href="https://doi.org/10.5281/zenodo.23827027" target="_blank" rel="noopener">doi:10.5281/zenodo.23827027 ↗</a></div>
       </div>
-      <figure class="plate"><span class="plate-n">r = 21</span><figcaption class="mono">exact value for cubes over F₁₃, which lifts the exponent from 5/6 to 0.8645</figcaption></figure>
+      <figure class="plate"><a class="doc" href="preprint-sarkozy-function-fields.pdf" target="_blank" rel="noopener" aria-label="Open the full preprint as a PDF"><img src="preprint-sarkozy-t.jpg" width="620" height="802" alt="First page of the preprint: Improved Lower Bounds for Sárközy's Theorem in Function Fields"><span class="mono">read the preprint · pdf</span></a><span class="plate-n">r = 21</span><figcaption class="mono">exact value for cubes over F₁₃, which lifts the exponent from 5/6 to 0.8645</figcaption></figure>
     </article>
 
     <h3 class="group-h">under review &amp; submitted</h3>
