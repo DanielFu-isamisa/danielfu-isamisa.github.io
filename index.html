@@ -5,24 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Daniel Fu</title>
 <meta name="description" content="Daniel Fu: research, robotics and art. Applying to study data science.">
-<meta name="theme-color" content="#cfcbc2" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#181816" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#fbf7ee" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#231c16" media="(prefers-color-scheme: dark)">
 <meta property="og:title" content="Daniel Fu">
 <meta property="og:description" content="Research, robotics and art. I look at what's left over.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://danielfu-isamisa.github.io/">
-<meta property="og:image" content="https://danielfu-isamisa.github.io/og-image.jpg">
+<meta property="og:image" content="https://danielfu-isamisa.github.io/og-card.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Daniel Fu: I look at what's left over. Research, robotics and art.">
+<meta property="og:image:alt" content="Daniel Fu, I look at what's left over: a bookshelf of research, robotics and art.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Daniel Fu">
 <meta name="twitter:description" content="Research, robotics and art. I look at what's left over.">
-<meta name="twitter:image" content="https://danielfu-isamisa.github.io/og-image.jpg">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23111111'/%3E%3Crect y='26' width='32' height='6' fill='%23ffd400'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='Arial Narrow,Arial,sans-serif' font-weight='900' font-size='17' fill='%23ffd400'%3EDF%3C/text%3E%3C/svg%3E">
+<meta name="twitter:image" content="https://danielfu-isamisa.github.io/og-card.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='3' fill='%237a2430'/%3E%3Crect y='5' width='32' height='2' fill='%23e8c27a'/%3E%3Crect y='25' width='32' height='2' fill='%23e8c27a'/%3E%3Ctext x='16' y='21' text-anchor='middle' font-family='Georgia,serif' font-style='italic' font-weight='700' font-size='14' fill='%23e8c27a'%3EDF%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Barlow+Condensed:wght@500;600;700&family=Big+Shoulders+Display:wght@700;800;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&family=Literata:ital,opsz,wght@0,7..72,400..700;1,7..72,400..700&family=Libre+Franklin:wght@400..800&display=swap">
 <style>
 /* layout: a numbered drawing set. each section is a sheet on graph paper with a sheet number and title block;
    a sticky counter tracks the sheet; research is a register with key-figure plates; art is a contact sheet of slide mounts */
@@ -409,71 +409,228 @@ svg .lbl{fill:var(--ink)}
 footer{padding-block:28px 40px}
 footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--ink-2)}
 
-/* ===== workshop theme ===== */
-.mono{letter-spacing:.03em}
-.nav a,.counter,.motion,.eyebrow,.sheet-no,.sheet-meta,.btn,.tbtn,.titleblock,.band-cap,.venue,.p-no,.cap,.seg button,.it-meta,.st-meta,.b-meta,.hs-awards .mono,.copied,.lab,.legend{text-transform:uppercase;letter-spacing:.06em}
-.name,.sheet-head h2,.card-h h3,.demo-h h3,.inv-h h3,.out-h h3,.lb-top h3,.log-h h3,.hs-awards b,.feat-n b,.beyond .big,.out-n b,.plate-n,.ap b,.email,.it-meta b,.readouts b{font-family:var(--f-disp);font-weight:900;letter-spacing:.005em}
-.name,.sheet-head h2,.card-h h3,.demo-h h3,.inv-h h3,.out-h h3,.lb-top h3,.log-h h3,.hs-awards b,.mark{text-transform:uppercase}
-.p-body h3,.book h3{font-family:var(--f-mono);font-weight:700;text-transform:uppercase;letter-spacing:.01em;font-size:clamp(1.3rem,2.3vw,1.65rem);line-height:1.05}
-.book h3 i{font-style:normal}
+/* ===== library theme: bookshelf hero, open-book about, chapter heads ===== */
+:root{
+  --paper:#f4eee1; --plate:#fbf7ee; --panel:#efe7d6; --ink:#2a1f18; --ink-2:#6e5f4d;
+  --rule:rgba(42,31,24,.17); --dot:transparent; --hi:#e8c27a; --on-hi:#2a1f18;
+  --cloth:#7a2430; --accent:#7a2430; --on-cloth:#f6efdc; --gilt:#e8c27a; --wall:#22313b;
+  --f-disp:"Fraunces",Georgia,"Times New Roman",serif;
+  --f-body:"Literata",Georgia,"Times New Roman",serif;
+  --f-mono:"Libre Franklin","Helvetica Neue",Arial,sans-serif;
+  --lift:0 1px 0 var(--rule),0 18px 36px -24px rgba(60,35,15,.45);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#1a1511; --plate:#231c16; --panel:#2a221b; --ink:#efe6d4; --ink-2:#b8a78c;
+    --rule:rgba(239,230,212,.15); --hi:#d9b25e; --on-hi:#1a1511; --cloth:#8e2c38; --accent:#d9b25e; --wall:#131b21;
+    --lift:0 1px 0 var(--rule),0 18px 36px -24px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#1a1511; --plate:#231c16; --panel:#2a221b; --ink:#efe6d4; --ink-2:#b8a78c;
+  --rule:rgba(239,230,212,.15); --hi:#d9b25e; --on-hi:#1a1511; --cloth:#8e2c38; --accent:#d9b25e; --wall:#131b21;
+  --lift:0 1px 0 var(--rule),0 18px 36px -24px rgba(0,0,0,.7);
+}
+body{font-size:1.0625rem;line-height:1.62;background-image:none}
+.mono{font-size:.8125rem;letter-spacing:.03em}
+.nav a,.counter,.motion,.eyebrow,.sheet-no,.btn,.tbtn,.band-cap,.venue,.p-no,.cap,.seg button,.it-meta,.st-meta,.b-meta,.hs-awards .mono,.copied,.lab,.legend,.group-h,.strip-h,.feat h3,.beyond h3,.index h3,.card-h .mono,.demo-h .mono,.inv-h .mono,.rec th,.readouts span,.out-n span,.feat-n span,.ap span{text-transform:uppercase;letter-spacing:.07em}
+.name,.sheet-head h2,.card-h h3,.demo-h h3,.inv-h h3,.out-h h3,.lb-top h3,.log-h h3,.hs-awards b,.feat-n b,.beyond .big,.out-n b,.plate-n,.ap b,.email,.it-meta b,.readouts b,.p-body h3,.book h3,.rec td b{font-family:var(--f-disp);font-weight:650;letter-spacing:-.012em}
+.name,.sheet-head h2{text-transform:capitalize}
+.tagline::first-letter,.demo-h h3::first-letter,.inv-h h3::first-letter,.out-h h3::first-letter,.log-h h3::first-letter{text-transform:uppercase}
+.book h3 i{font-style:italic}
+:focus-visible{outline-color:var(--accent)}
 
-/* header */
-.bar{border-bottom:2px solid var(--ink)}
-.mark{background:#111;color:var(--hi);padding:5px 9px 4px;font-weight:900;font-size:1.45rem;letter-spacing:.02em;outline:1px solid rgba(255,255,255,.08)}
-.mark span{background:none;color:var(--hi);padding:0}
-.nav a{font-weight:600;font-size:.9375rem}
-.nav a:hover,.nav a[aria-current="true"]{text-decoration:none;color:var(--on-hi);background:var(--hi);padding:6px 6px;margin:0 -6px}
-.motion{border-width:2px}
-
-/* hero: black band under hazard stripe */
-.hero{background:#111;color:#f2efe8;border-top:14px solid transparent;border-image:repeating-linear-gradient(-45deg,#ffd400 0 14px,#111 14px 28px) 14;
-  --paper:#111;--plate:#1b1b1a;--panel:#1e1e1c;--ink:#f2efe8;--ink-2:#bab5aa;--rule:rgba(242,239,232,.22)}
-.hero .eyebrow{color:var(--hi);font-weight:600}
-.name{font-size:clamp(4.6rem,16vw,12.5rem);line-height:.8}
-.tagline{font-family:var(--f-mono);font-weight:700;text-transform:uppercase;font-size:clamp(1.5rem,3.4vw,2.4rem);letter-spacing:.01em}
-.hero .lede{color:#d9d5cc}
-.btn{font-weight:700;font-size:.9375rem;border-width:2px}
-.hero .btn{background:var(--hi);color:#111;border-color:var(--hi)}
-.hero .btn.ghost{background:transparent;color:var(--hi);border-color:var(--hi)}
-.hero .btn:hover{background:#f2efe8;color:#111;border-color:#f2efe8}
-.ticker{border-top:2px solid var(--hi)}
-
-/* section heads: hazard stripe + yellow sheet number */
-.sheet{border-bottom:0}
-.sheet-head{border-top:0;padding-top:0}
-.sheet-head::before{content:"";grid-column:1/-1;height:9px;margin-bottom:14px;background:repeating-linear-gradient(-45deg,var(--hi) 0 10px,var(--ink) 10px 20px)}
-.sheet-no{background:var(--hi);color:var(--on-hi);font-weight:700;padding:5px 9px;align-self:end;margin-bottom:.35em}
-.sheet-head h2{font-size:clamp(2.9rem,7.5vw,5.2rem);line-height:.85}
-.group-h{font-weight:700;color:var(--ink);border-bottom-width:2px}
-
-/* plates, cards, panels: heavier frames and rivets */
-.card,.plate,.demo,.outreach,.feat,.hs-awards,.index,.seg,.tbtn,.titleblock td{border-width:2px}
-.plate{padding-top:26px}
-.plate::before,.plate::after{width:10px;height:10px;border:0;border-radius:50%;background:#8b877e;box-shadow:inset 0 0 0 2px #5d5a53;top:8px;left:8px;bottom:auto;right:auto}
-.plate::after{left:auto;right:8px}
-.card{position:relative}
-.card-h{background:#111;color:#f2efe8;border-bottom-color:#111}
-.card-h h3{font-size:1.7rem;line-height:1}
-.card-h .mono{color:var(--hi)}
-.demo-h{background:#111;color:#f2efe8}
-.demo-h .mono{color:var(--hi)}
-.demo-h h3{font-size:2rem}
-.status{border-width:2px;font-weight:700}
-.p-links a.pdf{background:#111;color:var(--hi);border-color:#111;text-transform:uppercase;letter-spacing:.06em;font-weight:700}
-.p-links a.pdf:hover{background:var(--hi);color:#111}
-.plate-n{font-size:clamp(1.9rem,3.2vw,2.5rem)}
-.hs-awards b{font-size:clamp(1.6rem,3vw,2.2rem);line-height:.95}
-.inv-h h3,.out-h h3,.log-h h3{font-size:clamp(1.8rem,3.4vw,2.4rem);line-height:.95}
-.it-meta b{font-size:3.2rem}
-.feat-n b{font-size:clamp(2.8rem,6vw,4rem)}
-.beyond .big{font-size:3rem}
-.email{font-size:clamp(2rem,6.5vw,4.4rem);font-weight:800}
-.lb-top h3{font-size:1.8rem}
-@media (max-width:640px){.cap{flex-direction:column;gap:2px}.cap em{white-space:normal}}
+/* header: a shelf label */
+.bar{background:var(--plate);border-bottom:3px double var(--rule)}
+.mark{font-family:var(--f-disp);font-style:italic;font-weight:700;font-size:1.15rem;text-transform:uppercase;letter-spacing:.02em;background:var(--cloth);color:var(--gilt);padding:6px 10px 6px 12px;border-radius:2px 5px 5px 2px;box-shadow:inset 3px 0 0 rgba(0,0,0,.28),inset 0 3px 0 -1px var(--gilt),inset 0 -3px 0 -1px var(--gilt)}
+.mark span{background:none;color:inherit;padding:0}
+.nav{gap:4px 16px}
+.nav a{font-weight:600;font-size:.75rem;letter-spacing:.09em}
+.nav a:hover,.nav a[aria-current="true"]{color:var(--accent);text-decoration:underline;text-decoration-color:var(--hi);text-decoration-thickness:2px;text-underline-offset:7px}
+.motion{border-radius:999px;font-size:.7rem;padding:5px 11px}
 @media (max-width:1520px){.counter{display:none}}
-.nav{gap:4px 14px}
-.nav a{font-size:.875rem;letter-spacing:.045em}
-.bar-in{gap:16px}
+
+/* buttons, chips, links */
+.btn{font-weight:600;font-size:.75rem;padding:11px 16px;border-radius:2px;background:var(--cloth);border-color:var(--cloth);color:var(--on-cloth)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink-2)}
+.btn:hover{background:var(--hi);color:var(--on-hi);border-color:var(--hi)}
+.tbtn{border-width:1px;border-radius:2px;font-size:.75rem;text-transform:uppercase;letter-spacing:.07em}
+.status{border-width:1px;border-radius:999px;font-family:var(--f-mono);font-weight:700;font-size:.6875rem;padding:3px 10px}
+.s-acc{background:var(--hi);border-color:var(--hi);color:var(--on-hi)}
+.p-links a.pdf{background:var(--cloth);border-color:var(--cloth);color:var(--on-cloth);border-radius:2px;text-transform:uppercase;letter-spacing:.07em;font-weight:600;font-size:.75rem}
+.p-links a.pdf:hover{background:var(--hi);border-color:var(--hi);color:var(--on-hi)}
+.mypart{border-left-color:var(--hi)}
+.b-tag{border-radius:999px;border-color:var(--ink-2);padding:2px 9px;font-size:.6875rem}
+
+/* hero: a wall with a bookshelf */
+.hero{background:var(--wall) repeating-linear-gradient(90deg,rgba(255,255,255,.018) 0 2px,transparent 2px 22px);color:#f3ecdc;padding-bottom:0;
+  --paper:var(--wall);--plate:rgba(0,0,0,.18);--panel:rgba(0,0,0,.22);--ink:#f3ecdc;--ink-2:#bcc3c4;--rule:rgba(243,236,220,.16)}
+.hero-grid{grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:28px 44px}
+.hero .eyebrow{color:var(--gilt);font-weight:600;font-size:.75rem}
+.name{font-size:clamp(3.3rem,10.5vw,6.6rem);line-height:.92;font-weight:800;letter-spacing:-.03em;margin-top:2px}
+.tagline{font-family:var(--f-disp);font-style:italic;font-weight:400;font-size:clamp(1.45rem,3vw,2.15rem);margin-top:14px;color:#f3ecdc}
+.tagline mark{background:linear-gradient(transparent 64%,rgba(232,194,122,.38) 64%,rgba(232,194,122,.38) 92%,transparent 92%);color:var(--gilt);padding:0 .06em}
+.hero .lede{color:#d8d3c7;font-size:1.1875rem;max-width:44ch}
+.hero .btn{background:var(--gilt);border-color:var(--gilt);color:#2a1f18}
+.hero .btn.ghost{background:transparent;color:#f3ecdc;border-color:rgba(243,236,220,.5)}
+.hero .btn:hover{background:#f3ecdc;border-color:#f3ecdc;color:#2a1f18}
+.cta{padding-bottom:30px}
+.shelf{display:flex;align-items:flex-end;gap:4px;padding:26px 30px 0 4px;overflow:hidden;align-self:end}
+.spine{flex:none;position:relative;width:var(--w);height:var(--h);background:var(--c);color:#f6efdc;text-decoration:none;border-radius:3px 3px 0 0;
+  display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:12px 0 14px;
+  box-shadow:inset -6px 0 8px rgba(0,0,0,.24),inset 5px 0 6px rgba(255,255,255,.13);transition:transform .28s cubic-bezier(.2,.8,.3,1.2)}
+.spine::before,.spine::after{content:"";position:absolute;left:0;right:0;height:2px;background:rgba(232,194,122,.85);box-shadow:0 4px 0 rgba(232,194,122,.45)}
+.spine::before{top:30px}.spine::after{bottom:36px}
+.spine small{font:700 .625rem var(--f-mono);letter-spacing:.06em;color:var(--gilt)}
+.spine b{writing-mode:vertical-rl;transform:rotate(180deg);font:600 .9375rem var(--f-disp);letter-spacing:.09em;text-transform:uppercase;white-space:nowrap}
+.spine i{width:12px;height:12px;border-radius:50%;border:1.5px solid rgba(232,194,122,.8)}
+.spine.lt{color:#2a1f18}.spine.lt small{color:#6b4a12}.spine.lt i{border-color:#6b4a12}
+.spine:hover,.spine:focus-visible{transform:translateY(-14px)}
+.spine:focus-visible{outline:2px solid var(--gilt);outline-offset:2px;box-shadow:none}
+.spine.lean{transform-origin:100% 100%;transform:rotate(9deg);margin-left:6px}
+.spine.lean:hover,.spine.lean:focus-visible{transform:rotate(9deg) translateY(-14px)}
+[data-motion="on"] .spine{animation:shelve .75s cubic-bezier(.2,.9,.25,1.12) var(--d) backwards}
+[data-motion="on"] .spine.lean{animation-name:shelveLean}
+@keyframes shelve{from{transform:translateY(105%)}}
+@keyframes shelveLean{from{transform:translateY(105%) rotate(9deg)}}
+.plank{height:20px;border-radius:2px;background:linear-gradient(#9a6a3f 0 3px,#7a4f2c 3px,#5e3b1f);box-shadow:0 14px 20px -8px rgba(0,0,0,.55)}
+.ticker{margin-top:30px;border-top:1px solid rgba(232,194,122,.35);border-bottom:0}
+.ticker-track b{color:var(--gilt);font-weight:700}
+@media (max-width:1020px){
+  .hero-grid{grid-template-columns:minmax(0,1fr)}
+  .cta{padding-bottom:6px}
+  .shelf{overflow-x:auto;overflow-y:hidden;scrollbar-width:none;padding:22px 26px 0 0;margin-right:-16px}
+  .shelf::-webkit-scrollbar{display:none}
+}
+@media (max-width:640px){
+  .spine{width:calc(var(--w) * .86);height:calc(var(--h) * .74)}
+  .spine b{font-size:.8125rem;letter-spacing:.07em}
+  .spine::before{top:26px}.spine::after{bottom:30px}
+}
+
+/* chapter heads */
+.sheet{border-bottom:1px solid var(--rule);overflow-x:clip}
+.sheet:not(.hero):not(:last-child)::after{content:"❦";position:absolute;left:50%;bottom:0;transform:translate(-50%,52%);background:var(--paper);color:var(--ink-2);padding:0 14px;font-size:1.25rem;line-height:1}
+.sheet-head{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"no no" "h meta";border-top:0;padding:0 0 16px;border-bottom:1px solid var(--rule);row-gap:6px;transform-origin:0 50%;transition:transform .9s cubic-bezier(.2,.75,.2,1),opacity .7s ease}
+.sheet-head.pre{opacity:0;transform:perspective(1400px) rotateY(-62deg)}
+.sheet-no{grid-area:no;font-weight:700;font-size:.75rem;letter-spacing:.2em;color:var(--accent);padding:0;display:flex;align-items:center;gap:12px}
+.sheet-no::before{content:"Chapter"}
+.sheet-no::after{content:"";width:56px;height:1px;background:currentColor;opacity:.6}
+.sheet-head h2{grid-area:h;font-weight:700;font-size:clamp(2.6rem,6.6vw,4.6rem);line-height:.98;letter-spacing:-.025em}
+.sheet-meta{grid-area:meta;font-family:var(--f-body);font-style:italic;font-size:.9375rem;letter-spacing:0;text-transform:none;max-width:34ch}
+@media (max-width:640px){.sheet-head{grid-template-columns:minmax(0,1fr);grid-template-areas:"no" "h" "meta"}}
+.lead{font-family:var(--f-disp);font-weight:400;font-size:1.375rem;line-height:1.42;max-width:40ch}
+.group-h{color:var(--accent);font-weight:700;font-size:.75rem;letter-spacing:.16em;border-bottom:1px solid var(--rule)}
+
+/* about: an open book */
+#about .about{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;position:relative;background-color:var(--plate);border-radius:3px 7px 7px 3px;perspective:2400px;
+  box-shadow:0 1px 0 var(--rule),0 3px 0 -1px var(--plate),0 4px 0 -1px var(--rule),0 6px 0 -2px var(--plate),0 7px 0 -2px var(--rule),0 34px 60px -30px rgba(60,35,15,.5);
+  transition:background-color .5s ease .45s,box-shadow .5s ease .45s}
+#about .about::after{content:"";position:absolute;top:0;bottom:0;left:50%;width:76px;transform:translateX(-50%);pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(60,40,20,.09) 38%,rgba(60,40,20,.22) 50%,rgba(60,40,20,.09) 62%,transparent);transition:opacity .5s ease .45s}
+#about .prose{max-width:none;padding:clamp(26px,4vw,50px) clamp(22px,4vw,54px) 64px;position:relative;transition:opacity .6s ease .55s}
+#about .prose::before,#about .index h3::before{display:flex;justify-content:space-between;font:italic .9375rem var(--f-body);color:var(--ink-2);border-bottom:1px solid var(--rule);padding-bottom:6px;margin-bottom:22px;text-transform:none;letter-spacing:0;text-align:left}
+#about .prose::before{content:"Daniel Fu"}
+#about .prose p:first-child{font-size:1.1875rem}
+#about .prose p:first-child::first-letter{float:left;font-family:var(--f-disp);font-weight:700;font-size:4.4em;line-height:.8;padding:6px 10px 0 0;color:var(--accent)}
+#about .prose::after,#about .index::after{position:absolute;bottom:20px;left:0;right:0;text-align:center;font:italic .9375rem var(--f-body);color:var(--ink-2)}
+#about .prose::after{content:"1"}
+#about .index::after{content:"2"}
+#about .index{border:0;background:transparent;padding:clamp(26px,4vw,50px) clamp(22px,4vw,48px) 64px;position:relative;align-self:stretch}
+#about .index h3{border:0;padding:0;margin:0 0 14px;font:700 2rem/1.1 var(--f-disp);text-transform:none;letter-spacing:-.01em;text-align:center;color:var(--ink)}
+#about .index h3::before{content:"Selected Works";font-weight:400}
+#about .index li a{grid-template-columns:3.4em 1fr auto;padding:10px 2px;border-bottom:1px dotted var(--ink-2);font:1.0625rem var(--f-body);letter-spacing:0;text-transform:capitalize}
+#about .index li a span{font-family:var(--f-disp);font-weight:700;color:var(--accent)}
+#about .index li a em{font:italic .875rem var(--f-body);color:var(--ink-2);align-self:center;text-transform:none}
+#about .index li a:hover{background:none;color:var(--accent)}
+#about .index li a:hover em{color:var(--ink-2)}
+#about .about.closed{background-color:transparent;box-shadow:none}
+#about .about.closed::after,#about .about.closed .prose{opacity:0}
+.about .cover{display:none}
+.about.closed .cover,.about.opening .cover{display:block;position:absolute;top:-8px;bottom:-8px;right:-5px;width:calc(50% + 5px);z-index:5;transform-origin:0 50%;transform-style:preserve-3d}
+.about.opening .cover{transform:rotateY(-178deg);opacity:0;transition:transform 1.5s cubic-bezier(.6,.05,.25,1),opacity .45s ease 1.25s}
+.cv-f,.cv-b{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:2px 8px 8px 2px}
+.cv-f{background:#6b1d24 repeating-linear-gradient(45deg,rgba(255,255,255,.028) 0 2px,transparent 2px 5px);color:var(--gilt);
+  box-shadow:inset 0 0 0 12px #5d1820,inset 0 0 0 14px #c9a24a,inset 0 0 0 22px #5d1820,inset 0 0 0 23px #c9a24a,inset 10px 0 18px rgba(0,0,0,.35),0 24px 40px -18px rgba(0,0,0,.6);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center;padding:40px}
+.cv-f b{font:700 clamp(2.2rem,4.4vw,3.4rem)/1 var(--f-disp);letter-spacing:.05em;text-transform:uppercase}
+.cv-s{font:italic 1.25rem var(--f-disp)}
+.cv-o{font-size:1.6rem}
+.cv-b{transform:rotateY(180deg);background:#efe5cf radial-gradient(circle at 30% 30%,rgba(122,36,48,.08),transparent 60%);box-shadow:inset -12px 0 24px rgba(0,0,0,.12)}
+@media (max-width:820px){
+  #about .about{grid-template-columns:minmax(0,1fr)}
+  #about .about::after{display:none}
+  #about .index{border-top:1px solid var(--rule)}
+  .about.closed .cover,.about.opening .cover{width:calc(100% + 10px);right:-5px}
+  .about.opening .cover{transform:rotateY(-105deg)}
+}
+
+/* research */
+.paper{border-bottom-color:var(--rule)}
+.p-body h3{font-size:clamp(1.2rem,2vw,1.42rem);line-height:1.22;font-weight:620}
+.authors b{font-weight:700}
+.plate{border:1px solid var(--rule);background:var(--plate);padding:18px 18px 14px;box-shadow:inset 0 0 0 6px var(--plate),inset 0 0 0 7px var(--rule),var(--lift)}
+.plate::before,.plate::after{display:none}
+.plate-n{color:var(--accent);font-weight:700;font-size:clamp(1.7rem,2.8vw,2.2rem)}
+.plate figcaption{font-style:italic;font-family:var(--f-body);font-size:.875rem;text-transform:none;letter-spacing:0}
+.plate.poster{padding:12px}
+.plate a.doc:hover img,.plate.poster a:hover img{outline-color:var(--hi)}
+
+/* cards, panels: cloth-bound */
+.card,.demo,.outreach,.feat,.hs-awards{border:1px solid var(--rule);background:var(--plate);box-shadow:var(--lift);border-radius:2px}
+.card{position:relative}
+.card-h{background:var(--cloth);color:var(--on-cloth);border-bottom:2px solid var(--gilt);border-radius:2px 2px 0 0}
+.card-h h3{font-size:1.55rem;line-height:1.05}
+.card-h .mono{color:var(--gilt)}
+.demo-h{background:var(--wall);color:#f3ecdc;border-bottom:2px solid var(--gilt)}
+.demo-h .mono{color:var(--gilt)}
+.demo-h h3{font-size:1.75rem;font-style:italic;font-weight:500}
+.demo-fig{border-right-color:var(--rule)}
+.out-h{border-right-color:var(--rule)}
+.out-h h3,.inv-h h3,.log-h h3{font-size:clamp(1.55rem,3vw,2.1rem);line-height:1.05}
+.out-n b{color:var(--accent)}
+.out-n div:first-child b{background:linear-gradient(transparent 62%,var(--hi) 62%);color:inherit}
+.hs-awards b{font-size:clamp(1.4rem,2.6vw,1.9rem);line-height:1.02}
+.hs-awards div:nth-child(2) b{background:linear-gradient(transparent 60%,var(--hi) 60%);color:inherit;padding:0 .08em}
+.feat-n b,.beyond .big,.ap b,.it-meta b{color:var(--accent);font-weight:700}
+.feat-n b{font-size:clamp(2.6rem,5.6vw,3.6rem)}
+.beyond{border-top:1px solid var(--rule)}
+.beyond .big{font-size:2.6rem}
+.it-meta b{font-size:2.8rem}
+.iters,.log{border-top:1px solid var(--rule)}
+.strip button,.shot .ph,.reel video,.clip video{border-color:var(--rule)}
+.strip button:hover{box-shadow:0 0 0 3px var(--hi)}
+.cov-bar{border-color:var(--ink-2)}
+.cov-bar i{background:var(--cloth)}
+.cov-bar.boot i{background:var(--hi)}
+
+/* reading: each note gets a cloth spine */
+.books{border-top:1px solid var(--rule)}
+.book{border-left:9px solid var(--bc,#7a2430);padding-left:22px;margin-top:14px;background:linear-gradient(90deg,rgba(0,0,0,.06),transparent 26px);transition:border-left-width .25s,padding-left .25s}
+.book:hover{border-left-width:14px;padding-left:17px}
+.book:nth-child(8n+2){--bc:#1f4e5f}.book:nth-child(8n+3){--bc:#c9952b}.book:nth-child(8n+4){--bc:#3d5a3a}
+.book:nth-child(8n+5){--bc:#b5522f}.book:nth-child(8n+6){--bc:#5b3a6b}.book:nth-child(8n+7){--bc:#6b6a2e}.book:nth-child(8n+8){--bc:#4a3426}
+.book h3{font-size:clamp(1.3rem,2.2vw,1.6rem);font-weight:600}
+
+/* art */
+.ap div{border:1px solid var(--rule);background:var(--plate)}
+.seg{border:1px solid var(--ink-2);border-radius:2px}
+.seg button[aria-pressed="true"]{background:var(--cloth);color:var(--on-cloth)}
+.mount{background:var(--plate);border:1px solid var(--rule);box-shadow:inset 0 0 0 5px var(--plate),inset 0 0 0 6px var(--rule)}
+.piece:hover .mount,.piece:focus-visible .mount{background:var(--plate);border-color:var(--hi);box-shadow:inset 0 0 0 5px var(--plate),inset 0 0 0 6px var(--hi),var(--lift)}
+.inv-h{border-top-color:var(--rule)}
+@media (max-width:640px){.cap{flex-direction:column;gap:2px}.cap em{white-space:normal}}
+
+/* record, contact, footer, lightbox */
+.rec th{border-bottom-color:var(--ink-2)}
+.rec td b{font-weight:600}
+.email{font-style:italic;font-weight:500;font-size:clamp(1.9rem,6vw,4rem);letter-spacing:-.02em}
+footer .wrap{justify-content:center;text-align:center;font-style:italic;text-transform:none;font-family:var(--f-body);gap:4px 18px}
+.lb-top{border-bottom-color:var(--rule)}
+.lb-top h3{font-size:1.6rem}
+.lb-thumbs button[aria-current="true"]{border-color:var(--cloth);background:var(--hi)}
+.lb-nav{border:1px solid var(--rule);border-radius:50%}
+.lb-nav:hover{background:var(--hi);color:var(--on-hi)}
 </style>
 </head>
 <body>
@@ -495,7 +652,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
       <a href="#record">record</a>
       <a href="#contact">contact</a>
     </nav>
-    <span class="counter" aria-live="off">sheet <b id="sheetNo">00</b> / 10 · <span id="sheetName">index</span></span>
+    <span class="counter" aria-live="off">chapter <b id="sheetNo">00</b> / 10 · <span id="sheetName">index</span></span>
     <button class="motion" id="motionBtn" type="button" aria-pressed="true">motion: on</button>
   </div>
 </header>
@@ -515,15 +672,20 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
         <a class="btn ghost" href="#play">try a demo ↓</a>
       </div>
     </div>
-    <table class="titleblock" aria-label="Title block">
-      <tr><td colspan="2"><span>project</span>daniel fu · selected work</td></tr>
-      <tr><td><span>drawn by</span>d. fu</td><td><span>checked by</span>—</td></tr>
-      <tr><td><span>scale</span>1 : 1</td><td><span>sheets</span>00–10</td></tr>
-      <tr><td colspan="2"><span>revision</span>31 oct 2026</td></tr>
-    </table>
+    <nav class="shelf" aria-label="Chapters">
+      <a class="spine" href="#about" style="--c:#7a2430;--h:236px;--w:44px;--d:0.10s"><small>I</small><b>about</b><i></i></a>
+      <a class="spine" href="#research" style="--c:#1f4e5f;--h:258px;--w:48px;--d:0.17s"><small>II</small><b>research</b><i></i></a>
+      <a class="spine lt" href="#play" style="--c:#c9952b;--h:214px;--w:40px;--d:0.24s"><small>III</small><b>play</b><i></i></a>
+      <a class="spine" href="#built" style="--c:#3d5a3a;--h:230px;--w:42px;--d:0.31s"><small>IV</small><b>built</b><i></i></a>
+      <a class="spine" href="#highstakes" style="--c:#b5522f;--h:266px;--w:50px;--d:0.38s"><small>V</small><b>high stakes</b><i></i></a>
+      <a class="spine" href="#art" style="--c:#5b3a6b;--h:222px;--w:42px;--d:0.45s"><small>VI</small><b>art</b><i></i></a>
+      <a class="spine lt" href="#reading" style="--c:#d9cdb2;--h:248px;--w:46px;--d:0.52s"><small>VII</small><b>reading</b><i></i></a>
+      <a class="spine" href="#beyond" style="--c:#4a3426;--h:226px;--w:44px;--d:0.59s"><small>VIII</small><b>beyond</b><i></i></a>
+      <a class="spine" href="#record" style="--c:#6b6a2e;--h:240px;--w:42px;--d:0.66s"><small>IX</small><b>record</b><i></i></a>
+      <a class="spine lean" href="#contact" style="--c:#9a3b4c;--h:218px;--w:40px;--d:0.73s"><small>X</small><b>contact</b><i></i></a>
+    </nav>
   </div>
-  <div class="band" aria-hidden="true"><div class="band-track" id="bandTrack"></div></div>
-  <div class="wrap band-cap mono"><span>fig. 0 · a column that should have been zero</span><span>illustrative values</span></div>
+  <div class="wrap"><div class="plank" aria-hidden="true"></div></div>
   <div class="ticker" aria-label="Highlights">
     <div class="ticker-track" id="tickerTrack">
       <span><b>6</b> papers &amp; posters</span>
@@ -542,26 +704,27 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
 <!-- 01 -->
 <section class="sheet" id="about" data-sheet="01" data-name="about">
   <div class="wrap">
-    <div class="sheet-head"><span class="sheet-no">01</span><h2>about</h2><span class="sheet-meta">applying to study data science</span></div>
+    <div class="sheet-head"><span class="sheet-no">I</span><h2>about</h2><span class="sheet-meta">applying to study data science</span></div>
     <div class="about">
+      <div class="cover" aria-hidden="true"><div class="cv-f"><span class="cv-o">❦</span><b>Daniel Fu</b><span class="cv-s">Selected Works</span><span class="cv-o">❦</span></div><div class="cv-b"></div></div>
       <div class="prose">
         <p>On paper my activities look scattered. Most of them turned out to be one job on different data: finding what a model missed.</p>
         <p>In finance it was the profit or loss left after a hedge that, on paper, cancels the risk. In medicine it is the patient a blood test misses. In statistics it is the outliers someone trimmed and then forgot they had trimmed. In robotics the numbers talk back fastest, and a robot that drifts left tells you exactly what your code assumed.</p>
         <p>The habit started at a drawing table. When you draw from memory, you draw your idea of an eye. My drawings only got better when I sat in front of a real person and drew the shadow under the lower lid, the one my idea of an eye had no room for.</p>
         <p>Outside research I coach robotics, teach skiing at Blue Mountain, box heavyweight, lift, and read two or three books a week, mostly Baldwin, Camus and Woolf.</p>
       </div>
-      <nav class="index" aria-label="Sheet index">
-        <h3>sheet index</h3>
+      <nav class="index" aria-label="Contents">
+        <h3>Contents</h3>
         <ol>
-          <li><a href="#research"><span>02</span>research<em>6 entries</em></a></li>
-          <li><a href="#play"><span>03</span>play<em>2 demos</em></a></li>
-          <li><a href="#built"><span>04</span>built<em>pillo, kaggle, scoop ai</em></a></li>
-          <li><a href="#highstakes"><span>05</span>high stakes<em>3 robots, 1 season</em></a></li>
-          <li><a href="#art"><span>06</span>art<em>14 pieces</em></a></li>
-          <li><a href="#reading"><span>07</span>reading<em>8 books</em></a></li>
-          <li><a href="#beyond"><span>08</span>beyond<em>teaching, ev, stage</em></a></li>
-          <li><a href="#record"><span>09</span>record<em>honors</em></a></li>
-          <li><a href="#contact"><span>10</span>contact<em>email</em></a></li>
+          <li><a href="#research"><span>II</span>research<em>6 entries</em></a></li>
+          <li><a href="#play"><span>III</span>play<em>2 demos</em></a></li>
+          <li><a href="#built"><span>IV</span>built<em>pillo, kaggle, scoop ai</em></a></li>
+          <li><a href="#highstakes"><span>V</span>high stakes<em>3 robots, 1 season</em></a></li>
+          <li><a href="#art"><span>VI</span>art<em>14 pieces</em></a></li>
+          <li><a href="#reading"><span>VII</span>reading<em>8 books</em></a></li>
+          <li><a href="#beyond"><span>VIII</span>beyond<em>teaching, ev, stage</em></a></li>
+          <li><a href="#record"><span>IX</span>record<em>honors</em></a></li>
+          <li><a href="#contact"><span>X</span>contact<em>email</em></a></li>
         </ol>
       </nav>
     </div>
@@ -571,7 +734,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
 <!-- 02 -->
 <section class="sheet" id="research" data-sheet="02" data-name="research">
   <div class="wrap">
-    <div class="sheet-head"><span class="sheet-no">02</span><h2>research</h2><span class="sheet-meta">6 papers &amp; posters · status as of 31 oct 2026</span></div>
+    <div class="sheet-head"><span class="sheet-no">II</span><h2>research</h2><span class="sheet-meta">6 papers &amp; posters · status as of 31 oct 2026</span></div>
     <p class="lead" style="margin-bottom:28px">None of these is a journal publication yet, so each entry says exactly where it stands.</p>
     <div class="legend mono">
       <span><i class="status s-acc">accepted</i> accepted or presented</span>
@@ -588,7 +751,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
         <p class="authors">Craig Vishwesh, Tanya Otsetarova (Citadel Securities), <b>Daniel Fu</b> · third author</p>
         <p>Large hedging errors near expiry turn out to be mainly a curvature effect, not jumps. We separate the discrete-hedging floor from whatever jumps add on top of it, using intraday data on S&amp;P&nbsp;500 options that expire the same day. The answer was a null. Instead of digging until something showed up, we wrote down what our test could not detect. The paper also earned an interview offer from MarketWatch.</p>
         <p class="mypart"><span class="lab mono">my part</span>I checked the dataset against its own documentation and two claims failed: the file was less than half its described size, and one daily record belonged to the next day's contract. I helped test the result against 340 simulated markets with no jumps in them, and built the figures and replication code.</p>
-        <div class="p-links"><a class="pdf" href="paper-dmc-what-survives-a-delta-hedge.pdf" target="_blank" rel="noopener">read the paper · pdf ↗</a><a href="#demo-hedge">try a toy version on sheet 03 ↓</a></div>
+        <div class="p-links"><a class="pdf" href="paper-dmc-what-survives-a-delta-hedge.pdf" target="_blank" rel="noopener">read the paper · pdf ↗</a><a href="#demo-hedge">try a toy version in chapter III ↓</a></div>
       </div>
       <figure class="plate"><a class="doc" href="paper-dmc-what-survives-a-delta-hedge.pdf" target="_blank" rel="noopener" aria-label="Open the full paper as a PDF"><img src="paper-dmc-t.jpg" width="620" height="802" alt="First page of the paper: What Survives a Delta Hedge?"><span class="mono">read the paper · pdf</span></a><span class="plate-n">1,243,969</span><figcaption class="mono">intraday observations of same-day SPX options, 1,379 trading dates</figcaption></figure>
     </article>
@@ -647,7 +810,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
         <h3>Valid Inference After Data-Dependent Winsorization</h3>
         <p class="authors"><b>Daniel Fu</b> · co-author, with eight collaborators from Monroe Township High School, New Jersey</p>
         <p>Researchers often clip outliers at cutoffs estimated from their own sample, then report standard errors as if those cutoffs had been fixed in advance. We derive a correction and a re-winsorization bootstrap that accounts for the estimated cutoffs.</p>
-        <div class="p-links"><a href="#demo-winsor">try a toy version on sheet 03 ↓</a></div>
+        <div class="p-links"><a href="#demo-winsor">try a toy version in chapter III ↓</a></div>
       </div>
       <figure class="plate"><span class="plate-n eq">clip(x, q̂<sub>γ</sub>, q̂<sub>1−γ</sub>)</span><figcaption class="mono">the cutoffs are estimates too</figcaption></figure>
     </article>
@@ -659,7 +822,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
 <!-- 03 -->
 <section class="sheet" id="play" data-sheet="03" data-name="play">
   <div class="wrap">
-    <div class="sheet-head"><span class="sheet-no">03</span><h2>play</h2><span class="sheet-meta">two papers you can turn the knobs on · simulated data</span></div>
+    <div class="sheet-head"><span class="sheet-no">III</span><h2>play</h2><span class="sheet-meta">two papers you can turn the knobs on · simulated data</span></div>
     <div class="demos">
 
       <div class="demo" id="demo-hedge">
@@ -711,7 +874,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
 <!-- 04 -->
 <section class="sheet" id="built" data-sheet="04" data-name="built">
   <div class="wrap">
-    <div class="sheet-head"><span class="sheet-no">04</span><h2>built</h2><span class="sheet-meta">a health app and two ml competitions</span></div>
+    <div class="sheet-head"><span class="sheet-no">IV</span><h2>built</h2><span class="sheet-meta">a health app and two ml competitions</span></div>
     <div class="cards">
       <article class="card wide">
         <div class="card-h"><h3>Pillo</h3><span class="mono">developer · dec 2024 – present</span></div>
@@ -744,7 +907,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
 <!-- 05 -->
 <section class="sheet" id="highstakes" data-sheet="05" data-name="high stakes">
   <div class="wrap">
-    <div class="sheet-head"><span class="sheet-no">05</span><h2>high stakes</h2><span class="sheet-meta">vex v5 team 839z · 2024–25 season · three robots</span></div>
+    <div class="sheet-head"><span class="sheet-no">V</span><h2>high stakes</h2><span class="sheet-meta">vex v5 team 839z · 2024–25 season · three robots</span></div>
     <p class="lead" style="margin-bottom:28px">One season, three robots. I was lead designer and builder and programming co-captain on VEX team 839Z, and each robot was rebuilt around what the last one couldn't do.</p>
 
     <div class="hs-awards">
@@ -788,11 +951,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
 <!-- 06 -->
 <section class="sheet" id="art" data-sheet="06" data-name="art">
   <div class="wrap">
-    <div class="sheet-head"><span class="sheet-no">06</span><h2>art</h2><span class="sheet-meta">two AP investigations · 2025–26 · working titles</span></div>
+    <div class="sheet-head"><span class="sheet-no">VI</span><h2>art</h2><span class="sheet-meta">two AP investigations · 2025–26 · working titles</span></div>
     <div class="art-intro">
       <div>
         <p>I am in Unionville High School's Specialized Visual Arts Program (28 students admitted from more than 250 applicants). Both of my AP portfolios grew out of robotics: one asks what automation does to the people who depend on it, and the other tries to draw the engineering design process itself.</p>
-        <p>I also lead the technical side of <i>Alchemy</i>, the school's annual show: <a href="#alchemy">more on sheet 08 ↓</a></p>
+        <p>I also lead the technical side of <i>Alchemy</i>, the school's annual show: <a href="#alchemy">more in chapter VIII ↓</a></p>
       </div>
       <div class="ap">
         <div><b>5</b><span>ap drawing</span></div>
@@ -821,7 +984,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
 <!-- 07 -->
 <section class="sheet" id="reading" data-sheet="07" data-name="reading">
   <div class="wrap">
-    <div class="sheet-head"><span class="sheet-no">07</span><h2>reading</h2><span class="sheet-meta">two or three books a week · short notes on eight</span></div>
+    <div class="sheet-head"><span class="sheet-no">VII</span><h2>reading</h2><span class="sheet-meta">two or three books a week · short notes on eight</span></div>
     <p class="lead" style="margin-bottom:12px">I pick books that will argue with me. If one hasn't disturbed me by page fifty, I read it twice.</p>
     <p class="service" style="margin:0 0 32px">I also keep a literary blog for friends. The first five below come up in my personal statement.</p>
 
@@ -873,7 +1036,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
 <!-- 08 -->
 <section class="sheet" id="beyond" data-sheet="08" data-name="beyond">
   <div class="wrap">
-    <div class="sheet-head"><span class="sheet-no">08</span><h2>beyond</h2><span class="sheet-meta">teaching, ev, stage, gym, ring, scores</span></div>
+    <div class="sheet-head"><span class="sheet-no">VIII</span><h2>beyond</h2><span class="sheet-meta">teaching, ev, stage, gym, ring, scores</span></div>
     <h3 class="group-h">teaching</h3>
     <div class="outreach" style="margin-top:16px">
       <div class="out-h">
@@ -920,7 +1083,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
     </div>
     <div class="beyond">
       <div><span class="big">10th</span><h3>boxing</h3><p>Amateur heavyweight, ranked tenth in Ontario. The one place nobody lets me finish a thought.</p></div>
-      <div><span class="big">5 · 4</span><h3>ap scores</h3><p>AP Drawing 5 and AP 3D Art and Design 4, from the two portfolios on sheet 06.</p></div>
+      <div><span class="big">5 · 4</span><h3>ap scores</h3><p>AP Drawing 5 and AP 3D Art and Design 4, from the two portfolios in chapter VI.</p></div>
       <div><span class="big">Level 2</span><h3>ski instructor</h3><p>Certified alpine ski instructor with SnowLand Outdoor Club at Blue Mountain. Technique, progression and safety.</p></div>
       <div><span class="big">3</span><h3>languages</h3><p>English, Mandarin Chinese and French.</p></div>
       <div><span class="big">OCI</span><h3>certifications</h3><p>Oracle Cloud Infrastructure AI Foundations Associate (2026). BetterMind Labs AI/ML Certification Program, AI and Robotics track.</p></div>
@@ -932,7 +1095,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
 <!-- 09 -->
 <section class="sheet" id="record" data-sheet="09" data-name="record">
   <div class="wrap">
-    <div class="sheet-head"><span class="sheet-no">09</span><h2>record</h2><span class="sheet-meta">selected honors</span></div>
+    <div class="sheet-head"><span class="sheet-no">IX</span><h2>record</h2><span class="sheet-meta">selected honors</span></div>
     <div class="rec-wrap">
       <table class="rec">
         <thead><tr><th>#</th><th>honor</th><th style="text-align:right">level</th></tr></thead>
@@ -956,7 +1119,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
 <!-- 10 -->
 <section class="sheet" id="contact" data-sheet="10" data-name="contact">
   <div class="wrap">
-    <div class="sheet-head"><span class="sheet-no">10</span><h2>contact</h2><span class="sheet-meta">markham, ontario</span></div>
+    <div class="sheet-head"><span class="sheet-no">X</span><h2>contact</h2><span class="sheet-meta">markham, ontario</span></div>
     <div class="contact">
       <span class="email" id="email">niuren2@outlook.com</span>
       <div class="contact-row">
@@ -969,7 +1132,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
 </section>
 </main>
 
-<footer><div class="wrap mono"><span>© 2026 daniel fu</span><span>sheets 00–10 · revised 31 oct 2026</span></div></footer>
+<footer><div class="wrap mono"><span>© 2026 daniel fu</span><span>chapters I–X · set in Fraunces &amp; Literata · revised 31 oct 2026</span></div></footer>
 
 <div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-labelledby="lbTitle">
   <div class="lb-top"><h3 id="lbTitle">piece</h3><button class="tbtn" id="lbClose" type="button">close ✕</button></div>
@@ -994,14 +1157,8 @@ function gauss(R){var u=0;while(!u)u=R();return Math.sqrt(-2*Math.log(u))*Math.c
 var MINUS='−';
 function fmt(v,d){var s=Math.abs(v).toFixed(d);return (v<0&&+s!==0?MINUS:'')+s}
 
-/* ---------- residual band + ticker ---------- */
+/* ---------- ticker ---------- */
 (function(){
-  var R=rng(20261031),cells=[];
-  for(var i=0;i<90;i++){
-    var nz=R()<0.13, v=nz?(R()<.5?-1:1)*(0.001+R()*0.038):0;
-    cells.push('<span'+(nz?' class="nz"':'')+'>'+(v===0?'0.000':fmt(v,3))+'</span>');
-  }
-  var html=cells.join('');document.getElementById('bandTrack').innerHTML=html+html;
   var t=document.getElementById('tickerTrack');t.innerHTML=t.innerHTML+t.innerHTML;
 })();
 
@@ -1262,6 +1419,29 @@ document.getElementById('copyEmail').addEventListener('click',function(){
   function sel(){var r=document.createRange();r.selectNodeContents(document.getElementById('email'));var s=window.getSelection();s.removeAllRanges();s.addRange(r);o.textContent='selected, press ⌘C or Ctrl+C'}
   try{navigator.clipboard.writeText(t).then(function(){o.textContent='copied'},sel)}catch(e){sel()}
 });
+})();
+</script>
+<script>
+/* library theme: open the book, turn chapter pages in */
+(function(){
+  var root=document.documentElement, mb=document.getElementById('motionBtn');
+  function on(){return root.getAttribute('data-motion')==='on'}
+  var io='IntersectionObserver' in window;
+  var ab=document.querySelector('#about .about');
+  if(ab&&on()&&io){
+    ab.classList.add('closed');
+    var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){o.disconnect();
+      ab.classList.add('opening');ab.classList.remove('closed');
+      setTimeout(function(){ab.classList.remove('opening')},2100)}})},{threshold:.3});
+    o.observe(ab);
+  }
+  var heads=[].slice.call(document.querySelectorAll('.sheet:not(.hero) .sheet-head'));
+  if(on()&&io){
+    heads.forEach(function(h){h.classList.add('pre')});
+    var hio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.remove('pre');hio.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
+    heads.forEach(function(h){hio.observe(h)});
+  }
+  mb.addEventListener('click',function(){if(!on()){heads.forEach(function(h){h.classList.remove('pre')});if(ab)ab.classList.remove('closed','opening')}});
 })();
 </script>
 </body>
