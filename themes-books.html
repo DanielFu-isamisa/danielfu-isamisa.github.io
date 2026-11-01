@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Book theme options · Daniel Fu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Special+Elite&family=Caveat:wght@500;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400;1,7..72,600&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400&family=Libre+Franklin:wght@400;600;800&display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#e9e6df;color:#1b1b1b;font-family:"Libre Franklin",system-ui,sans-serif}
+img{max-width:100%;display:block}
+.picker{position:sticky;top:0;z-index:20;background:#1b1b1b;color:#f4f2ee;padding:10px 16px;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between}
+.picker p{margin:0;font-size:14px}
+.picker nav{display:flex;gap:6px;flex-wrap:wrap}
+.picker a{color:#1b1b1b;background:#f4f2ee;text-decoration:none;font-size:13px;font-weight:600;padding:6px 10px;border-radius:2px}
+.wrap{max-width:1200px;margin:0 auto;padding:24px 16px 80px;display:grid;grid-template-columns:minmax(0,1fr);gap:64px}
+.wrap>section{min-width:0}
+.label{display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline;margin:0 0 12px}
+.label b{font-size:22px}
+.label span{font-size:15px;color:#555;max-width:72ch;min-width:0;flex:1 1 280px}
+.label button{margin-left:auto;font:600 13px "Libre Franklin",sans-serif;background:#1b1b1b;color:#fff;border:0;padding:7px 12px;border-radius:2px;cursor:pointer}
+.frame{border-radius:6px;overflow:hidden;box-shadow:0 1px 0 rgba(0,0,0,.08),0 14px 44px rgba(0,0,0,.14);position:relative}
+.frame img{width:100%;height:100%;object-fit:cover}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.001s!important;animation-delay:0s!important;transition-duration:.001s!important;transition-delay:0s!important}}
+
+/* ============ E · OPEN BOOK ============ */
+.t-e{background:radial-gradient(ellipse at 50% 0%,#3a2c22,#1e1611 70%);color:#2a2018;padding:clamp(24px,5vw,56px) clamp(12px,4vw,48px) clamp(32px,5vw,64px);font-family:"EB Garamond",serif}
+.e-book{position:relative;max-width:980px;margin:0 auto;perspective:2200px}
+.e-spread{display:grid;grid-template-columns:1fr 1fr;background:#f4ecda;border-radius:3px 6px 6px 3px;box-shadow:0 30px 60px rgba(0,0,0,.45);position:relative;min-height:520px}
+.e-spread::after{content:"";position:absolute;top:0;bottom:0;left:50%;width:60px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,rgba(60,40,20,.18) 45%,rgba(60,40,20,.28) 50%,rgba(60,40,20,.18) 55%,transparent);pointer-events:none}
+.e-page{padding:clamp(22px,4vw,48px) clamp(20px,3.5vw,44px) 60px;position:relative;min-width:0}
+.e-head{display:flex;justify-content:space-between;font-family:"Cormorant Garamond";font-style:italic;font-size:15px;color:#8a7458;border-bottom:1px solid #d9caa8;padding-bottom:6px;margin-bottom:18px}
+.e-folio{position:absolute;bottom:16px;left:0;right:0;text-align:center;font-family:"Cormorant Garamond";font-size:15px;color:#8a7458}
+.e-half{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;height:100%;gap:14px}
+.e-half small{font-family:"Cormorant Garamond";letter-spacing:.3em;text-transform:uppercase;font-size:13px;color:#8a7458}
+.e-half h1{font-family:"Cormorant Garamond";font-weight:600;font-size:clamp(48px,7vw,84px);line-height:.92;margin:0;color:#3a1414}
+.e-half .rule{width:60px;height:1px;background:#8a7458}
+.e-half p{margin:0;font-style:italic;font-size:21px;color:#5a4632;max-width:24ch}
+.e-toc h2{font-family:"Cormorant Garamond";font-weight:600;font-size:30px;margin:0 0 14px;color:#3a1414;text-align:center}
+.e-toc ol{list-style:none;margin:0;padding:0;font-size:19px}
+.e-toc li{display:flex;align-items:baseline;gap:6px;padding:6px 0}
+.e-toc li span:first-child{font-family:"Cormorant Garamond";font-weight:700;color:#8a2b1d;width:2.2em}
+.e-toc li i{flex:1;border-bottom:1px dotted #a18c6d;transform:translateY(-4px)}
+.e-cover{position:absolute;top:-6px;bottom:-6px;right:-4px;width:calc(50% + 4px);transform-origin:0 50%;transform-style:preserve-3d;transition:transform 1.6s cubic-bezier(.6,.05,.25,1) .4s;z-index:5}
+.e-cover .f,.e-cover .b{position:absolute;inset:0;backface-visibility:hidden;border-radius:2px 8px 8px 2px}
+.e-cover .f{background:#6b1d1d repeating-linear-gradient(45deg,rgba(255,255,255,.025) 0 2px,transparent 2px 5px);box-shadow:inset 0 0 0 10px #5a1616,inset 0 0 0 12px #c9a24a,inset 0 0 0 20px #5a1616,inset 0 0 0 21px #c9a24a,0 20px 40px rgba(0,0,0,.4);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;color:#e7c873;text-align:center;padding:30px}
+.e-cover .f b{font-family:"Cormorant Garamond";font-weight:700;font-size:clamp(34px,5vw,58px);letter-spacing:.06em;line-height:1}
+.e-cover .f span{font-family:"Cormorant Garamond";font-style:italic;font-size:20px}
+.e-cover .f em{font-style:normal;font-size:28px}
+.e-cover .b{transform:rotateY(180deg);background:#efe5cf;box-shadow:inset -14px 0 30px rgba(0,0,0,.12)}
+.in .e-cover{transform:rotateY(-178deg)}
+.e-cover.gone{display:none}
+.e-ch{margin-top:40px}
+.e-ch{margin-bottom:56px}
+.e-ch .e-spread{min-height:660px}
+.e-dc::first-letter{float:left;font-family:"Cormorant Garamond";font-weight:700;font-size:74px;line-height:.78;padding:6px 8px 0 0;color:#8a2b1d}
+.e-page h3{font-family:"Cormorant Garamond";font-weight:700;font-size:26px;line-height:1.1;margin:0 0 6px;color:#3a1414}
+.e-page p{font-size:18px;line-height:1.55;margin:0 0 12px}
+.e-meta{font-family:"Cormorant Garamond";font-style:italic;font-size:17px;color:#8a7458;margin-bottom:12px!important}
+.e-fig{margin:14px 0 0;display:grid;grid-template-columns:110px 1fr;gap:14px;align-items:center}
+.e-fig .im{aspect-ratio:620/802;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.2)}
+.e-fig .im img{object-fit:contain}
+.e-fig b{font-family:"Cormorant Garamond";font-size:40px;color:#8a2b1d;display:block;line-height:1}
+.e-leafwrap{position:absolute;top:0;bottom:0;right:0;width:50%;perspective:2200px;z-index:3}
+.e-leaf{position:absolute;inset:0;transform-origin:0 50%;transform-style:preserve-3d;transition:transform 1.1s cubic-bezier(.45,.05,.3,1)}
+.e-leaf .f,.e-leaf .b{position:absolute;inset:0;backface-visibility:hidden;background:#f4ecda}
+.e-leaf .f{box-shadow:inset 12px 0 22px -12px rgba(60,40,20,.35)}
+.e-leaf .b{transform:rotateY(180deg);box-shadow:inset -12px 0 22px -12px rgba(60,40,20,.35)}
+.e-leaf.turned{transform:rotateY(-180deg)}
+.e-under{position:absolute;top:0;bottom:0;right:0;width:50%;background:#f4ecda;z-index:2;border-radius:0 6px 6px 0}
+.e-turn{position:absolute;right:0;bottom:-50px;font:italic 600 17px "Cormorant Garamond",serif;background:#6b1d1d;color:#f4ecda;border:0;padding:8px 14px;cursor:pointer;z-index:6;border-radius:2px}
+.e-awards{list-style:none;margin:10px 0 14px;padding:0}
+.e-awards li{display:grid;grid-template-columns:5.5em 1fr;gap:8px;padding:7px 0;border-bottom:1px solid #e0d2b2;font-size:17px}
+.e-awards li span{font-family:"Cormorant Garamond";font-style:italic;color:#8a7458}
+.e-plate{aspect-ratio:4/3;margin-top:8px;box-shadow:0 3px 10px rgba(0,0,0,.25);border:6px solid #fff}
+@media (max-width:760px){
+  .e-spread{grid-template-columns:1fr}
+  .e-spread::after{display:none}
+  .e-cover{width:calc(100% + 4px);right:-4px}
+  .e-toc{border-top:1px solid #d9caa8}
+  .e-leafwrap,.e-under,.e-turn{display:none}
+  .e-ch .e-page.mob{display:block!important}
+}
+
+/* ============ F · TYPEWRITER MANUSCRIPT ============ */
+.t-f{background:#384540 repeating-linear-gradient(90deg,rgba(255,255,255,.02) 0 2px,transparent 2px 9px);padding:clamp(24px,5vw,56px) clamp(10px,4vw,48px);font-family:"Courier Prime",monospace;color:#1d1d1d}
+.f-sheet{max-width:860px;margin:0 auto;background:#fdfcf7;box-shadow:0 2px 0 #e6e2d6,0 4px 0 #f6f3ea,0 6px 0 #e6e2d6,0 24px 50px rgba(0,0,0,.4);padding:clamp(28px,5vw,64px) clamp(22px,6vw,84px);position:relative;transform:rotate(-.4deg)}
+.f-sheet::before{content:"";position:absolute;left:clamp(10px,2vw,22px);top:0;bottom:0;width:0;border-left:2px solid rgba(204,60,60,.35)}
+.f-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#777;margin-bottom:28px}
+.f-name{font-family:"Special Elite",monospace;font-size:clamp(46px,9vw,96px);line-height:1;margin:0;min-height:1em;letter-spacing:.02em}
+.caret{display:inline-block;width:.06em;height:.9em;background:#1d1d1d;vertical-align:-.08em;margin-left:2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.f-tag{font-size:clamp(22px,3vw,30px);margin:56px 0 0;position:relative;display:inline-block}
+.f-strike{position:relative;display:inline-block}
+.f-strike::after{content:"";position:absolute;left:-4px;right:-4px;top:55%;height:3px;background:#c4302b;border-radius:2px;transform:scaleX(0);transform-origin:left;transition:transform .5s ease}
+.f-red{font-family:"Caveat",cursive;font-weight:700;color:#c4302b;font-size:1.25em;position:absolute;left:60%;top:-1.15em;white-space:nowrap;transform:rotate(-4deg);clip-path:inset(0 100% 0 0);transition:clip-path .9s ease .5s}
+.go .f-strike::after{transform:scaleX(1)}
+.go .f-red{clip-path:inset(0 0 0 0)}
+.f-lede{font-size:18px;line-height:1.7;max-width:56ch;margin:28px 0 0}
+.f-h{font-family:"Special Elite";font-size:26px;letter-spacing:.06em;text-transform:uppercase;margin:52px 0 6px}
+.f-dash{color:#888;margin:0 0 20px;overflow:hidden;white-space:nowrap}
+.f-p{position:relative}
+.f-p h3{font-size:19px;text-transform:uppercase;margin:0 0 8px;line-height:1.35}
+.f-p p{font-size:17px;line-height:1.7;margin:0 0 10px;max-width:58ch}
+.f-note{font-family:"Caveat",cursive;font-weight:700;color:#c4302b;font-size:24px;line-height:1.05;display:block;margin-top:16px;transform:rotate(-3deg);opacity:0;transition:opacity .6s .3s}
+.go .f-note,.f-sec.go .f-note{opacity:1}
+.f-box{display:grid;grid-template-columns:1fr 150px;gap:28px}
+.f-pdf{display:inline-block;margin-top:6px;font-weight:700;color:#1d1d1d;border:2px solid #1d1d1d;padding:4px 10px;text-decoration:none}
+.f-thumb{aspect-ratio:620/802;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.25);transform:rotate(2deg)}
+.f-thumb img{object-fit:contain}
+.f-list{list-style:none;padding:0;margin:0;font-size:17px;line-height:2}
+.f-list li::before{content:"[x] ";font-weight:700}
+.f-photos{display:flex;gap:22px;flex-wrap:wrap;margin-top:14px}
+.f-photo{width:min(190px,42%);aspect-ratio:3/4;background:#fff;padding:8px 8px 30px;box-shadow:0 3px 10px rgba(0,0,0,.25);position:relative;transform:rotate(var(--r,-2deg))}
+.f-photo::before{content:"";position:absolute;top:-10px;left:50%;width:70px;height:22px;margin-left:-35px;background:rgba(232,220,170,.85);transform:rotate(-3deg);box-shadow:0 1px 2px rgba(0,0,0,.1)}
+.f-photo span{position:absolute;left:8px;right:8px;bottom:6px;font-family:"Caveat";font-weight:700;font-size:18px;text-align:center}
+.f-photo img{height:100%}
+@media (max-width:640px){.f-box{grid-template-columns:1fr}.f-box .f-thumb{width:150px}.f-red{left:0;top:-1.2em}}
+
+/* ============ G · MARGINALIA ============ */
+.t-g{background:#fbf7ee;color:#22201b;font-family:"Literata",serif;padding:clamp(24px,5vw,64px) clamp(16px,5vw,64px)}
+.g-grid{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:0 44px;max-width:1000px;margin:0 auto}
+.g-main{min-width:0}
+.g-margin{position:relative}
+.g-kicker{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#8a8170}
+.g-name{font-family:"Literata";font-style:italic;font-weight:600;font-size:clamp(56px,9vw,104px);line-height:.95;margin:10px 0 0;letter-spacing:-.02em}
+.g-tag{font-size:clamp(22px,3vw,30px);margin:18px 0 0;position:relative;display:inline-block}
+.hl{background:linear-gradient(transparent 55%,#ffe86b 55%,#ffe86b 92%,transparent 92%) no-repeat 0 0/0% 100%;transition:background-size 1s cubic-bezier(.6,.1,.2,1)}
+.in .hl,.hl.in{background-size:100% 100%}
+.g-scrib{position:absolute;left:0;right:0;bottom:-12px;height:14px;overflow:visible}
+.g-scrib path,.g-arrow path{fill:none;stroke:#2747a3;stroke-width:2.2;stroke-linecap:round;stroke-dasharray:600;stroke-dashoffset:600;transition:stroke-dashoffset 1.4s ease .6s}
+.in .g-scrib path,.in .g-arrow path,.g-arrow.in path{stroke-dashoffset:0}
+.g-lede{font-size:19px;line-height:1.7;margin:30px 0 0;max-width:54ch}
+.g-note{font-family:"Caveat",cursive;font-weight:700;color:#2747a3;font-size:24px;line-height:1.05;transform:rotate(-2deg);opacity:0;transition:opacity .8s ease 1s}
+.in .g-note,.g-note.in{opacity:1}
+.g-arrow{width:90px;height:50px;display:block}
+.g-h{font-family:"Literata";font-weight:600;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#8a8170;margin:64px 0 18px;border-top:1px solid #d9d1bd;padding-top:12px}
+.g-p h3{font-family:"Literata";font-weight:600;font-size:24px;line-height:1.25;margin:0 0 8px}
+.g-p p{font-size:18px;line-height:1.7;margin:0 0 12px}
+.g-p .by{font-size:15px;color:#6b6556}
+.g-pdf{font-size:15px;font-weight:600;color:#2747a3;text-decoration:none;border-bottom:1.5px solid #2747a3}
+.g-quote{font-style:italic;font-size:22px;line-height:1.5;margin:0;border-left:3px solid #ffe86b;padding-left:18px}
+.g-art{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.g-art figure{margin:0}
+.g-art .im{aspect-ratio:3/4;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.g-art figcaption{font-family:"Caveat";font-weight:700;color:#2747a3;font-size:20px;margin-top:6px;transform:rotate(-1.5deg)}
+@media (max-width:760px){.g-grid{grid-template-columns:1fr}.g-margin{margin:6px 0 4px;padding-left:24px}.g-arrow{display:none}}
+
+/* ============ H · CARD CATALOG ============ */
+.t-h{background:#6e4325 repeating-linear-gradient(90deg,rgba(0,0,0,.06) 0 3px,transparent 3px 11px,rgba(255,255,255,.03) 11px 13px,transparent 13px 29px);padding:clamp(24px,5vw,56px) clamp(12px,4vw,48px);font-family:"Courier Prime",monospace;color:#1f1d1a}
+.h-label{width:max-content;max-width:100%;margin:0 auto 28px;background:#c9a24a linear-gradient(#d6b25e,#a9842e);padding:10px 26px;border-radius:4px;box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 3px 6px rgba(0,0,0,.4);font-family:"Special Elite";font-size:clamp(16px,2.4vw,22px);letter-spacing:.12em;text-align:center}
+.h-label span{display:block;background:#f6efdc;padding:4px 14px;border:1px solid #8a6a22}
+.h-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px;max-width:980px;margin:0 auto}
+.h-card{background:#fbf6e9;background-image:linear-gradient(#fbf6e9 46px,transparent 46px),repeating-linear-gradient(transparent 0 27px,#bcd0e6 27px 28px);border-top:3px solid #c74a3a;padding:16px 22px 96px calc(30px + 6.5em);position:relative;box-shadow:0 10px 24px rgba(0,0,0,.35);min-height:300px;transform:translateY(60px) rotate(var(--r,0deg));opacity:0;transition:transform .8s cubic-bezier(.2,.8,.2,1) var(--d,0s),opacity .6s var(--d,0s)}
+.in .h-card{transform:translateY(0) rotate(var(--r,0deg));opacity:1}
+.h-card::after{content:"";position:absolute;bottom:10px;left:50%;width:18px;height:18px;margin-left:-9px;border-radius:50%;background:#6e4325;box-shadow:inset 0 2px 3px rgba(0,0,0,.5)}
+.h-call{font-weight:700;font-size:14px;line-height:1.25;position:absolute;left:22px;top:18px;width:6em}
+.h-call span{display:block}
+.h-card h3{font-family:"Courier Prime";font-size:17px;font-weight:700;line-height:28px;margin:0}
+.h-card p{font-size:15px;line-height:28px;margin:0}
+.h-card .ind{text-indent:2em}
+.h-wide{grid-column:1/-1}
+.h-name{font-family:"Special Elite";font-size:clamp(40px,7vw,72px);line-height:1;margin:6px 0 4px}
+.h-stamp{position:absolute;right:26px;bottom:40px;border:3px solid #6a2c8f;color:#6a2c8f;font-family:"Special Elite";font-size:15px;letter-spacing:.08em;padding:4px 10px;text-align:center;line-height:1.3;transform:rotate(-8deg) scale(2.2);opacity:0;transition:transform .35s cubic-bezier(.3,1.6,.5,1) calc(var(--d,0s) + .7s),opacity .2s calc(var(--d,0s) + .7s);mix-blend-mode:multiply}
+.in .h-stamp{transform:rotate(-8deg) scale(1);opacity:.85}
+.h-due{width:100%;border-collapse:collapse;margin-top:6px;font-size:14px}
+.h-due th{text-align:left;font-family:"Special Elite";font-weight:400;border-bottom:2px solid #1f1d1a;padding:4px 6px}
+.h-due td{border-bottom:1px solid #bcd0e6;padding:6px;height:28px}
+.h-due td.s{font-family:"Special Elite";color:#c74a3a;letter-spacing:.06em;transform:rotate(-2deg) scale(1.8);opacity:0;display:table-cell;transition:transform .3s cubic-bezier(.3,1.6,.5,1),opacity .2s}
+.in .h-due td.s{transform:rotate(-2deg) scale(1);opacity:1}
+.in .h-due tr:nth-child(1) td.s{transition-delay:1s}
+.in .h-due tr:nth-child(2) td.s{transition-delay:1.35s}
+.in .h-due tr:nth-child(3) td.s{transition-delay:1.7s}
+.t-h .h-photo{float:right;width:110px;height:auto;aspect-ratio:3/4;object-fit:cover;margin:4px 0 6px 12px;border:4px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.25);transform:rotate(3deg)}
+@media (max-width:760px){.h-cards{grid-template-columns:1fr}.h-card{padding:16px 18px 96px}.h-call{position:static;width:auto;margin-bottom:6px}.h-call span{display:inline;margin-right:7px}}
+
+/* ============ I · BOOKSHELF ============ */
+.t-i{background:#f1ece2;color:#1d1a16;font-family:"Libre Franklin",sans-serif}
+.i-wall{background:#22313b;padding:clamp(28px,5vw,56px) clamp(16px,4vw,48px) 0;color:#f1ece2}
+.i-name{font-family:"Fraunces";font-weight:900;font-size:clamp(56px,10vw,120px);line-height:.88;margin:0;letter-spacing:-.02em}
+.i-tag{font-family:"Fraunces";font-style:italic;font-size:clamp(22px,3vw,32px);margin:12px 0 0;color:#e8c27a}
+.i-shelf{display:flex;align-items:flex-end;gap:4px;margin-top:34px;padding:0 6px;min-height:260px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none}
+.i-shelf::-webkit-scrollbar{display:none}
+.i-spine{flex:none;width:var(--w,62px);height:var(--h,230px);background:var(--c,#8a2b1d);color:#f6efdc;border-radius:3px 3px 0 0;position:relative;text-decoration:none;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:14px 0 12px;box-shadow:inset -6px 0 8px rgba(0,0,0,.25),inset 4px 0 6px rgba(255,255,255,.12);transform:translateY(120%);transition:transform .7s cubic-bezier(.2,.9,.25,1.15) var(--d,0s),margin .3s;cursor:pointer}
+.in .i-spine{transform:translateY(0)}
+.in .i-spine:hover{transform:translateY(-16px)}
+.i-spine::before,.i-spine::after{content:"";position:absolute;left:0;right:0;height:3px;background:rgba(232,194,122,.8)}
+.i-spine::before{top:28px}.i-spine::after{bottom:34px}
+.i-spine b{writing-mode:vertical-rl;transform:rotate(180deg);font-family:"Fraunces";font-weight:700;font-size:20px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.i-spine small{font-size:11px;font-weight:800;letter-spacing:.08em;color:#e8c27a}
+.i-spine.lean{transform-origin:100% 100%}
+.in .i-spine.lean{transform:rotate(9deg)}
+.in .i-spine.lean:hover{transform:rotate(9deg) translateY(-16px)}
+.i-plank{height:22px;background:linear-gradient(#8a5a33,#5e3b1f);box-shadow:0 10px 16px rgba(0,0,0,.35);margin:0 calc(-1*clamp(16px,4vw,48px))}
+.i-body{padding:clamp(28px,5vw,56px) clamp(16px,4vw,48px)}
+.i-h{font-family:"Fraunces";font-weight:900;font-size:40px;margin:0 0 20px;letter-spacing:-.01em}
+.i-h small{font-family:"Libre Franklin";font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#8a2b1d;display:block;margin-bottom:4px}
+.i-jackets{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;perspective:1200px}
+.i-jacket{aspect-ratio:2/3;background:var(--c,#1f4e5f);color:#f6efdc;padding:22px 20px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:6px 8px 18px rgba(0,0,0,.3),inset 4px 0 0 rgba(0,0,0,.25);transform:rotateY(-8deg);transform-origin:0 50%;transition:transform .5s;text-decoration:none;position:relative}
+.i-jacket:hover{transform:rotateY(-2deg) translateY(-6px)}
+.i-jacket small{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#e8c27a}
+.i-jacket h3{font-family:"Fraunces";font-weight:700;font-size:clamp(20px,2.4vw,26px);line-height:1.08;margin:10px 0}
+.i-jacket .au{font-family:"Fraunces";font-style:italic;font-size:15px}
+.i-jacket .num{font-family:"Fraunces";font-weight:900;font-size:clamp(30px,4vw,42px);line-height:1;border-top:1px solid rgba(246,239,220,.4);padding-top:10px}
+.i-reading{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:10px}
+.i-cov{aspect-ratio:2/3;padding:14px;display:flex;flex-direction:column;justify-content:space-between;color:#f6efdc;background:var(--c);box-shadow:4px 6px 12px rgba(0,0,0,.25)}
+.i-cov b{font-family:"Fraunces";font-weight:700;font-size:clamp(16px,2vw,22px);line-height:1.05}
+.i-cov span{font-family:"Fraunces";font-style:italic;font-size:13px}
+.i-cov i{display:block;width:30px;height:30px;border-radius:50%;border:2px solid currentColor;opacity:.6}
+@media (max-width:760px){.i-jackets{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.i-jackets .i-jacket:last-child{display:none}.i-jacket{padding:16px 14px}.i-reading{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
+</head>
+<body>
+<div class="picker">
+  <p><b>Book themes</b> · five more looks, all with motion. Reply with E, F, G, H or I (or mix).</p>
+  <nav><a href="#e">E · Open Book</a><a href="#f">F · Manuscript</a><a href="#g">G · Marginalia</a><a href="#h">H · Card Catalog</a><a href="#i">I · Bookshelf</a><a href="./">current site</a></nav>
+</div>
+<main class="wrap">
+
+<!-- E -->
+<section id="e">
+  <div class="label"><b>E · Open Book</b><span>A clothbound cover swings open to a title page and table of contents. Each section is a two-page spread with running heads, page numbers and drop caps. Tap "turn the page" to flip the leaf to the next chapter.</span><button type="button" data-replay="e">replay</button></div>
+  <div class="frame t-e" data-theme="e">
+    <div class="e-book">
+      <div class="e-spread">
+        <div class="e-page"><div class="e-half"><small>Selected Works</small><h1>Daniel Fu</h1><div class="rule"></div><p>I look at what's left over.</p><small>Markham · Ontario · 2027</small></div></div>
+        <div class="e-page e-toc"><h2>Contents</h2><ol>
+          <li><span>I</span>About<i></i><span>1</span></li>
+          <li><span>II</span>Research<i></i><span>7</span></li>
+          <li><span>III</span>Play<i></i><span>23</span></li>
+          <li><span>IV</span>Built<i></i><span>31</span></li>
+          <li><span>V</span>High Stakes<i></i><span>39</span></li>
+          <li><span>VI</span>Art<i></i><span>55</span></li>
+          <li><span>VII</span>Reading<i></i><span>71</span></li>
+          <li><span>VIII</span>Beyond<i></i><span>87</span></li>
+        </ol><div class="e-folio">v</div></div>
+      </div>
+      <div class="e-cover"><div class="f"><em>❦</em><b>DANIEL FU</b><span>Selected Works</span><em>❦</em></div><div class="b"></div></div>
+    </div>
+    <div class="e-book e-ch">
+      <div class="e-spread">
+        <div class="e-page"><div class="e-head"><span>7</span><span>Research</span></div>
+          <h3>What Survives a Delta Hedge?</h3><p class="e-meta">11th Derivative Markets Conference · accepted</p>
+          <p class="e-dc">Large hedging errors near expiry turn out to be mainly a curvature effect, not jumps. The answer was a null, so instead of digging until something showed up, we wrote down what our test could not detect.</p>
+          <div class="e-fig"><div class="im"><img src="paper-dmc-t.jpg" alt="First page of the paper"></div><div><b>1,243,969</b><span style="font-style:italic;color:#8a7458">intraday observations, audited against their own documentation</span></div></div>
+          <div class="e-folio">7</div>
+        </div>
+        <div class="e-page mob" style="display:none"><div class="e-head"><span>High Stakes</span><span>39</span></div><h3>Three robots, one season</h3><ul class="e-awards"><li><span>Sep 2024</span>Create Award, Highlander Summit</li><li><span>Dec 2024</span>Tournament Champions, RiverBots III</li><li><span>2025</span>World Championship, Innovate Division</li></ul><div class="e-plate"><img src="hs2-p-hero-t.jpg" alt="The gold rebuild robot"></div></div>
+      </div>
+      <div class="e-under"><div class="e-page"><div class="e-head"><span>High Stakes</span><span>40</span></div><div class="e-plate" style="aspect-ratio:3/4;max-width:280px;margin:10px auto 0"><img src="hs1-p-hotel-t.jpg" alt="The first robot"></div><p class="e-meta" style="text-align:center;margin-top:10px!important">Plate 3. The first robot, with its Highlander Summit stickers.</p><div class="e-folio">40</div></div></div>
+      <div class="e-leafwrap"><div class="e-leaf" id="eLeaf">
+        <div class="f"><div class="e-page"><div class="e-head"><span>Research</span><span>8</span></div><h3>Beyond Lesion Burden</h3><p class="e-meta">Mayo Clinic Stroke &amp; Cerebrovascular Disease Review · poster</p><p>Adding blood levels of two proteins, PINK1 and Parkin, to clinical and imaging data raised diagnostic AUC from 0.75 to 0.84.</p><div class="e-plate" style="aspect-ratio:760/443"><img src="poster-mayo-t.jpg" alt="The Mayo poster" style="object-fit:contain;background:#fff"></div><div class="e-folio">8</div></div></div>
+        <div class="b"><div class="e-page"><div class="e-head"><span>39</span><span>High Stakes</span></div><h3>Three robots, one season</h3><p class="e-meta">VEX team 839Z · 2024–25</p><ul class="e-awards"><li><span>Sep 2024</span>Create Award, Highlander Summit</li><li><span>Dec 2024</span>Tournament Champions, RiverBots III</li><li><span>2025</span>World Championship, Innovate Division</li></ul><div class="e-plate" style="aspect-ratio:16/10"><img src="hs2-p-hero-t.jpg" alt="The gold rebuild robot"></div><div class="e-folio">39</div></div></div>
+      </div></div>
+      <button class="e-turn" type="button" id="eTurn">turn the page →</button>
+    </div>
+  </div>
+</section>
+
+<!-- F -->
+<section id="f">
+  <div class="label"><b>F · Manuscript</b><span>A typed manuscript on the desk. Your name types itself out, then an editor's red pen strikes a word and writes "what's left over" above it. Red margin notes, and photos taped to the page.</span><button type="button" data-replay="f">replay</button></div>
+  <div class="frame t-f" data-theme="f">
+    <div class="f-sheet">
+      <div class="f-top"><span>Fu / Selected Works</span><span>Draft 7</span><span>p. 1</span></div>
+      <h1 class="f-name"><span id="fType"></span><span class="caret"></span></h1>
+      <p class="f-tag">I look at <span class="f-strike">everything</span>.<span class="f-red">what's left over</span></p>
+      <p class="f-lede">I plan to study data science. My work runs from S&amp;P 500 options to knee MRIs to a sculpture of a hand, and most of it is one habit applied to different data.</p>
+      <div class="f-sec">
+        <h2 class="f-h">Chapter two. Research.</h2><p class="f-dash">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</p>
+        <div class="f-box"><div class="f-p"><h3>What survives a delta hedge? Curvature, jump exposure, and the maturity clock in SPX options</h3><p>Craig Vishwesh, Tanya Otsetarova (Citadel Securities), Daniel Fu. Accepted, 11th Derivative Markets Conference.</p><p>Large hedging errors near expiry turn out to be mainly a curvature effect, not jumps.</p><a class="f-pdf" href="paper-dmc-what-survives-a-delta-hedge.pdf">read the paper (pdf)</a></div>
+        <div><div class="f-thumb"><img src="paper-dmc-t.jpg" alt="First page of the paper"></div><span class="f-note">1,243,969 rows, checked against the docs!</span></div></div>
+      </div>
+      <div class="f-sec">
+        <h2 class="f-h">Chapter five. High Stakes.</h2><p class="f-dash">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</p>
+        <ul class="f-list"><li>Create Award, Highlander Summit, Sept 2024</li><li>Tournament Champions, RiverBots III, Dec 2024</li><li>World Championship, Innovate Division, 2025</li></ul>
+        <div class="f-photos"><div class="f-photo" style="--r:-3deg"><img src="hs2-p-hero-t.jpg" alt="Robot"><span>the gold rebuild</span></div><div class="f-photo" style="--r:2deg"><img src="hand-1-t.jpg" alt="Hand sculpture"><span>hand, AP 3D</span></div><div class="f-photo" style="--r:-1deg"><img src="spine-1-t.jpg" alt="Spine sculpture"><span>spine</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- G -->
+<section id="g">
+  <div class="label"><b>G · Marginalia</b><span>A quiet book page that annotates itself as you scroll: a highlighter sweeps across key phrases, a blue pen underlines and draws arrows, and handwritten notes appear in the margin.</span><button type="button" data-replay="g">replay</button></div>
+  <div class="frame t-g" data-theme="g">
+    <div class="g-grid">
+      <div class="g-main" data-anim>
+        <p class="g-kicker">Markham, Ontario · Class of 2027</p>
+        <h1 class="g-name">Daniel Fu</h1>
+        <p class="g-tag">I look at <span class="hl">what's left over.</span><svg class="g-scrib" viewBox="0 0 300 14" preserveAspectRatio="none"><path d="M120 8 C160 2, 200 12, 240 6 S 290 9, 298 5"/></svg></p>
+        <p class="g-lede">I plan to study data science. My work runs from S&amp;P 500 options to knee MRIs to a sculpture of a hand, and <span class="hl">most of it is one habit applied to different data.</span></p>
+      </div>
+      <div class="g-margin" data-anim><svg class="g-arrow" viewBox="0 0 90 50"><path d="M85 8 C60 4, 30 14, 8 40 M8 40 L10 26 M8 40 L22 36"/></svg><p class="g-note">the whole site, in one line</p></div>
+
+      <div class="g-main" data-anim><h2 class="g-h">II · Research</h2>
+        <div class="g-p"><h3>What Survives a Delta Hedge?</h3><p class="by">Vishwesh, Otsetarova (Citadel Securities), Fu · accepted, 11th Derivative Markets Conference</p><p>Large hedging errors near expiry turn out to be <span class="hl">mainly a curvature effect, not jumps.</span> The answer was a null, so we wrote down what our test could not detect.</p><a class="g-pdf" href="paper-dmc-what-survives-a-delta-hedge.pdf">read the paper (pdf) →</a></div></div>
+      <div class="g-margin" data-anim style="padding-top:90px"><svg class="g-arrow" viewBox="0 0 90 50"><path d="M85 30 C60 34, 34 30, 6 18 M6 18 L20 14 M6 18 L16 28"/></svg><p class="g-note">1,243,969 rows, audited first: two documented claims failed</p></div>
+
+      <div class="g-main" data-anim><h2 class="g-h">VII · Reading</h2><h3 style="font-family:Literata;font-style:italic;font-weight:600;font-size:26px;margin:0">Mrs. Dalloway</h3><p style="font-size:17px;line-height:1.7;margin-top:10px">Clarissa Dalloway and Septimus Warren Smith never meet. Woolf moves between minds without warning, <span class="hl">so you feel how much of each person never reaches anyone else, even someone on the same bench.</span></p></div>
+      <div class="g-margin" data-anim style="padding-top:40px"><p class="g-note">Woolf, 1925 · from my personal statement</p></div>
+
+      <div class="g-main" data-anim><h2 class="g-h">VI · Art</h2><div class="g-art"><figure><div class="im"><img src="hand-1-t.jpg" alt="Hand"></div><figcaption>hand, held in a vise</figcaption></figure><figure><div class="im"><img src="box-1-t.jpg" alt="Box"></div><figcaption>box, painted heads</figcaption></figure><figure><div class="im"><img src="wheel-1-t.jpg" alt="Wheel"></div><figcaption>wheel</figcaption></figure></div></div>
+      <div class="g-margin" data-anim style="padding-top:110px"><p class="g-note">AP Drawing 5 · AP 3D 4</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- H -->
+<section id="h">
+  <div class="label"><b>H · Card Catalog</b><span>Every section is a library catalog card in a wooden drawer, with real Library of Congress call numbers for each subject. Cards rise out of the drawer as you scroll, and the awards get stamped onto a "date due" slip.</span><button type="button" data-replay="h">replay</button></div>
+  <div class="frame t-h" data-theme="h">
+    <div class="h-label"><span>FU, DANIEL · Q–Z</span></div>
+    <div class="h-cards">
+      <article class="h-card h-wide" style="--d:0s;--r:-.4deg">
+        <div class="h-call"><span>Q</span><span>180.55</span><span>.F8</span><span>2027</span></div>
+        <p style="font-weight:700">Fu, Daniel.</p>
+        <h3 class="h-name">Daniel Fu</h3>
+        <p class="ind">Selected works / Daniel Fu. — Markham, Ont. : Unionville High School, 2027.</p>
+        <p class="ind">1 v. : ill., robots, sculpture ; 6 research projects.</p>
+        <p class="ind">Contents: I look at what's left over.</p>
+        <p class="ind">1. Data science. 2. Robotics. 3. Art. 4. Reading. I. Title.</p>
+        <div class="h-stamp">CLASS OF<br>2027</div>
+      </article>
+      <article class="h-card" style="--d:.15s;--r:.6deg">
+        <div class="h-call"><span>HG</span><span>6024</span><span>.A3</span><span>V57</span><span>2026</span></div>
+        <h3>What survives a delta hedge?</h3>
+        <p class="ind">Vishwesh, Craig ; Otsetarova, Tanya ; Fu, Daniel.</p>
+        <p class="ind">Accepted, 11th Derivative Markets Conference, 2026.</p>
+        <p class="ind">1,243,969 intraday observations.</p>
+        <p class="ind">1. Options (Finance). 2. Hedging.</p>
+        <div class="h-stamp">ACCEPTED</div>
+      </article>
+      <article class="h-card" style="--d:.3s;--r:-.8deg">
+        <div class="h-call"><span>QA</span><span>241</span><span>.F8</span><span>2026</span></div>
+        <h3>Improved lower bounds for Sárközy's theorem in function fields</h3>
+        <p class="ind">Fu, Daniel ; David, Ryan.</p>
+        <p class="ind">Preprint, Zenodo, 2026.</p>
+        <p class="ind">r = 21 ; exponent 5/6 → 0.8645.</p>
+        <p class="ind">1. Number theory.</p>
+        <div class="h-stamp">PREPRINT</div>
+      </article>
+      <article class="h-card" style="--d:.45s;--r:.5deg">
+        <div class="h-call"><span>TJ</span><span>211</span><span>.F8</span><span>2025</span></div>
+        <img class="h-photo" src="hs2-p-hero-t.jpg" alt="Robot">
+        <h3>High Stakes : three robots, one season</h3>
+        <p class="ind">VEX team 839Z, 2024–25.</p>
+        <table class="h-due"><thead><tr><th>DATE</th><th>AWARD</th></tr></thead><tbody>
+          <tr><td>SEP 24</td><td class="s">CREATE AWARD</td></tr>
+          <tr><td>DEC 24</td><td class="s">TOURNAMENT CHAMPIONS</td></tr>
+          <tr><td>2025</td><td class="s">WORLDS · INNOVATE</td></tr>
+        </tbody></table>
+      </article>
+      <article class="h-card" style="--d:.6s;--r:-.3deg">
+        <div class="h-call"><span>N</span><span>6549</span><span>.F8</span><span>2026</span></div>
+        <img class="h-photo" src="hand-1-t.jpg" alt="Hand sculpture">
+        <h3>Human and machine</h3>
+        <p class="ind">Fu, Daniel. AP 3D Art and Design ; AP Drawing.</p>
+        <p class="ind">Sculpture, drawing ; 14 pieces.</p>
+        <p class="ind">1. Art. 2. Automation.</p>
+        <div class="h-stamp">AP · 5 · 4</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- I -->
+<section id="i">
+  <div class="label"><b>I · Bookshelf</b><span>Your sections are book spines on a shelf that slide in one by one; hover or tap to pull one out. Papers become book jackets that open toward you, and your reading list is a row of covers.</span><button type="button" data-replay="i">replay</button></div>
+  <div class="frame t-i" data-theme="i">
+    <div class="i-wall">
+      <h1 class="i-name">Daniel Fu</h1>
+      <p class="i-tag">I look at what's left over.</p>
+      <div class="i-shelf">
+        <a class="i-spine" style="--c:#8a2b1d;--h:240px;--w:64px;--d:.05s"><small>II</small><b>Research</b><small>D. FU</small></a>
+        <a class="i-spine" style="--c:#1f4e5f;--h:210px;--w:56px;--d:.12s"><small>III</small><b>Play</b><small>D. FU</small></a>
+        <a class="i-spine" style="--c:#c9952b;--h:250px;--w:72px;--d:.19s"><small>V</small><b>High Stakes</b><small>839Z</small></a>
+        <a class="i-spine" style="--c:#3d5a3a;--h:226px;--w:60px;--d:.26s"><small>VI</small><b>Art</b><small>AP</small></a>
+        <a class="i-spine" style="--c:#5b3a6b;--h:244px;--w:66px;--d:.33s"><small>VII</small><b>Reading</b><small>D. FU</small></a>
+        <a class="i-spine" style="--c:#2c2c2c;--h:200px;--w:54px;--d:.40s"><small>VIII</small><b>Beyond</b><small>D. FU</small></a>
+        <a class="i-spine lean" style="--c:#b5522f;--h:232px;--w:58px;--d:.47s"><small>X</small><b>Contact</b><small>@</small></a>
+      </div>
+      <div class="i-plank"></div>
+    </div>
+    <div class="i-body">
+      <h2 class="i-h"><small>II · Research</small>On the shelf</h2>
+      <div class="i-jackets">
+        <a class="i-jacket" style="--c:#1f4e5f" href="paper-dmc-what-survives-a-delta-hedge.pdf"><div><small>Derivative Markets Conference</small><h3>What Survives a Delta Hedge?</h3><span class="au">Vishwesh, Otsetarova &amp; Fu</span></div><div class="num">1,243,969</div></a>
+        <a class="i-jacket" style="--c:#8a2b1d" href="poster-mayo-pink1-parkin.pdf"><div><small>Mayo Clinic · poster</small><h3>Beyond Lesion Burden</h3><span class="au">Vishwesh, Benzigar, DeLong, Fu et al.</span></div><div class="num">0.75 → 0.84</div></a>
+        <a class="i-jacket" style="--c:#3d5a3a" href="preprint-sarkozy-function-fields.pdf"><div><small>Zenodo · preprint</small><h3>Improved Lower Bounds for Sárközy's Theorem</h3><span class="au">Fu &amp; David</span></div><div class="num">r = 21</div></a>
+      </div>
+      <h2 class="i-h" style="margin-top:44px"><small>VII · Reading</small>Recently read</h2>
+      <div class="i-reading">
+        <div class="i-cov" style="--c:#7a2e3a"><i></i><div><b>Mrs. Dalloway</b><br><span>Virginia Woolf</span></div></div>
+        <div class="i-cov" style="--c:#c9952b;color:#1d1a16"><i></i><div><b>The Stranger</b><br><span>Albert Camus</span></div></div>
+        <div class="i-cov" style="--c:#22313b"><i></i><div><b>Giovanni's Room</b><br><span>James Baldwin</span></div></div>
+        <div class="i-cov" style="--c:#3d5a3a"><i></i><div><b>The Priory of the Orange Tree</b><br><span>Samantha Shannon</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<script>
+(function(){
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* F: typewriter */
+  var typed=false;
+  function typeName(){var el=document.getElementById('fType'),t='DANIEL FU',i=0;el.textContent='';
+    if(reduce){el.textContent=t;document.querySelector('.t-f').classList.add('go');return}
+    (function step(){el.textContent=t.slice(0,++i);if(i<t.length)setTimeout(step,110+Math.random()*90);else setTimeout(function(){document.querySelector('.t-f').classList.add('go')},350)})()}
+  /* E: cover open, then hide */
+  function openBook(fr){var c=fr.querySelector('.e-cover');c.classList.remove('gone');fr.classList.add('in');setTimeout(function(){c.classList.add('gone')},2300)}
+  var leaf=document.getElementById('eLeaf'),turn=document.getElementById('eTurn');
+  turn.addEventListener('click',function(){var t=leaf.classList.toggle('turned');turn.textContent=t?'← turn back':'turn the page →'});
+  /* observers */
+  function arm(fr){var th=fr.getAttribute('data-theme');
+    if(th==='e')openBook(fr);
+    else if(th==='f'){fr.classList.add('in');typeName()}
+    else fr.classList.add('in');
+    [].forEach.call(fr.querySelectorAll('[data-anim]'),function(x){x.classList.add('in')})}
+  function disarm(fr){fr.classList.remove('in','go');[].forEach.call(fr.querySelectorAll('[data-anim]'),function(x){x.classList.remove('in')});
+    var c=fr.querySelector('.e-cover');if(c){c.classList.remove('gone')}}
+  var frames=[].slice.call(document.querySelectorAll('.frame'));
+  if('IntersectionObserver' in window&&!reduce){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!e.target.dataset.done){e.target.dataset.done=1;arm(e.target)}})},{threshold:0,rootMargin:'0px 0px -30% 0px'});
+    frames.forEach(function(f){io.observe(f)});
+    /* G: per-block annotation on scroll */
+    var gio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.5});
+    [].forEach.call(document.querySelectorAll('.t-g [data-anim]'),function(x){gio.observe(x)});
+  } else frames.forEach(arm);
+  [].forEach.call(document.querySelectorAll('[data-replay]'),function(b){b.addEventListener('click',function(){
+    var fr=document.querySelector('.frame[data-theme="'+b.getAttribute('data-replay')+'"]');disarm(fr);void fr.offsetWidth;setTimeout(function(){arm(fr)},60)})});
+  [].forEach.call(document.querySelectorAll('.i-spine'),function(s){s.addEventListener('click',function(e){e.preventDefault()})});
+})();
+</script>
+</body>
+</html>
