@@ -759,6 +759,35 @@ html.intro main{will-change:transform,clip-path}
 @media (prefers-reduced-motion: reduce){.tabs a,.tabs a span,.toc-sheet,.toc-btn{transition:none}}
 .hero-mail{margin:18px 0 0;font:600 .6875rem var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
 .hero-mail a{font:italic 400 1.0625rem var(--f-body);letter-spacing:0;text-transform:none;color:var(--accent);margin-left:4px;overflow-wrap:anywhere}
+
+/* ===== featured cards in Built (Pillo, Kaggle) ===== */
+.feature-card .card-h h3{font-size:clamp(1.6rem,3vw,2.1rem)}
+.fc-body{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);margin:0 5px}
+.fc-main{border-right:1px solid var(--rule);min-width:0}
+.fc-lede{font:400 1.25rem/1.5 var(--f-disp);margin:0;padding:18px 18px 6px}
+.fc-main .spec{margin:0}
+.fc-side{padding:18px 20px;min-width:0}
+.fc-h{margin:0 0 8px;font:600 .6875rem var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.fc-list{list-style:none;margin:0;padding:0}
+.fc-list li{position:relative;padding:8px 0 8px 18px;border-bottom:1px dotted var(--rule);font-size:.9375rem;line-height:1.45}
+.fc-list li:last-child{border-bottom:0}
+.fc-list li::before{content:"";position:absolute;left:2px;top:.95em;width:6px;height:6px;border-radius:50%;background:var(--gilt)}
+.fc-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:0 5px;border-bottom:1px solid var(--rule)}
+.fc-stats div{padding:16px 12px;border-right:1px solid var(--rule);text-align:center;min-width:0}
+.fc-stats div:last-child{border-right:0}
+.fc-stats b{display:block;font:700 clamp(1.45rem,2.8vw,2.05rem)/1.1 var(--f-disp);color:var(--accent);font-variant-numeric:lining-nums tabular-nums}
+.fc-stats span{display:block;margin-top:5px;font:600 .625rem var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+.fc-links{display:flex;flex-wrap:wrap;align-items:center;gap:6px 20px;margin:0 5px 5px;padding:12px 18px 14px;border-top:1px solid var(--rule);font:600 .6875rem var(--f-mono);letter-spacing:.1em;text-transform:uppercase}
+.fc-links a{color:var(--accent);padding:10px 0}
+.fc-links a.pdf{background:var(--cloth);border:1px solid var(--cloth);color:#f6efdc;padding:10px 14px;border-radius:2px;text-decoration:none}
+.fc-links a.pdf:hover{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+@media (max-width:760px){
+  .fc-body{grid-template-columns:minmax(0,1fr)}
+  .fc-main{border-right:0;border-bottom:1px solid var(--rule)}
+  .fc-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .fc-stats div:nth-child(2){border-right:0}
+  .fc-stats div:nth-child(-n+2){border-bottom:1px solid var(--rule)}
+}
 </style>
 </head>
 <body>
@@ -995,23 +1024,54 @@ html.intro main{will-change:transform,clip-path}
   <div class="wrap">
     <div class="sheet-head"><span class="sheet-no">IV</span><h2>built</h2><span class="sheet-meta">a health app and two ml competitions</span></div>
     <div class="cards">
-      <article class="card wide">
+      <article class="card wide feature-card" id="pillo">
         <div class="card-h"><h3>Pillo</h3><span class="mono">developer · dec 2024 – present</span></div>
-        <dl class="spec">
-          <dt>role</dt><dd>Developer on the Pillo team</dd>
-          <dt>product</dt><dd>A medication reminder app for people with chronic conditions and the families who help them: an alarm that keeps ringing until a dose is logged, refill reminders, and trackers for blood pressure, blood sugar, weight and water. Available on Android through Google Play.</dd>
-          <dt>link</dt><dd><a href="https://usepillo.com/about#our-team" target="_blank" rel="noopener">usepillo.com/about ↗</a></dd>
-        </dl>
+        <div class="fc-body">
+          <div class="fc-main">
+            <p class="fc-lede">A free pill reminder and medication tracker for people managing daily doses, and for the family members who help them.</p>
+            <dl class="spec">
+              <dt>role</dt><dd>Developer on the Pillo team</dd>
+              <dt>product</dt><dd>Built for people with chronic conditions and their caregivers: an alarm that keeps ringing until a dose is logged, refill reminders, and trackers for blood pressure, blood sugar, weight and water. On Android through Google Play, with an iPhone beta.</dd>
+            </dl>
+          </div>
+          <div class="fc-side">
+            <h4 class="fc-h">What the app does</h4>
+            <ul class="fc-list">
+              <li>Reminders on any schedule, from once a day to recurring cycles</li>
+              <li>Caregiver profiles with text alerts for missed doses</li>
+              <li>A drug interaction checker built on FDA data</li>
+              <li>Health tracking: blood pressure, glucose, weight and more</li>
+              <li>Refill tracking and adherence reports</li>
+            </ul>
+          </div>
+        </div>
+        <div class="fc-links">
+          <a class="pdf" href="https://usepillo.com/" target="_blank" rel="noopener">usepillo.com ↗</a>
+          <a href="https://play.google.com/store/apps/details?id=xyz.rtrvr.pillo" target="_blank" rel="noopener">Google Play ↗</a>
+          <a href="https://testflight.apple.com/join/CaR1XkKb" target="_blank" rel="noopener">iPhone beta ↗</a>
+          <a href="https://usepillo.com/about#our-team" target="_blank" rel="noopener">the Pillo team ↗</a>
+        </div>
       </article>
-      <article class="card">
-        <div class="card-h"><h3>Kaggle RSNA Knee Abnormality Detection</h3><span class="mono">bronze medal</span></div>
+      <article class="card wide feature-card" id="kaggle">
+        <div class="card-h"><h3>Kaggle · RSNA Knee Abnormality Detection</h3><span class="mono">bronze medal</span></div>
+        <div class="fc-stats">
+          <div><b>Bronze</b><span>medal</span></div>
+          <div><b>464th</b><span>of 6,000+ teams</span></div>
+          <div><b>Top 8%</b><span>final leaderboard</span></div>
+          <div><b>12,000+</b><span>competitors</span></div>
+        </div>
         <dl class="spec">
+          <dt>challenge</dt><dd>The 2026 RSNA Knee Abnormality Detection AI Challenge on Kaggle (August to October 2026): find and classify abnormalities in knee MRI scans, with $77,000 in prizes.</dd>
           <dt>role</dt><dd>Deep learning engineer on a team</dd>
           <dt>built</dt><dd>2.5D and 3D knee MRI models, automated training scripts, and the cross-validation that tested them. The part of a project I trust most is the one whose only job is to catch you fooling yourself.</dd>
-          <dt>result</dt><dd>464th of 6,000+ teams (top 8%), 12,000+ competitors</dd>
         </dl>
+        <div class="fc-links">
+          <a class="pdf" href="https://www.kaggle.com/competitions/rsna-knee-abnormality-detection" target="_blank" rel="noopener">challenge page ↗</a>
+          <a href="https://www.kaggle.com/competitions/rsna-knee-abnormality-detection/leaderboard" target="_blank" rel="noopener">leaderboard ↗</a>
+          <a href="https://www.rsna.org/news/2026/august/ai-challenge-knee-mri" target="_blank" rel="noopener">RSNA announcement ↗</a>
+        </div>
       </article>
-      <article class="card">
+      <article class="card wide">
         <div class="card-h"><h3>Scoop AI</h3><span class="mono">1st place</span></div>
         <dl class="spec">
           <dt>role</dt><dd>Lead developer</dd>
